@@ -33,23 +33,32 @@ body {
   /* overflow: hidden; */
 }
 
+p {
+  font-size: 1.4em;
+}
+
 .box {
   display: grid;
-  width: 110vh;
+  width: 100vh;
   border: 1px solid white;
 }
 
 /* header */
 header {
-  border: 1px solid red;
   display: flex;
-  padding: 40px;
+  border-bottom: 1px solid green;
+  margin: 0px 5px 30px 5px;
+  display: flex;
+  padding: 20px;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
+  background: radial-gradient(circle, #000046, #000016 250%);
 }
 
 header > div {
-  flex-grow: 3;
+  text-align: left;
+  flex-grow: 5;
 }
 
 header .iconUser {
@@ -60,19 +69,19 @@ header .iconUser {
   align-items: center;
   border: 1px solid green;
   font-size: 1em;
+  font-weight: bold;
+  padding: 10px;
 }
-header h1 {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 10px;
-}
-header .pizza-svg {
+
+/* SVG style */
+/* header .pizza-svg {
   width: 60px;
   overflow: visible;
   stroke: #fff;
   stroke-width: 4;
   stroke-linejoin: round;
   stroke-linecap: round;
-}
+} */
 
 button {
   color: white;
@@ -90,7 +99,8 @@ button {
 .home_container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+  margin: 10px 80px 0px 80px;
 }
 
 h2 {
@@ -115,11 +125,23 @@ h2 {
   cursor: pointer;
 }
 
+.home_main {
+  padding: 0px 20px 50px 0px;
+  border-bottom: 1px white solid;
+}
+
 .list_flat {
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
   flex-direction: row;
   margin: 10px;
+}
+
+.list_flat > div {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 15px;
 }
 
 /* lists */
@@ -135,74 +157,39 @@ li span.active::before {
   display: inline-block;
 }
 
-.order.container {
-  text-align: center;
-  max-width: 800px;
-}
 .home_button {
   color: white;
-  padding: 15px 30px;
-  font-size: 1.6em;
+  padding: 20px 30px;
+  font-size: 1.8em;
   border: 3px solid white;
   margin: 30px 20px;
 }
 
 .home_footer_container {
+  text-align: left;
   margin-top: 30px;
-  border-top: 1px white solid;
 }
 
-.order p {
-  margin: 20px auto;
-}
-
-/* Modal */
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-.modal {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background: white;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.modal button {
-  color: #444;
-  border-color: #444;
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-.modal p {
-  color: #444;
-  font-weight: bold;
-}
-
-.loader {
-  width: 10px;
-  height: 10px;
-  margin: 40px auto;
-  border-radius: 50%;
-  background: white;
+.registrationTwo_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .Your_Data_Form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
-.Your_Data_Form > div {
+.Your_Data_Field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
+}
+.Your_Data_Field > p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -384,4 +371,17 @@ li span.active::before {
 .ListFAQ {
   font-size: 1.4em;
   margin: 15px;
+}
+
+.navigation_header {
+  display: flex;
+  margin-left: 15px;
+}
+.navigation_header > div {
+  border: green 1px solid;
+  margin: 5px;
+}
+
+.radio {
+  border-radius: 100%;
 }

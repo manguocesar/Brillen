@@ -47,12 +47,7 @@ const [showModal, setShowModal] = useState(false)
   return (
     <div className="box">
       
-         <Header  /> 
-        
-
-
-      <Modal showModal={showModal} setShowModal={setShowModal}  />
-
+    <Header  /> 
       {/* exitBeforeEnter makes sure all compoennts left before any enter */}
       {/* onExitComplete launches an action when the component exits/unmounts */}
       <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)} >
@@ -67,7 +62,6 @@ const [showModal, setShowModal] = useState(false)
         <Route path="/YourData">
           <YourData addBase={addBase} pizza={pizza} />
         </Route>
-       
         <Route path="/Questionaire">
           <Questionaire addBase={addBase} pizza={pizza} />
         </Route>
@@ -109,7 +103,8 @@ const [showModal, setShowModal] = useState(false)
         <Route path="/">
           <Home />
         </Route>
-      </Switch></AnimatePresence>
+      </Switch>
+      </AnimatePresence>
     </div>
   );
 }

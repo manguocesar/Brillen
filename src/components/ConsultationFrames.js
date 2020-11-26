@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 
 //images
-import QrCode from "../image/RegistrationTwo/qrCode.svg"
+import QrCode from "../image/RegistrationTwo/qrCode.png"
 
 const containerVariants = {
 hidden: {
