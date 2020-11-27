@@ -65,6 +65,7 @@ const [showModal, setShowModal] = useState(false)
         <Route path="/Questionaire">
           <Questionaire addBase={addBase} pizza={pizza} />
         </Route>
+     
         <Route path="/NoAppointment">
           <NoAppointment addBase={addBase} pizza={pizza} />
         </Route>

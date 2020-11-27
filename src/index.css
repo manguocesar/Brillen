@@ -40,7 +40,7 @@ p {
 .box {
   display: grid;
   width: 100vh;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 /* header */
@@ -71,6 +71,11 @@ header .iconUser {
   font-size: 1em;
   font-weight: bold;
   padding: 10px;
+}
+
+.Header_Icon_One {
+  display: flex;
+  flex-direction: column;
 }
 
 /* SVG style */
@@ -176,6 +181,25 @@ li span.active::before {
   align-items: flex-start;
 }
 
+input {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  box-shadow: 1px 1px 2px;
+  box-shadow: 1px 1px 2px;
+  font-size: 1.2em;
+  text-align: center;
+  font-style: italic;
+  padding: 5px;
+  margin: 5px 10px 5px 0px;
+}
+
+.Title_Field {
+  text-align: left;
+  font-size: 1.5em;
+  margin: 0px 20px 0px 0px;
+}
+
 .Your_Data_Form {
   display: flex;
   flex-direction: column;
@@ -183,17 +207,124 @@ li span.active::before {
   margin-top: 20px;
 }
 
-.Your_Data_Field {
+.Your_Data_Field_One {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 5px;
+  width: 40vh;
+  margin-bottom: 20px;
 }
-.Your_Data_Field > p {
+.Your_Data_Field_Two {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 5px;
+}
+.Your_Data_Field_Left_One {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 10px 10px 10px 0px;
+}
+.Your_Data_Field_Left_Two {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 10px 10px 10px 10px;
+}
+.Your_Data_Field_Left_Name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin: 10px 10px 10px 0px;
+}
+
+.Your_Data_Field_Three {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+.Your_Data_Field_Three > div {
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px 10px 10px 0px;
+}
+.Your_Data_Field_Three_Right {
+  display: flex;
+  width: 70%;
+}
+.Your_Data_Field_Three_Right > input {
+  margin: 15px;
+}
+
+.Your_Data_Field_Four {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.Your_Data_Field_Four > p {
+  display: flex;
+  margin: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 40px 10px 0px;
+}
+
+.Your_Data_Field_Five {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 10px 10px 0px;
+  padding: 10px;
+}
+
+.Your_Data_Field_Five > p {
+  margin-right: 10px;
+}
+.Your_Data_Field_Six {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+}
+.Your_Data_Field_Six > p {
+  margin: 0px 10px 10px 0px;
+}
+
+.Your_Data_Field_Seven {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0px 10px 0px 0px;
+}
+
+.Questionaire_Form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+.Questionaire_Form > p {
+  font-size: 1.5em;
+  text-align: left;
+}
+.Questionaire_Form > div {
+  margin: 20px 0px 40px;
+}
+.Questionaire_Form_One {
+  display: flex;
+  margin: 5px 20px 20px 0px;
+}
+.Questionaire_Form_One > p {
+  margin: 0px 20px 0px 0px;
+  font-size: 1.5em;
 }
 
 .calandar_container {

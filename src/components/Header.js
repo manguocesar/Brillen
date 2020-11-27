@@ -3,7 +3,6 @@ import {motion} from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom';
 
 //images
-import Logo from "../image/header/brillen.png"
 import WhiteLogo from "../image/header/whiteLogo.png"
 import SupportIcon from "../image/header/supportIcon.png"
 import Home from "../image/header/homeIcon.png"
@@ -50,7 +49,7 @@ const Header = () => {
 
   let history = useHistory()
       const goingBack = () => { history.goBack() };
-
+console.log("history",history.location.pathname);
   return ( 
     <header >
       <motion.div
@@ -83,6 +82,7 @@ const Header = () => {
         </motion.svg> */}
       </motion.div>
 
+<div className="Header_Icon_One">
       <motion.div   
       
             variants={containerVariants}
@@ -95,6 +95,23 @@ const Header = () => {
               <p>To authentify, click on the icon </p>
        </motion.div>
 
+      { (history.location.pathname != "/Questionaire" ) ? (""
+              ):(
+      
+      <motion.div   
+      
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="iconUser">
+
+        <img src={SupportIcon} alt="" style={{width: "70px",height: "70px"}} />
+        <p>To authentify, click on the icon </p>
+ </motion.div>)}
+       </div>
+
+<div className="Header_Icon_One">
         {history.location.pathname == "/" ? (""
               ):(
               <motion.div   
@@ -113,6 +130,25 @@ const Header = () => {
               </motion.div>
        </motion.div>
       )}
+
+{ (history.location.pathname != "/Questionaire" ) ? (""
+              ):(<motion.div   
+                initial={{  x:0, y :-200}}
+                animate={{x:0,y :0 }}
+                exit={{  x:0,  y: -100}}
+                transition={{ delay: 0.2 , duration : 2 , type: "spring", stiffness: "40" }} 
+                className="navigation_header">
+                  <motion.div> 
+                    <Link to="/" >
+                      <img src={Home} style={{width: "70px",height: "70px"}} alt=""/>
+                    </Link> 
+                  </motion.div>
+             <motion.div onClick={()=> {goingBack()}}> 
+               <img src={GoBack} style={{width: "70px",height: "70px"}} alt=""/>
+            </motion.div>
+     </motion.div>)}
+     </div>
+
     </header>
   )
 }
