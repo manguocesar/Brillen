@@ -22,7 +22,7 @@ import {useForm} from "react-hook-form"
 
 
 
-        const YourData = ({ addBase, pizza }) => {
+        const YourData = ({ }) => {
 
             const {register, handleSubmit,errors} = useForm()
              const handleChange = (e) => {  }
@@ -35,7 +35,10 @@ import {useForm} from "react-hook-form"
             return (
               <motion.div className="home_container"
                  variants={containerVariants}
-                 initial="hidden" animate="visible" exit="exit"  >
+                 initial="hidden" animate="visible" exit="exit"
+                 drag="y"
+                 whileTap={{ opacity: 0.6 }}
+                 dragConstraints={{ top: -550, bottom: 10 }}  >
 
                 <h2 style={{width:"40%", marginLeft: "10px"}}>Your Data</h2>
  

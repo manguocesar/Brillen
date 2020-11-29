@@ -102,10 +102,10 @@ console.log("history",history.location.pathname);
                     {history.location.pathname == "/" ? (""
                           ):(
                           <motion.div   
-                              initial={{  x:0, y :-200}}
-                              animate={{x:0,y :0 }}
-                              exit={{  x:0,  y: -100}}
-                              transition={{ delay: 0.2 , duration : 3 , type: "spring", stiffness: "20" }} 
+                          variants={containerVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
                               className="navigation_header">
                                 <motion.div> 
                                   <Link to="/" >
