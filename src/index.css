@@ -62,13 +62,14 @@ header > div {
 }
 
 header .iconUser {
+  height: 40px;
   flex-grow: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   border: 1px solid green;
-  font-size: 1em;
+  font-size: 14px;
   font-weight: bold;
   padding: 10px;
 }
@@ -76,6 +77,7 @@ header .iconUser {
 .Header_Icon_One {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 /* SVG style */
@@ -112,8 +114,29 @@ h2 {
   text-align: left;
   font-size: 2em;
   width: 80%;
-  margin-bottom: 30px;
+  margin: 0px 0px 30px 0px;
   border-bottom: white solid 1px;
+}
+h3 {
+  text-align: left;
+  font-size: 1.8em;
+  margin: 20px 0px 10px 0px;
+  border-bottom: white solid 1px;
+  text-shadow: 1px 1px 1px white;
+}
+h4 {
+  text-align: center;
+  font-size: 1.8em;
+  margin: 10px;
+  text-shadow: 1px 1px 1px white;
+}
+h5 {
+  text-align: center;
+  font-size: 1.8em;
+  margin: 10px;
+  padding: 15px;
+  border: white solid 1px;
+  font-weight: 900;
 }
 
 .container {
@@ -327,25 +350,152 @@ input {
   font-size: 1.5em;
 }
 
-.calandar_container {
-  display: flex;
-  justify-content: space-evenly;
+.calendar_container > div {
+  margin: 40px 80px 40px 0px;
 }
 
-.calandar_container > div {
+.calendar_container {
   display: flex;
-  margin: 5px;
+  flex-direction: row;
+  margin-top: 10px;
+  align-items: left;
+  justify-content: space-between;
+}
+
+.react-calendar__navigation button {
+  font-size: 2em;
+  margin: 10px 5px 10px 0px;
+  font-weight: 900;
+}
+.react-calendar__navigation button:hover {
+  animation: myfirst 1s ease-in infinite;
+}
+@keyframes myfirst {
+  0% {
+    scale: 1;
+    box-shadow: 1px 1px 4px;
+  }
+  25% {
+    scale: 1.2;
+    box-shadow: 2px 2px 8px;
+  }
+  50% {
+    scale: 0.95;
+    box-shadow: 1px 1px 4px;
+  }
+  75% {
+    scale: 1.2;
+    box-shadow: 2px 2px 8px;
+  }
+  100% {
+    scale: 1;
+    box-shadow: 1px 1px 4px;
+  }
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  font-size: 20px;
+  text-align: center;
+}
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.react-calendar__tile {
+  height: 70px;
+  width: 15px;
+  padding: 0;
+  border-radius: 0;
+}
+
+.react-calendar__tile,
+.react-calendar__month-view__days__day {
+  font-size: 50px;
+}
+
+.react-calendar__tile:active {
+  background-color: rgb(30, 250, 30);
+}
+
+.react-calendar__tile:hover {
+  font-weight: bolder;
+
+  animation: myfirst 4s linear infinite;
+}
+
+.calandar_dates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+}
+.calandar_dates_one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bolder;
+  font-family: "Quicksand";
+}
+
+.calendar_hours_one {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bolder;
+  font-family: "Quicksand";
+  margin-bottom: 20px;
+}
+
+.calendar_hours_one > p {
   border: white 1px solid;
+  padding: 5px 10px 5px 10px;
+  margin: 15px;
+  font-size: 1em;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.calendar_hours_one > p:hover {
+  animation: myfirst 2s ease-in infinite;
+}
+
+.activated {
+  color: black;
+  background-color: rgb(30, 250, 30);
+}
+
+.calendar_hours_display {
+  flex-grow: 1;
+  border: white 1px solid;
+
+  padding: 5px 10px 5px 10px;
+}
+
+.QRCode_Text {
+  text-align: left;
+  font-size: 2em;
+  margin-top: 20px;
 }
 
 .Frames_Container {
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
 }
 .Frames_Container > div {
   border: 1px solid white;
-  width: 60px;
-  height: 60px;
+  width: 350px;
+  height: 350px;
+  margin: 20px;
+  font-weight: bolder;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Long_Distance_Optimisation_lens {
@@ -363,7 +513,6 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: red 3px solid;
 }
 .Tinting_Container_Two {
   display: flex;
@@ -377,7 +526,7 @@ input {
   flex-direction: column;
   justify-content: space-between;
   border: white 1px solid;
-  margin: 5px;
+  margin: 15px 5px 5px 5px;
   padding: 5px;
 }
 
@@ -397,23 +546,27 @@ input {
 .Tinting_Option_Top {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-
+  justify-content: space-evenly;
   margin: 5px;
   padding: 5px;
 }
-.Tinting_Option_Top > p {
+.Tinting_Option_Top > div {
   border: white 1px solid;
   margin: 5px;
-  padding: 5px;
+  padding: 15px;
 }
 .Tinting_Option_Bottom {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   border: white 1px solid;
-  margin: 5px;
-  padding: 5px;
+}
+
+.Absorbtion {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .base_container {
@@ -423,30 +576,53 @@ input {
 }
 
 .lenses_choice_container {
-  border: green 1px solid;
-  width: 60%;
+  width: 70%;
   overflow: hidden;
+}
+.lenses_choice_container > p {
+  text-align: left;
 }
 .lenses_choice_recap {
   display: flex;
   flex-direction: column;
-  border: yellow 1px solid;
-  width: 30%;
+  align-items: center;
+  border: white 1px solid;
+  flex-grow: 1;
+  margin-left: 50px;
+  height: 45%;
+}
+.lenses_choice_recap > h2 {
+  padding: 20px;
+  text-align: center;
 }
 
 .lenses_choice_info {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px;
+  width: 90%;
+  border-bottom: white 1px solid;
+}
+.lenses_choice_calculator {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: flex-start;
   margin: 12px;
 }
 
-.lenses_choice_info > p {
-  font-size: 1.2em;
+.lenses_choice_calculator > div {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  font-size: 1.8em;
   text-shadow: 0px 0px 4px;
-  margin: 4px;
+  width: 100%;
   border-bottom: white 1px solid;
-  padding-bottom: 4px;
+  margin: 10px 0px 10px 10px;
+  padding-bottom: 10px;
 }
 
 .image_holder {
@@ -454,9 +630,9 @@ input {
   text-align: center;
   justify-content: center;
   align-items: center;
-  border: red 1px solid;
-  width: 140px;
-  height: 140px;
+  border: white 1px solid;
+  width: 320px;
+  height: 320px;
   margin: 10px;
 }
 
@@ -480,17 +656,22 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
-
+  align-items: center;
+  width: 95%;
   margin: 20px;
+}
+
+.summary_text_content {
+  text-align: left;
 }
 
 .AllDone_Container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 0 auto;
-  width: 80%;
+}
+.AllDone_Container > p {
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .ListFAQ_container > ul {
@@ -506,11 +687,13 @@ input {
 
 .navigation_header {
   display: flex;
-  margin-left: 15px;
+  align-items: center;
+  margin: 0px 0px 0px 10px;
 }
 .navigation_header > div {
   border: green 1px solid;
-  margin: 5px;
+  margin: 2px;
+  padding: 7px;
 }
 
 .radio {

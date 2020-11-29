@@ -5,10 +5,10 @@ import {useForm} from "react-hook-form"
 
 
                   const containerVariants = {
-                        hidden: { opacity: 0, x:'100vw'  },
-                        visible: {   opacity:1,   x: 0,
-                          transition: {type : 'spring', stiffness: 10,  delay: 0.2}  },
-                        exit: {x: '-100vw', transition : {ease: 'easeInOut'}} }
+                    hidden: {  opacity: 0,   x:'100vw'   },
+                    visible: { opacity:1, x: 0,
+                    transition: {type : 'spring',  stiffness: 10,}  },
+                    exit: {x: '-100vw', transition : {duration: 2, ease: 'easeInOut'}}  }
 
                   const invalidVariants = {
                           hidden: { opacity: 0, scale:0.1 ,color:"black", },
@@ -16,27 +16,16 @@ import {useForm} from "react-hook-form"
                             transition: {type : 'spring', stiffness: 10,  delay: 0.1}  },
                           exit: {opacity: 0, scale:0.1 ,color:"black", transition : {ease: 'easeInOut'}} }
 
-                  const nextVariants = {
-                        hidden:{   x:'-100vw'},
-                        visible: { x:0,
-                        transition : {type: "spring", stiffness: 150  }  }  }
-
-                  const buttonVariants = {  
-                        hover: { scale: 1.2,    textShadow: "0px 0px 8px ",   boxShadow: "0px 0px 8px",
-                        transition: {  yoyo:Infinity,  duration: 0.3  }} }
+                   const buttonVariants = {   
+                            hover: { scale: 1.2,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
+                            transition: {   yoyo:Infinity, duration: 0.3}   } }   
 
 
 
         const YourData = ({ addBase, pizza }) => {
 
             const {register, handleSubmit,errors} = useForm()
-
-        
-
-            const handleChange = (e) => {
-              
-            
-            }
+             const handleChange = (e) => {  }
 
             const onSubmit = (data) => {
               console.log("data",data);

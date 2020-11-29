@@ -82,75 +82,78 @@ console.log("history",history.location.pathname);
         </motion.svg> */}
       </motion.div>
 
-<div className="Header_Icon_One">
-      <motion.div   
-      
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="iconUser">
-      
-              <img src={SupportIcon} alt="" style={{width: "70px",height: "70px"}} />
-              <p>To authentify, click on the icon </p>
-       </motion.div>
-
-      { (history.location.pathname != "/Questionaire" ) ? (""
-              ):(
-      
-      <motion.div   
-      
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      className="iconUser">
-
-        <img src={SupportIcon} alt="" style={{width: "70px",height: "70px"}} />
-        <p>To authentify, click on the icon </p>
- </motion.div>)}
-       </div>
-
-<div className="Header_Icon_One">
-        {history.location.pathname == "/" ? (""
-              ):(
+        <div className="Header_Icon_One">
+          <div style={{display:"flex", flexDirection:"row"}}>
               <motion.div   
-                  initial={{  x:0, y :-200}}
-                  animate={{x:0,y :0 }}
-                  exit={{  x:0,  y: -100}}
-                  transition={{ delay: 0.2 , duration : 2 , type: "spring", stiffness: "40" }} 
-                  className="navigation_header">
-                    <motion.div> 
-                      <Link to="/" >
-                        <img src={Home} style={{width: "70px",height: "70px"}} alt=""/>
-                      </Link> 
-                    </motion.div>
-               <motion.div onClick={()=> {goingBack()}}> 
-                 <img src={GoBack} style={{width: "70px",height: "70px"}} alt=""/>
+              
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="iconUser">
+              
+                      <img src={SupportIcon} alt="" style={{width: "40px",height: "42px"}} />
+                      <p>To authentify, click on the icon </p>
               </motion.div>
-       </motion.div>
-      )}
 
-{ (history.location.pathname != "/Questionaire" ) ? (""
-              ):(<motion.div   
-                initial={{  x:0, y :-200}}
-                animate={{x:0,y :0 }}
-                exit={{  x:0,  y: -100}}
-                transition={{ delay: 0.2 , duration : 2 , type: "spring", stiffness: "40" }} 
-                className="navigation_header">
-                  <motion.div> 
-                    <Link to="/" >
-                      <img src={Home} style={{width: "70px",height: "70px"}} alt=""/>
-                    </Link> 
+            
+             
+
+                    {history.location.pathname == "/" ? (""
+                          ):(
+                          <motion.div   
+                              initial={{  x:0, y :-200}}
+                              animate={{x:0,y :0 }}
+                              exit={{  x:0,  y: -100}}
+                              transition={{ delay: 0.2 , duration : 3 , type: "spring", stiffness: "20" }} 
+                              className="navigation_header">
+                                <motion.div> 
+                                  <Link to="/" >
+                                    <img src={Home} style={{width: "42px",height: "42px"}} alt=""/>
+                                  </Link> 
+                                </motion.div>
+                          <motion.div onClick={()=> {goingBack()}}> 
+                            <img src={GoBack} style={{width: "42px",height: "42px"}} alt=""/>
+                          </motion.div>
                   </motion.div>
-             <motion.div onClick={()=> {goingBack()}}> 
-               <img src={GoBack} style={{width: "70px",height: "70px"}} alt=""/>
-            </motion.div>
-     </motion.div>)}
-     </div>
+                  )}
 
-    </header>
-  )
-}
 
-export default Header;
+</div>
+
+<div style={{display:"flex", flexDirection:"row", marginTop:"10px"}}>
+                { history.location.pathname !==  "/Questionaire" ? (""
+                      ):(
+              
+              <motion.div   
+                    initial={{  opacity:0, scale : 0}}
+                    animate={{opacity:1, scale : 1 }}
+                    exit={{  opacity:0, scale : 0}}
+                    transition={{ delay: 0.2 , duration : 2 , type: "spring", stiffness: "10" }} 
+                    className="iconUser">
+                
+                  <p>Save process and log out </p>
+                </motion.div>)}
+
+            { (history.location.pathname !== "/Questionaire" ) ? (""
+                          ):(<motion.div   
+                            initial={{  opacity:0, scale : 0}}
+                            animate={{opacity:1, scale : 1 }}
+                            exit={{  opacity:0, scale : 0}}
+                            transition={{ delay: 0.2 , duration : 2 , type: "spring", stiffness: "10" }} 
+                            className="navigation_header">
+                              <motion.div> 
+                                <Link to="/" >
+                                  <img src={Home} style={{width: "42px",height: "42px"}} alt=""/>
+                                </Link> 
+                              </motion.div>
+                      
+                </motion.div>)}
+                </div>
+                </div>
+
+                </header>
+              )
+            }
+
+            export default Header;

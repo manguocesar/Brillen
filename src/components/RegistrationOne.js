@@ -3,27 +3,26 @@ import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 
 
+      const containerVariants = {
+        hidden: { opacity: 0,  x:'100vw'   },
+        visible: {  opacity:1, x: 0,
+        transition : {delay : 0.1, duration:1}},
+        exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
 
-const containerVariants = {
-  hidden : {
-    opacity:0,
-    x:'100vw'},
-  visible:{
-    opacity:1,x:'0vw',
-    transition : {delay : 0.2, duration:0.5, type: "spring", stiffness: 80 }},
-  exit: {
-    x: '-100vw', transition : {duration:1,ease: 'easeInOut'}}}
+        const nextVariants = {
+          hidden: { opacity: 0, scale:0.1 },
+          visible: {
+          opacity:1,
+          scale:1,
+          transition : {delay : 1.2, duration:3.5} },
+          exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
 
-          
-          const buttonVariants = {
-
-            hover: {
-              scale: 1.2,  
-              
-              textShadow: "0px 0px 8px ",
-              boxShadow: "0px 0px 8px",transition: {
-                yoyo:Infinity,
-                duration: 0.3 } } }
+        const buttonVariants = {
+          hover: {
+            scale: 1.2,  
+            textShadow: "0px 0px 8px ",
+            boxShadow: "0px 0px 8px",transition: {
+              yoyo:Infinity,   }  }  }
 
         const Registration = () => {
         const Registrations = ['YES', 'NO'];

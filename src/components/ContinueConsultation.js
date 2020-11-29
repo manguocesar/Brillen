@@ -2,86 +2,50 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 
-//images
+            //images
+            import QrCode from "../image/RegistrationTwo/qrCode.png"
 
+            const containerVariants = {
+              hidden: { opacity: 0, x:'100vw'  },
+              visible: {   opacity:1,   x: 0,
+                transition: {type : 'spring', stiffness: 10,  delay: 0.2}  },
+              exit: {x: '-100vw', transition : {ease: 'easeInOut',duration: 1}} }
 
-const containerVariants = {
-hidden: {
-  opacity: 0,
-  x:'100vw'
-},
-visible: {
-opacity:1,
-x: 0,
-transition: {type : 'spring', 
-delay: 0.5}
-},exit: {x: '-100vw', transition : {ease: 'easeInOut'}}
-}
+              const buttonVariants = {  
+                hover: { scale: 1.2,    textShadow: "0px 0px 8px ",   boxShadow: "0px 0px 8px",
+                transition: {  yoyo:Infinity,  duration: 0.3  }} }
 
-const nextVariants = {
-hidden:{
-x:'-100vw'},
-visible: {
-x:0,
-transition : {type: "spring", stiffness: 150  }
-}
+                const nextVariants = {
+                  hidden: { opacity: 0, scale:0.1 },
+                  visible: {
+                  opacity:1,
+                  scale:1,
+                  transition : {delay : 1.2, duration:2} },
+                  exit: {opacity: 0, scale:0.1, transition : {ease: 'easeInOut', duration:1}}   }
 
-}
-const buttonVariants = {
+            const ContinueConsultation = ({ }) => {
+                  
+              return (
+                    <motion.div className="home_container"
+                  variants={containerVariants}
+                  initial="hidden" animate="visible" exit="exit"  >
 
-  hover: {
-    scale: 1.2,  
-    
-    textShadow: "0px 0px 8px ",
-    boxShadow: "0px 0px 8px",transition: {
-      yoyo:Infinity,
-      duration: 0.3
-      
-        }
-  
-  }
-  
-  }
+                      <h2>Continue Consultation Process</h2>
+                            <p className="QRCode_Text">Here are the frames that you have chosen</p>
+                            <p className="QRCode_Text">Please select one you would like to order</p>
 
+                      <Link to="/ConsultationFrames">
+                            <motion.button
+                            className="home_button"
+                              variants={buttonVariants}
+                              whileHover="hover">
+                            Scan QR Code
+                            </motion.button>
+                        </Link>
+                      
+                              <p className="QRCode_Text">To scan your QR code, get it closer to the mirror</p>
+                              <p className="QRCode_Text">QR code scanner is located on the left of the display</p>
+                              <motion.img variants={nextVariants} initial="hidden" animate="visible" exit="exit" style={{marginTop:"20px"}} src={QrCode} alt=""/>
+              </motion.div>  )    }
 
-
-const ContinueConsultation = ({ addBase, pizza }) => {
-
-
-
-  return (
-    <motion.div className="base container"
-   variants={containerVariants}
-   initial="hidden" animate="visible" exit="exit"
-    
-    >
-
-      <h2>Continue Consultation Process</h2>
-      <p>Here are the frames that you have chosen</p>
-      <p>Please select one you would like to order</p>
-      
-      <div className="Frames_Container">
-<div>Frame 1</div>
-<div>Frame 2</div>
-<div>Frame 3</div>
-
-      </div>
-
-    
-            <Link to="/ConsultationFrames">
-            <motion.button
-            className="home_button"
-              variants={buttonVariants}
-              whileHover="hover">
-             Continue
-            </motion.button>
-        </Link>
-      
-
-
-
-    </motion.div>
-  )
-}
-
-export default ContinueConsultation;
+          export default ContinueConsultation;

@@ -6,27 +6,17 @@ import {motion} from "framer-motion";
  import QrCode from "../image/RegistrationTwo/qrCode.png"
 
         const containerVariants = {
-        hidden: {
-          opacity: 0,
-          x:'100vw'
-        },
-        visible: {
-        opacity:1,
-        x: 0,
-        transition : {delay : 0.1, duration:1}
-        },
+        hidden: { opacity: 0,  x:'100vw'   },
+        visible: {  opacity:1, x: 0,
+        transition : {delay : 0.1, duration:1}},
         exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
 
         const nextVariants = {
-          hidden: {
-            opacity: 0,
-            scale:0.1
-          },
+          hidden: { opacity: 0, scale:0.1 },
           visible: {
           opacity:1,
           scale:1,
-          transition : {delay : 1.2, duration:3.5}
-          },
+          transition : {delay : 0.8, duration:2.5} },
           exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
 
         const buttonVariants = {
@@ -34,9 +24,7 @@ import {motion} from "framer-motion";
             scale: 1.2,  
             textShadow: "0px 0px 8px ",
             boxShadow: "0px 0px 8px",transition: {
-              yoyo:Infinity,
-           
-                }  }  }
+              yoyo:Infinity,}  }  }
 
 const RegistrationTwo = ({ addBase, pizza }) => {
   const Registrations = ['Scan QR Code', 'Manual Data Input'];

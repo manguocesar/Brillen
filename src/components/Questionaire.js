@@ -7,7 +7,7 @@ import {useForm} from "react-hook-form"
               hidden: { opacity: 0, x:'100vw'  },
               visible: {   opacity:1,   x: 0,
                     transition: {type : 'spring', stiffness: 10,  delay: 0.1}  },
-              exit: {x: '-100vw', transition : {ease: 'easeInOut'}} }
+              exit: {x: '-100vw', transition : {duration:1 ,ease: 'easeInOut'}} }
 
          
 
@@ -34,6 +34,9 @@ const Questionaire = ({}) => {
         <motion.div className="home_container"
             variants={containerVariants}
             initial="hidden" animate="visible" exit="exit"
+            drag="y"
+            whileTap={{ opacity: 0.6 }}
+            dragConstraints={{ top: -550, bottom: 10 }}
                >
 
       <h2>Questionaire </h2>
