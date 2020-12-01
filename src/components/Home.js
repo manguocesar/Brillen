@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {motion,  } from "framer-motion";
 import Loader from "./Loader"
@@ -12,22 +12,16 @@ import Click from "../image/home/clickIcon.png"
 
 
       const buttonVariants = {
-        hidden : {
-          scale:0,},
-        visible:{
-          scale:1,
+        hidden : {scale:0,},
+        visible:{  scale:1,
           transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
-         hover: {
-            scale: 1.2,
-            textShadow: "0px 0px 8px ",
-            boxShadow: "0px 0px 8px",
-          transition: {
-            yoyo:Infinity,
-            duration: 0.3   }}}
+         hover: {  scale: 1.2, textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
+          transition: { yoyo:Infinity, duration: 0.3   }}}
 
             const containerVariants = {
             hidden : { opacity:0.1},
-            visible: {  opacity:1, transition : {delay : 0.2, duration:1.5, type: "spring", stiffness: 20}},
+            visible: {  opacity:1, 
+              transition : {delay : 0.2, duration:1.5, type: "spring", stiffness: 20}},
             exit: {  x: '-100vw',  transition : {duration:0.5,ease: 'easeInOut'}}}
 
             const content =[
@@ -44,49 +38,51 @@ import Click from "../image/home/clickIcon.png"
                       {title:"Pick up glasses",to: "ContinueConsultation"}]
 
 
-        const Home = () => {
+        const Home = ({setSavedData, savedData}) => {
+
+          useEffect((savedData) => {
+            setSavedData(false)
+            console.log("savedData",savedData);
+            }, [])
 
           return (
             <motion.div
-            variants={containerVariants}
-            initial="hidden"
+              variants={containerVariants}
+              initial="hidden"
               animate="visible"
               exit="exit"
               drag="y"
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.95, opacity:0.7 }}
               dragConstraints={{ top: -550, bottom: 10 }}
-            
               className="home_container">
-              <motion.h2  >
-                How it works?
-              </motion.h2>
-            
+                <motion.h2  >
+                  How it works?
+                </motion.h2>
                 <div className="home_main">
-              {content.map((item, index)=>(
-                <ul key={index}>
-                  <li className="list_flat">
+                  {content.map((item, index)=>(
+                    <ul key={index}>
+                      <li className="list_flat">
+                       <div> <img src={item.icon} alt="" style={{height:"8vh", width:"8vh"}} /></div>
+                <div>{index + 1 }. {item.text}  </div>
            
-              <div> <img src={item.icon} alt="" style={{height:"8vh", width:"8vh"}} /></div>
-               <div>{index + 1 }. {item.text}  </div>
-           
-           </li>
-         </ul>
-         ))}
-    </div>
+                    </li>
+                  </ul>
+                  ))}
+              </div>
 
-    <div class="home_footer_container">
-          {buttonChoiceText.map(item => (
-          <Link to={item.to}>
-              <motion.button
-                className="home_button"
-                variants={buttonVariants}
-                whileHover="hover">
-                {item.title}
-              </motion.button>
-          </Link>))}
-      </div>
-    </motion.div>
-  )
-}
+         <div class="home_footer_container">
+                {buttonChoiceText.map(item => (
+                <Link to={item.to}>
+                    <motion.button
+                      className="home_button"
+                      variants={buttonVariants}
+                      whileHover="hover">
+                      {item.title}
+                    </motion.button>
+                </Link>))}
+            </div>
+          </motion.div>
+        )
+      }
 
 export default Home;

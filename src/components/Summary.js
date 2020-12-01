@@ -10,16 +10,12 @@ import {motion} from "framer-motion";
 
 
         const buttonVariants = {   
-          hover: { scale: 1.2,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
+          hover: { scale: 1.2, x:30,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
           transition: {   yoyo:Infinity, duration: 0.3}   } }
 
 
 
 const Summary = ({  }) => {
-
-  const [tintingChosen, setTintingChosen] = useState(false)
-
-
           return (
             <motion.div className="base_container"
               variants={containerVariants}
@@ -61,17 +57,14 @@ const Summary = ({  }) => {
 
               </div>
 
-        <div>Conditions genraral ()lorem50</div>
-
-          
-
-
-                  <Link to="/ConsultationLenses">
+        <div>Conditions genraral ... Aliqua labore cupidatat cupidatat elit duis laborum duis deserunt. Ea labore adipisicing esse culpa et labore in fugiat exercitation aliqua est do velit eiusmod. Fugiat nostrud duis quis incididunt sunt laborum sunt ullamco elit id do do. Nostrud ad quis est duis pariatur.
+        </div>
+           <Link to="/ConsultationLenses">
                       <motion.button
                       className="home_button"
                         variants={buttonVariants}
                         whileHover="hover">
-                      Edit Order (goes previous)
+                      Edit Order
                       </motion.button>
                 </Link>
                 <Link to="/AllDone">
@@ -82,14 +75,8 @@ const Summary = ({  }) => {
                       Submit Order
                     </motion.button>
                 </Link>
-              
-
-                </motion.div>
-
-
-   
-
-    </motion.div>
+               </motion.div>
+             </motion.div>
   )
 }
 

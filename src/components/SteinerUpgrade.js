@@ -10,12 +10,12 @@ import {motion} from "framer-motion";
 
 
         const buttonVariants = {   
-          hover: { scale: 1.2,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
+          hover: { scale: 1.2, x:30,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
           transition: {   yoyo:Infinity, duration: 0.3}   } }
 
 
 
-        const SteinerUpgrade = ({ addBase, pizza }) => {
+        const SteinerUpgrade = () => {
 
 
           return (
@@ -34,11 +34,7 @@ import {motion} from "framer-motion";
                 <h4>Differences visualisation</h4>
 
                     </div>
-
-                  
-
-
-                            <Link to="/Summary">
+                      <Link to="/Summary">
                             <motion.button
                             className="home_button"
                               variants={buttonVariants}
@@ -53,20 +49,9 @@ import {motion} from "framer-motion";
                               whileHover="hover">
                             Regular Vision
                             </motion.button>
-                        </Link>
-                      
-
-                        </motion.div>
-
-
-                        <div className="lenses_choice_recap">
-
+                        </Link>   
+                        </motion.div>  <div className="lenses_choice_recap">
                 <h2>Prescription</h2>
-
-
-
-
-
           </div >
 
             </motion.div>

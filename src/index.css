@@ -19,7 +19,6 @@ a,
 div {
   margin: 0;
   padding: 0;
-  text-align: center;
   color: white;
   font-family: "Quicksand";
   letter-spacing: 2px;
@@ -62,7 +61,7 @@ header > div {
 }
 
 header .iconUser {
-  height: 40px;
+  height: 39px;
   flex-grow: 1;
   display: flex;
   flex-direction: row;
@@ -72,6 +71,7 @@ header .iconUser {
   font-size: 14px;
   font-weight: bold;
   padding: 10px;
+  margin-top: 2px;
 }
 
 .Header_Icon_One {
@@ -202,6 +202,11 @@ li span.active::before {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+.registrationTwo_container > p {
+  margin-bottom: 20px;
 }
 
 input {
@@ -215,6 +220,10 @@ input {
   font-style: italic;
   padding: 5px;
   margin: 5px 10px 5px 0px;
+}
+input:focus {
+  color: rgb(30, 250, 30);
+  border-radius: 10%;
 }
 
 .Title_Field {
@@ -374,22 +383,32 @@ input {
   0% {
     scale: 1;
     box-shadow: 1px 1px 4px;
+    border-radius: 0%;
+    background-color: transparent;
   }
   25% {
     scale: 1.2;
     box-shadow: 2px 2px 8px;
+    border-radius: 10%;
+    background-color: rgb(30, 250, 30);
   }
   50% {
     scale: 0.95;
     box-shadow: 1px 1px 4px;
+    border-radius: 0%;
+    background-color: transparent;
   }
   75% {
     scale: 1.2;
     box-shadow: 2px 2px 8px;
+    border-radius: 10%;
+    background-color: rgb(30, 250, 30);
   }
   100% {
     scale: 1;
     box-shadow: 1px 1px 4px;
+    border-radius: 0%;
+    background-color: transparent;
   }
 }
 
@@ -420,7 +439,7 @@ input {
 .react-calendar__tile:hover {
   font-weight: bolder;
 
-  animation: myfirst 4s linear infinite;
+  animation: myfirst 2s linear infinite;
 }
 
 .calandar_dates {
@@ -694,6 +713,13 @@ input {
   border: green 1px solid;
   margin: 2px;
   padding: 7px;
+}
+
+.header_save_process {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: space-between;
 }
 
 .radio {

@@ -35,7 +35,7 @@ const RegistrationTwo = ({ addBase, pizza }) => {
    variants={containerVariants}
    initial="hidden" animate="visible" exit="exit">
           <div className="registrationTwo_container">
-          <h2>Registration 2/2</h2>
+          <h2>Registration</h2>
           <p>Scan your QR code next to the terminal</p>
           <p>If you don't have a QR code, please put in your data manually</p>
 
@@ -56,21 +56,14 @@ const RegistrationTwo = ({ addBase, pizza }) => {
         </div>
                   
 
-          <motion.div variants={nextVariants}
-   initial="hidden" animate="visible" exit="exit" >
+                      <motion.div variants={nextVariants}
+              initial="hidden" animate="visible" exit="exit" >
 
-                 <p>To scan your QR code, get it closer to ...</p>
-                <p>QR code scanner is located on the left...</p>
-          <motion.img src={QrCode}   
-   style={{margin: "120px 0px 0px 300px", width:"40vh", height: "40vh"}} alt=""/>
-          
-      
-          
-          
-          </motion.div>
-
-
-              </motion.div>
+                            <p>To scan your QR code, get it closer to the terminal</p>
+                            <p>QR code scanner is located on the right of the screen</p>
+                      <motion.img src={QrCode}   
+              style={{margin: "120px 0px 0px 300px", width:"40vh", height: "40vh"}} alt=""/>
+                </motion.div>  </motion.div>
             )
           }
 

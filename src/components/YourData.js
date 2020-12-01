@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 import {useForm} from "react-hook-form"
@@ -22,14 +22,15 @@ import {useForm} from "react-hook-form"
 
 
 
-        const YourData = ({ }) => {
+        const YourData = ({setSavedData }) => {
+
+          useEffect(() => {
+            setSavedData(false)    }, [])
 
             const {register, handleSubmit,errors} = useForm()
-             const handleChange = (e) => {  }
 
             const onSubmit = (data) => {
               console.log("data",data);
-            
             }
 
             return (

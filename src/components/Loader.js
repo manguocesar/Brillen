@@ -1,6 +1,8 @@
 import React from 'react';
-
 import {motion, useCycle} from 'framer-motion'
+
+
+// IF WE WANT TO ADD DYNAMISM TO THE WEB APP
 
     const loaderVariants = {
         animationOne: {

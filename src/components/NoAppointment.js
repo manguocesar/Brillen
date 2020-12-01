@@ -19,19 +19,13 @@ import moment from 'moment'
         const NoAppointment = () => {
 
           const [chosen, setChosen] = useState("")
-
-const [date,setDate] = useState([new Date().getFullYear(), new Date().getMonth(), new Date().getDate()])
-
-const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date.getDate()])}
-          
-          const {register, handleSubmit, errors} = useForm()
-          const onSubmit = (data) => {
-            console.log("data",data);
-          
-          }
-
-          
-
+          const [date,setDate] = useState([new Date().getFullYear(), new Date().getMonth(), new Date().getDate()])
+          const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date.getDate()])}
+                
+                const {register, handleSubmit, errors} = useForm()
+                const onSubmit = (data) => {
+                  console.log("data",data);
+                }
                 return (
                   <motion.div 
                       className="home_container"
@@ -45,14 +39,13 @@ const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date
                     <div className="calendar_container">
                   
                           <motion.div drag="y"
-              whileTap={{ scale: 0.98 }}
-              dragConstraints={{ top: -550, bottom: 10 }} className="calandar_dates">
+                            whileTap={{ scale: 0.98 }}
+                            dragConstraints={{ top: -550, bottom: 10 }} 
+                            className="calandar_dates">
                             
                           <div className="calandar_dates_one">
                             
                           Date:   {moment(date).format(' Do MMMM, YYYY')}  </div>
-
-
                           <Calendar onChange={onChange} value={date}
                             className="calend"
                             defaultView="month"
@@ -71,9 +64,11 @@ const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date
 
 
                             </motion.div>
-                            <motion.div drag="y"
-              whileTap={{ scale: 0.98 }}
-              dragConstraints={{ top: -550, bottom: 10 }} className="calendar_hours">
+                            <motion.div 
+                              drag="y"
+                              whileTap={{ scale: 0.98 }}
+                              dragConstraints={{ top: -550, bottom: 10 }} 
+                              className="calendar_hours">
                             
                                 <div className="calendar_hours_one">
                                   
@@ -115,14 +110,7 @@ const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date
                               
 
                             </motion.div>
-                      
-                  
-                  </div>
-
-
-
-            
-
+                            </div>
                   </motion.div>
                 )
               }

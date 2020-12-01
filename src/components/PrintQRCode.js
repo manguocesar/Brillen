@@ -13,12 +13,7 @@ import {motion} from "framer-motion";
                       hover: { scale: 1.2,    textShadow: "0px 0px 8px ",   boxShadow: "0px 0px 8px",
                       transition: {  yoyo:Infinity,  duration: 0.3  }} }
 
-
-
                 const PrintQRCode = ({ }) => {
-
-
-
               return (
                 <motion.div className="home_container"
               variants={containerVariants}
@@ -36,8 +31,6 @@ import {motion} from "framer-motion";
                             Print QR code and Appointment details
                             </motion.button>
                         </Link>
-                    </motion.div>
-          )
-        }
+                    </motion.div>   )   }
 
         export default PrintQRCode;

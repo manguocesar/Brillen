@@ -15,40 +15,35 @@ import HardCoat from "../image/ConsultationLenses/hard_coat.png"
 import ReflexTwo from "../image/ConsultationLenses/reflex_2.png"
 import Lotus from "../image/ConsultationLenses/lotus.png"
 import BlueCutTwo from "../image/ConsultationLenses/blue_cut2.png"
-import TintBrown from "../image/ConsultationLenses/Braun.png"
-import TintGrey from "../image/ConsultationLenses/Gray.png"
-import TintGreen from "../image/ConsultationLenses/Green.png"
+import Brown from "../image/ConsultationLenses/Braun.png"
+import Grey from "../image/ConsultationLenses/Gray.png"
+import Green from "../image/ConsultationLenses/Green.png"
 
               const containerVariants = {
                 hidden: {  opacity: 0,   x:'100vw'   },
                 visible: { opacity:1, x: 0,
-                transition: {type : 'spring',  stiffness: 10,}  },
+                   transition: {type : 'spring',  stiffness: 10,}  },
                 exit: {x: '-100vw', transition : {duration: 1, ease: 'easeInOut'}}  }
 
-
               const buttonVariants = {   
-                hover: { scale: 1.2,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
-                transition: {   yoyo:Infinity, duration: 0.3}   } }
+                hover: { scale: 1.2, x:30,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
+                  transition: {   yoyo:Infinity, duration: 0.3}   } }
 
-
-
-              const ConsultationLenses = ({ addBase, pizza }) => {
+              const ConsultationLenses = () => {
 
                 const [tintingChosen, setTintingChosen] = useState(false)
-                const [chosen, setChosen] = useState("")
+                const [chosen, setChosen] = useState(Brown)
 
                         return (
                           <motion.div className="base_container"
-                        variants={containerVariants}
-                        initial="hidden" animate="visible" exit="exit"  >
+                            variants={containerVariants}
+                            initial="hidden" animate="visible" exit="exit"  >
 
                       <motion.div
-                      drag="y"
-                      whileTap={{ scale: 0.99, opacity:0.7 }}
-                      dragConstraints={{ top: -3000, bottom: 20 }}
-
-
-                      className="lenses_choice_container">
+                        drag="y"
+                        whileTap={{ scale: 0.99, opacity:0.7 }}
+                        dragConstraints={{ top: -3000, bottom: 20 }}
+                        className="lenses_choice_container">
 
                             <h2>Consultation Lenses</h2>
                             <p className="QRCode_Text">
@@ -56,9 +51,10 @@ import TintGreen from "../image/ConsultationLenses/Green.png"
                               we recommend the following lens type:</p>
                             
                             <div style={{marginTop:"20px"}}>
-                            <h2>Your glassess in detail</h2>
-                      <motion.img drag src={RotatingLens} alt="" style={{width:"320px",height:"320px", marginBottom:"20px"}}/>
-                      </div>
+                                <h2>Your glassess in detail</h2>
+                                <motion.img drag src={RotatingLens} alt="" 
+                                  style={{width:"320px",height:"320px", marginBottom:"20px"}}/>
+                           </div>
 
 
                         <div className="Long_Distance_Optimisation_Container">
@@ -185,62 +181,60 @@ import TintGreen from "../image/ConsultationLenses/Green.png"
                                 </div>
                             </div>
                         </div>
-                        ):(
+                                    ):(
                           <div className="Tinting_Container">
-                          <h2>Tinting</h2>
+                              <h2>Tinting</h2>
                           <div className="Tinting_Container_Two">
                               <div className="Tinting_Color">
-                              <h3>Color</h3>  
-                                <div className="Tinting_Option_Top">
-                                  <h5 className={chosen == "Brown" && "activated"} 
-                                  onClick={(e) => {setChosen(e.target.textContent)}}>Brown</h5>
-                                  <h5 className={chosen == "Grey" && "activated"} 
-                                  onClick={(e) => {setChosen(e.target.textContent)}}>Grey</h5>
-                                  <h5 className={chosen == "Green" && "activated"} 
-                                  onClick={(e) => {setChosen(e.target.textContent)}}>Green</h5>
-                                </div>
-                               
-                            
-                                  <form className="Absorbtion" >
-                          <h3 for="vol">Absorbtion</h3>
-                          <input step="20" style={{width:"90%"}} value="150" type="range" id="vol" name="vol" min="0" max="300"></input>
-                        </form>
-                             
-                            </div><div className="Tinting_Color_lens">
-                      <h5>Going Back</h5>
-                      <img src={TintBrown} alt="" style={{width:"220px",height:"220px"}} />
-                </div> </div>    </div>  ) }
-
-                        
-                                  <Link to="/SteinerUpgrade">
+                                    <h3>Color</h3>  
+                                      <div className="Tinting_Option_Top">
+                                        <h5 className={chosen == Brown && "activated"} 
+                                        onClick={(e) => {setChosen(Brown)}}>Brown</h5>
+                                        <h5 className={chosen == Grey && "activated"} 
+                                        onClick={(e) => {setChosen(Grey)}}>Grey</h5>
+                                        <h5 className={chosen == Green && "activated"} 
+                                        onClick={(e) => {setChosen(Green)}}>Green</h5>
+                                      </div>
+                                        <form className="Absorbtion" >
+                                          <h3 for="vol">Absorbtion</h3>
+                                          <input step="5" style={{width:"90%"}} type="range" name="Absorbtion" min="0" max="300"></input>
+                                        </form>
+                             </div>
+                            <div className="Tinting_Color_lens">
+                                <h5 onClick={()=> {setTintingChosen(false)}}>Going Back</h5>
+                                   <img src={chosen} alt="" style={{width:"220px",height:"220px"}} />
+                                 </div>   </div>    </div>  ) }
+                                  
+                                  
+                                  
+                              <Link to="/SteinerUpgrade">
                                   <motion.button
-                                  className="home_button"
+                                    className="home_button"
                                     variants={buttonVariants}
                                     whileHover="hover">
-                                  Continue
+                                      Continue
                                   </motion.button>
                               </Link>
+                           </motion.div>
+
+
+                        <motion.div 
+                            className="lenses_choice_recap"
+                                      drag="y"
+                                      whileTap={{ scale: 0.95 }}
+                                      dragConstraints={{ top: -700, bottom: 20 }}>
+
+                              <h2>"Prescription"</h2>
+
+                              <div className="lenses_choice_info">
+                              <div className="image_holder">
+                                <p>Frame Image <br/> PlaceHolder</p>
+                                </div>
                             
-
-              </motion.div>
-
-
-                <motion.div className="lenses_choice_recap"
-                              drag="y"
-                              whileTap={{ scale: 0.95 }}
-                              dragConstraints={{ top: -700, bottom: 20 }}>
-
-                      <h2>"Prescription"</h2>
-
-                      <div className="lenses_choice_info">
-                      <div className="image_holder">
-                        <p>Frame Image <br/> PlaceHolder</p>
-                        </div>
-                     
-                      <h4>Brillen.de frame</h4>
-                      <h4>Frame Description</h4>
-                      <h4>Frame Explanation</h4>
-                      </div>
+                              <h4>Brillen.de frame</h4>
+                              <h4>Frame Description</h4>
+                              <h4>Frame Explanation</h4>
+                              </div>
 
                       <div className="lenses_choice_calculator">
                           <h3 style={{paddingBottom:"10px"}}>Brillen.de Price Calculator</h3>
@@ -254,14 +248,7 @@ import TintGreen from "../image/ConsultationLenses/Green.png"
                           <div><span>Discount</span><span>XX€</span></div>
                           <div><span>Total Price</span><span>XX€</span></div>
                   
-                      </div>
-
-
-
-                </motion.div >
-
-                  </motion.div>
-  )
-}
-
-export default ConsultationLenses;
+                           </div>
+                          </motion.div >
+                      </motion.div>  )}
+            export default ConsultationLenses;
