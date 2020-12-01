@@ -412,7 +412,7 @@ input:focus {
 }
 
 .react-calendar__tile {
-  height: 70px;
+  height: 60px;
   width: 15px;
   padding: 0;
   border-radius: 0;
@@ -420,7 +420,7 @@ input:focus {
 
 .react-calendar__tile,
 .react-calendar__month-view__days__day {
-  font-size: 50px;
+  font-size: 30px;
 }
 
 .react-calendar__tile:active {
@@ -480,9 +480,9 @@ input:focus {
 
 .calendar_hours_display {
   flex-grow: 1;
+  text-align: center;
   border: white 1px solid;
-
-  padding: 5px 10px 5px 10px;
+  font-size: 0.8em;
 }
 
 .QRCode_Text {

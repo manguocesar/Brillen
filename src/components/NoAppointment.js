@@ -54,7 +54,7 @@ import moment from 'moment'
                             
                           <div className="calandar_dates_one">
                             
-                          Date:   {moment(date).format(' Do MMMM, YYYY')}  </div>
+                          Date:   {moment(date).format('Do MMMM')}  </div>
                           <Calendar onChange={onChange} value={date}
                             className="calend"
                             defaultView="month"
@@ -77,13 +77,14 @@ import moment from 'moment'
                             y={y}
                               drag="y"
                               whileTap={{ scale: 0.98 }}
-                              dragConstraints={{ top: -550, bottom: 10 }} 
+                              dragConstraints={{ top: -700, bottom: 10 }} 
                               className="calendar_hours">
                             
                                 <div className="calendar_hours_one">
                                   
-                                <span style={{marginRight:"15px"}}>Hour: </span>  
-                                    <span className="calendar_hours_display"> {moment(date).format(' Do MMMM, YYYY')}</span>  </div>
+                                {/* <span style={{marginRight:"5px"}}>Hour: </span>   */}
+                                    <span className="calendar_hours_display"   >
+                                       {moment(date).format('Do MMMM YYYY')}</span>  </div>
                                   
                                   <div className="calendar_hours_one">
                                     <span className="calendar_hours_display">
