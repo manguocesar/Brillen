@@ -10,9 +10,9 @@ import GoBack from "../image/header/arrowLeft.png"
 
 
               const svgVariants = {
-                hidden: {opacity : 0, scale:0.2},
+                hidden: {opacity : 0, scale:0.1},
                 visible: { scale: 1, opacity: 1,
-                transition: {duration : 1,type: "spring", stiffness: 10 }},
+                  transition: { duration: 1.5  }},
                 exit : {  opacity:0, transition : {duration:0.5}} }
 
               const containerVariants = {

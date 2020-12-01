@@ -28,7 +28,10 @@ import {motion} from "framer-motion";
               return (
                     <motion.div className="home_container"
                   variants={containerVariants}
-                  initial="hidden" animate="visible" exit="exit"  >
+                  initial="hidden" animate="visible" exit="exit"
+                  drag="y"
+                            whileTap={{ scale: 0.98 }}
+                            dragConstraints={{ top: -550, bottom: 10 }}   >
 
                       <h2>Continue Consultation Process</h2>
                             <p className="QRCode_Text">Here are the frames that you have chosen</p>

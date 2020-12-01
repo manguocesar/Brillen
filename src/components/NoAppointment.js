@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import {motion} from "framer-motion";
+import {motion,useMotionValue, useTransform,} from "framer-motion";
 import {useForm} from "react-hook-form"
 import Calendar from 'react-calendar';
 import moment from 'moment'
@@ -18,6 +18,12 @@ import moment from 'moment'
 
         const NoAppointment = () => {
 
+          const y = useMotionValue(0)
+          const opacity = useTransform(
+            y,  [0, -100],
+            [1, 0]
+          )
+
           const [chosen, setChosen] = useState("")
           const [date,setDate] = useState([new Date().getFullYear(), new Date().getMonth(), new Date().getDate()])
           const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date.getDate()])}
@@ -31,14 +37,17 @@ import moment from 'moment'
                       className="home_container"
                       variants={containerVariants}
                       initial="hidden" animate="visible" exit="exit"  >
-
+                        <motion.div style={{ opacity }}>
                     <h2>No Appointment Available</h2>
                           <p>Sorry but I cannot offer an appointment within the next hour</p>
                           <p>Please choose a suitable date from the calandar below</p>
+                          </motion.div>
                 
                     <div className="calendar_container">
                   
-                          <motion.div drag="y"
+                          <motion.div 
+                          y={y}
+                          drag="y"
                             whileTap={{ scale: 0.98 }}
                             dragConstraints={{ top: -550, bottom: 10 }} 
                             className="calandar_dates">
@@ -65,6 +74,7 @@ import moment from 'moment'
 
                             </motion.div>
                             <motion.div 
+                            y={y}
                               drag="y"
                               whileTap={{ scale: 0.98 }}
                               dragConstraints={{ top: -550, bottom: 10 }} 

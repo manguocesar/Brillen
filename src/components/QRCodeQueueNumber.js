@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link,useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 
 
@@ -19,9 +19,6 @@ import {motion} from "framer-motion";
 
     const QRCodeQueueNumber = ({ }) => {
 
-      let history = useHistory()
-      const goingBack = () => { history.goBack() };
-
 
           return (
             <motion.div className="home_container"
@@ -32,16 +29,16 @@ import {motion} from "framer-motion";
                   <p>Please print your QR Code and get your queue number for your eye test.</p>
                   <p>Once number is shown on the screen above eye exam room, please enter the exam room</p>
 
-                  <ul style={{display:"flex"}}>
+                  <ul >
                   
-                      
+                  <Link to="/Questionaire">
                         <motion.button
-                        onClick={()=> {goingBack()}}
                         className="home_button"
                           variants={buttonVariants}
                           whileHover="hover">
                             Back
                         </motion.button>
+                        </Link>
                     
                         <Link to="/">
                         <motion.button
@@ -51,6 +48,7 @@ import {motion} from "framer-motion";
                             Print QR code and queue number
                         </motion.button>
                       </Link>
+
                         <Link to="/">
                         <motion.button
                         className="home_button"

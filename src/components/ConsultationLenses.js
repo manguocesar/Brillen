@@ -42,7 +42,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                       <motion.div
                         drag="y"
                         whileTap={{ scale: 0.99, opacity:0.7 }}
-                        dragConstraints={{ top: -3000, bottom: 20 }}
+                        dragConstraints={{ top: -3500, bottom: 20 }}
                         className="lenses_choice_container">
 
                             <h2>Consultation Lenses</h2>
@@ -222,7 +222,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                             className="lenses_choice_recap"
                                       drag="y"
                                       whileTap={{ scale: 0.95 }}
-                                      dragConstraints={{ top: -700, bottom: 20 }}>
+                                      dragConstraints={{ top: -1300, bottom: 20 }}>
 
                               <h2>"Prescription"</h2>
 

@@ -92,7 +92,7 @@ header .iconUser {
 
 button {
   color: white;
-  padding: 10px 30px;
+  padding: 10px 10px;
   font-size: 1em;
   background: transparent;
   border-radius: 50px;
@@ -187,10 +187,10 @@ li span.active::before {
 
 .home_button {
   color: white;
-  padding: 20px 30px;
+  padding: 10px 10px;
   font-size: 1.8em;
   border: 3px solid white;
-  margin: 30px 20px;
+  margin: 20px 5px;
 }
 
 .home_footer_container {

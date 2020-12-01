@@ -30,14 +30,17 @@ const RegistrationTwo = ({ addBase, pizza }) => {
   const Registrations = ['Scan QR Code', 'Manual Data Input'];
 
 
-  return (
-    <motion.div className="home_container"
-   variants={containerVariants}
-   initial="hidden" animate="visible" exit="exit">
-          <div className="registrationTwo_container">
-          <h2>Registration</h2>
-          <p>Scan your QR code next to the terminal</p>
-          <p>If you don't have a QR code, please put in your data manually</p>
+        return (
+          <motion.div 
+              className="home_container"
+              drag="y"
+              dragConstraints={{ top: -1000, bottom: 10 }}
+              variants={containerVariants}
+              initial="hidden" animate="visible" exit="exit">
+                <div className="registrationTwo_container">
+                <h2>Registration</h2>
+                <p>Scan your QR code next to the terminal</p>
+                <p>If you don't have a QR code, please put in your data manually</p>
 
           <ul style={{display:"flex"}}>
             {Registrations.map(Registration => {
