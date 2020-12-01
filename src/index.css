@@ -70,8 +70,9 @@ header .iconUser {
   border: 1px solid green;
   font-size: 14px;
   font-weight: bold;
-  padding: 10px 15px 10px 5px;
+  padding: 10px 5px 10px 5px;
   margin-top: 2px;
+  text-align: center;
 }
 
 .Header_Icon_One {
@@ -79,16 +80,6 @@ header .iconUser {
   flex-direction: column;
   flex-grow: 1;
 }
-
-/* SVG style */
-/* header .pizza-svg {
-  width: 60px;
-  overflow: visible;
-  stroke: #fff;
-  stroke-width: 4;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-} */
 
 button {
   color: white;
@@ -719,7 +710,7 @@ input:focus {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .radio {

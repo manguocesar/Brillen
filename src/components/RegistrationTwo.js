@@ -34,7 +34,7 @@ const RegistrationTwo = ({ addBase, pizza }) => {
           <motion.div 
               className="home_container"
               drag="y"
-              dragConstraints={{ top: -1000, bottom: 10 }}
+              dragConstraints={{ top: -200, bottom: 10 }}
               variants={containerVariants}
               initial="hidden" animate="visible" exit="exit">
                 <div className="registrationTwo_container">
@@ -65,7 +65,7 @@ const RegistrationTwo = ({ addBase, pizza }) => {
                             <p>To scan your QR code, get it closer to the terminal</p>
                             <p>QR code scanner is located on the right of the screen</p>
                       <motion.img src={QrCode}   
-              style={{margin: "120px 0px 0px 300px", width:"40vh", height: "40vh"}} alt=""/>
+              style={{margin: "20px 0px 0px 100px", width:"40vh", height: "40vh"}} alt=""/>
                 </motion.div>  </motion.div>
             )
           }

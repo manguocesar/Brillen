@@ -116,14 +116,14 @@ import {useForm} from "react-hook-form"
 
 
                       <div className="Your_Data_Field_Four">
-                        <p>Warning: blablbabbalabbalablabalbabl</p>
+                        <p>Warning: Nisi aliquip nulla incididunt laborum consequat id reprehenderit cillum.</p>
                       </div>
 
 
                      
                       <div className="Your_Data_Field_Five"> 
                           <p> <input name="RGPD" type="radio" value="Man" ref={register} /></p>
-                          <p>I dont want to bleblalb:</p>
+                          <p>I dont want to ... Incididunt est quis enim excepteur reprehenderit ullamco ipsum.:</p>
                       </div>
 
                       <div className="Your_Data_Field_Six">

@@ -98,7 +98,7 @@ import GoBack from "../image/header/arrowLeft.png"
                       exit="exit"
                       whileHover="hover"
                       className="iconUser">
-                        <p>Save process and log out </p>
+                        <p >Save process and log out </p>
                   </motion.div>)}
 
                  { (savedData === false ) ? ("" ):(
@@ -110,7 +110,7 @@ import GoBack from "../image/header/arrowLeft.png"
                             exit="exit"
                             whileHover="hover"
                             className="iconUser">
-                              <p>Max Muster </p>
+                              <p >Max Muster </p>
                         </motion.div>  )}
                      </div>  </div>
                 </header>
