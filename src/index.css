@@ -70,7 +70,7 @@ header .iconUser {
   border: 1px solid green;
   font-size: 14px;
   font-weight: bold;
-  padding: 10px;
+  padding: 10px 15px 10px 5px;
   margin-top: 2px;
 }
 
@@ -507,8 +507,8 @@ input:focus {
 }
 .Frames_Container > div {
   border: 1px solid white;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   margin: 20px;
   font-weight: bolder;
   font-size: 2em;
