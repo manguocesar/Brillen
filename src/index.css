@@ -29,7 +29,7 @@ body {
   display: flex;
   justify-content: center;
   background: radial-gradient(circle, #000026, #000010 250%);
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 p {
@@ -125,7 +125,7 @@ h5 {
   text-align: center;
   font-size: 1.8em;
   margin: 10px;
-  padding: 15px;
+  padding: 5px;
   border: white solid 1px;
   font-weight: 900;
 }
@@ -423,13 +423,14 @@ input:focus {
   font-size: 30px;
 }
 
-.react-calendar__tile:active {
+.react-calendar__tile:focus {
   background-color: rgb(30, 250, 30);
+  color: black;
 }
 
 .react-calendar__tile:hover {
   font-weight: bolder;
-
+  color: black;
   animation: myfirst 2s linear infinite;
 }
 
@@ -487,7 +488,7 @@ input:focus {
 
 .QRCode_Text {
   text-align: left;
-  font-size: 2em;
+  font-size: 1.6em;
   margin-top: 20px;
 }
 
@@ -517,6 +518,14 @@ input:focus {
   border: white 1px solid;
   flex-grow: 1;
   margin: 5px;
+  justify-content: space-between;
+}
+
+.typeGlasses {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Tinting_Container {
@@ -570,6 +579,10 @@ input:focus {
   flex-direction: column;
   justify-content: center;
   border: white 1px solid;
+}
+
+.tinting_text {
+  text-align: center;
 }
 
 .Absorbtion {

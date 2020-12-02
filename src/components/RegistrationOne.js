@@ -11,7 +11,7 @@ import {motion} from "framer-motion";
 
         const buttonVariants = {
           hover: {
-            scale: 1.2,  
+            scale: 1.2, x:5, 
             textShadow: "0px 0px 8px ",
             boxShadow: "0px 0px 8px",transition: {
               yoyo:Infinity,   }  }  }

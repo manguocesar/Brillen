@@ -49,7 +49,7 @@ import moment from 'moment'
                           y={y}
                           drag="y"
                             whileTap={{ scale: 0.98 }}
-                            dragConstraints={{ top: -550, bottom: 10 }} 
+                            dragConstraints={{ top: -650, bottom: 10 }} 
                             className="calandar_dates">
                             
                           <div className="calandar_dates_one">
@@ -77,7 +77,7 @@ import moment from 'moment'
                             y={y}
                               drag="y"
                               whileTap={{ scale: 0.98 }}
-                              dragConstraints={{ top: -700, bottom: 10 }} 
+                              dragConstraints={{ top: -650, bottom: 10 }} 
                               className="calendar_hours">
                             
                                 <div className="calendar_hours_one">
@@ -94,7 +94,6 @@ import moment from 'moment'
 
 
                           <div className="calendar_hours_one">
-                            {/* className={chosen && "activated"} */}
                             <p className={chosen == "08:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>08:00</p>  
                             <p className={chosen == "14:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>14:00</p>  
                           </div>

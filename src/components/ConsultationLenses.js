@@ -50,23 +50,23 @@ import Green from "../image/ConsultationLenses/Green.png"
                               Based on your information about your vision and the results of the eye tested, 
                               we recommend the following lens type:</p>
                             
-                            <div style={{marginTop:"20px"}}>
+                            <div style={{marginTop:"10px"}}>
                                 <h2>Your glassess in detail</h2>
                                 <motion.img drag src={RotatingLens} alt="" 
-                                  style={{width:"320px",height:"320px", marginBottom:"20px"}}/>
+                                  style={{width:"350px",height:"350px", marginBottom:"10px"}}/>
                            </div>
 
 
                         <div className="Long_Distance_Optimisation_Container">
                           <h3>Long distance optimisation</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>No damage optimization of ...</h4>
                                   <img src={NoOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Correcting vision area</h4>
                                   <img src={LongDistanceOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
@@ -77,13 +77,13 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                           <h3>Close distance optimisation</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>No damage optimization of ...</h4>
                                   <img src={NoOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Correcting vision area</h4>
                                   <img src={CloseUpOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
@@ -94,13 +94,13 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                           <h3>Glass quality</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Light Weight</h4>
                                   <img src={Normal} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Correcting vision area</h4>
                                   <img src={ThinOne} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
@@ -111,13 +111,13 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                         
                               <div className="Long_Distance_Optimisation_lens">
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Extra thin design</h4>
                                   <img src={ThinTwo} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Ultra thin design</h4>
                                   <img src={ThinThree} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
@@ -128,13 +128,13 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                           <h3>AntiReflexion Coating</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>No damage optimization of ...</h4>
                                   <img src={HardCoat} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Correcting vision area</h4>
                                   <img src={ReflexTwo} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
@@ -145,13 +145,13 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                         
                               <div className="Long_Distance_Optimisation_lens">
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>No damage optimization of ...</h4>
                                   <img src={Lotus} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div>
+                                <div className="typeGlasses">
                                   <h4>Correcting vision area</h4>
                                   <img src={BlueCutTwo} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
@@ -166,13 +166,13 @@ import Green from "../image/ConsultationLenses/Green.png"
                               <div className="Tinting_Option">
                                 <div className="Tinting_Option_Top">
                                   <div onClick={()=> {setTintingChosen(true)}}> 
-                                   <p>With tinting</p> 
-                                   <p>XX€</p> 
+                                   <p className="tinting_text">With tinting</p> 
+                                   <p className="tinting_text">XX€</p> 
                                     </div>
                                   
                                     <div onClick={()=> {setTintingChosen(true)}}> 
-                                   <p>Without tinting</p> 
-                                   <p>XX€</p> 
+                                   <p className="tinting_text">Without tinting</p> 
+                                   <p className="tinting_text">XX€</p> 
                                     </div>
                                 </div>
                                 <div className="Tinting_Option_Bottom">
@@ -202,7 +202,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                              </div>
                             <div className="Tinting_Color_lens">
                                 <h5 onClick={()=> {setTintingChosen(false)}}>Going Back</h5>
-                                   <img src={chosen} alt="" style={{width:"220px",height:"220px"}} />
+                                   <img src={chosen} alt="" style={{width:"250px",height:"250px"}} />
                                  </div>   </div>    </div>  ) }
                                   
                                   
