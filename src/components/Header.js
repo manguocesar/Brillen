@@ -3,7 +3,8 @@ import {motion} from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom';
 
 //images
-import WhiteLogo from "../image/header/whiteLogo.png"
+import WhiteLogo from "../image/header/brillenLogoTwo.webp"
+// import WhiteLogo from "../image/header/whiteLogo.png"
 import SupportIcon from "../image/header/supportIcon.png"
 import Home from "../image/header/homeIcon.png"
 import GoBack from "../image/header/arrowLeft.png"
@@ -110,7 +111,7 @@ import GoBack from "../image/header/arrowLeft.png"
                             exit="exit"
                             whileHover="hover"
                             className="iconUser">
-                              <p >Max Muster </p>
+                              <p>"User Name"</p>
                         </motion.div>  )}
                      </div>  </div>
                 </header>

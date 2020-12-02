@@ -28,7 +28,7 @@ div {
 body {
   display: flex;
   justify-content: center;
-  background: radial-gradient(circle, #000046, #000016 250%);
+  background: radial-gradient(circle, #000026, #000010 250%);
   /* overflow: hidden; */
 }
 
@@ -52,7 +52,7 @@ header {
   align-items: center;
   justify-content: space-between;
   z-index: 1;
-  background: radial-gradient(circle, #000046, #000016 250%);
+  background: radial-gradient(circle, #000026, #000015 250%);
 }
 
 header > div {
