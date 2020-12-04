@@ -23,8 +23,9 @@ import {motion} from "framer-motion";
           variants={containerVariants}
           initial="hidden" animate="visible" exit="exit"  >
 
-                  <motion.div drag="y"
-                    dragConstraints={{ top: -500, bottom: 10 }}
+                  <motion.div 
+                  // drag="y"
+                    // dragConstraints={{ top: -500, bottom: 10 }}
                     className="lenses_choice_container">
 
                       <h2>Steiner Upgrade</h2>

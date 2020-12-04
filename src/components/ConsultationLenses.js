@@ -32,7 +32,14 @@ import Green from "../image/ConsultationLenses/Green.png"
               const ConsultationLenses = () => {
 
                 const [tintingChosen, setTintingChosen] = useState(false)
+
+                //activated and colored green states
                 const [chosen, setChosen] = useState(Brown)
+                const [longDistance, setLongDistance] = useState(false)
+                const [closeDistance, setCloseDistance] = useState(false)
+                const [glassQuality, setGlassQuality] = useState(1)
+                const [antiReflexion, setAntiReflexion] = useState(1)
+               
 
                         return (
                           <motion.div className="base_container"
@@ -42,12 +49,12 @@ import Green from "../image/ConsultationLenses/Green.png"
                       <motion.div
                         drag="y"
                         whileTap={{ scale: 0.99, opacity:0.7 }}
-                        dragConstraints={{ top: -3500, bottom: 20 }}
+                        dragConstraints={{ top: -3300, bottom: 20 }}
                         className="lenses_choice_container">
 
                             <h2>Consultation Lenses</h2>
                             <p className="QRCode_Text">
-                              Based on your information about your vision and the results of the eye tested, 
+                              Based on your information about your vision and the results of the eye test, 
                               we recommend the following lens type:</p>
                             
                             <div style={{marginTop:"10px"}}>
@@ -57,17 +64,21 @@ import Green from "../image/ConsultationLenses/Green.png"
                            </div>
 
 
+
                         <div className="Long_Distance_Optimisation_Container">
                           <h3>Long distance optimisation</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div className="typeGlasses">
-                                  <h4>No damage optimization of ...</h4>
+                                <div  className={longDistance ? "typeGlasses" : "typeGlassesActive"}
+                                      onClick={(e) => {setLongDistance(false)}} >
+                                  <h4>No design optimization of far vision area</h4>
                                   <img src={NoOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div className="typeGlasses">
-                                  <h4>Correcting vision area</h4>
+                                <div className={longDistance ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setLongDistance(true)}}
+                                    >
+                                  <h4>Optimized, wider far vision area</h4>
                                   <img src={LongDistanceOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                               </div>
@@ -77,14 +88,16 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                           <h3>Close distance optimisation</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div className="typeGlasses">
-                                  <h4>No damage optimization of ...</h4>
+                                <div className={closeDistance ? "typeGlasses" : "typeGlassesActive"}
+                                      onClick={(e) => {setCloseDistance(false)}}>
+                                  <h4>No damage optimization of near vision area</h4>
                                   <img src={NoOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div className="typeGlasses">
-                                  <h4>Correcting vision area</h4>
+                                <div className={closeDistance ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setCloseDistance(true)}}>
+                                  <h4>Optimized, wider near vision area</h4>
                                   <img src={CloseUpOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                               </div>
@@ -94,30 +107,32 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                           <h3>Glass quality</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div className="typeGlasses">
-                                  <h4>Light Weight</h4>
+                                <div className={glassQuality === 1 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setGlassQuality(1)}}>
+                                  <h4>Lightweight plastic lenses</h4>
                                   <img src={Normal} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div className="typeGlasses">
-                                  <h4>Correcting vision area</h4>
+                                <div className={glassQuality === 2 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setGlassQuality(2)}}>
+                                  <h4>Thinner design</h4>
                                   <img src={ThinOne} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                               </div>
                             </div>
                         </div>
-
                         <div className="Long_Distance_Optimisation_Container">
-                        
                               <div className="Long_Distance_Optimisation_lens">
-                                <div className="typeGlasses">
+                                <div className={glassQuality === 3 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setGlassQuality(3)}}>
                                   <h4>Extra thin design</h4>
                                   <img src={ThinTwo} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div className="typeGlasses">
+                                <div className={glassQuality === 4 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setGlassQuality(4)}}>
                                   <h4>Ultra thin design</h4>
                                   <img src={ThinThree} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
@@ -126,16 +141,18 @@ import Green from "../image/ConsultationLenses/Green.png"
                         </div>
                           
                         <div className="Long_Distance_Optimisation_Container">
-                          <h3>AntiReflexion Coating</h3>
+                          <h3>Anti-reflection coating</h3>
                               <div className="Long_Distance_Optimisation_lens">
-                                <div className="typeGlasses">
-                                  <h4>No damage optimization of ...</h4>
+                                <div className={antiReflexion === 1 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setAntiReflexion(1)}} >
+                                  <h4>Hard coating</h4>
                                   <img src={HardCoat} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div className="typeGlasses">
-                                  <h4>Correcting vision area</h4>
+                                <div className={antiReflexion === 2 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setAntiReflexion(2)}} >
+                                  <h4>Hard coating + AR Coating</h4>
                                   <img src={ReflexTwo} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                               </div>
@@ -145,14 +162,16 @@ import Green from "../image/ConsultationLenses/Green.png"
                         <div className="Long_Distance_Optimisation_Container">
                         
                               <div className="Long_Distance_Optimisation_lens">
-                                <div className="typeGlasses">
-                                  <h4>No damage optimization of ...</h4>
+                                <div className={antiReflexion === 3 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setAntiReflexion(3)}} >
+                                  <h4>Hard Coating + AR Coating + Lotus effect</h4>
                                   <img src={Lotus} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
-                                <div className="typeGlasses">
-                                  <h4>Correcting vision area</h4>
+                                <div className={antiReflexion === 4 ? "typeGlassesActive" : "typeGlasses"}
+                                      onClick={(e) => {setAntiReflexion(4)}} >
+                                  <h4>Hard Coating + AR Coating + Blue Cut</h4>
                                   <img src={BlueCutTwo} alt="" style={{width:"250px",height:"250px"}}/>
                                   <h4>XX€</h4>
                               </div>
@@ -220,9 +239,10 @@ import Green from "../image/ConsultationLenses/Green.png"
 
                         <motion.div 
                             className="lenses_choice_recap"
-                                      drag="y"
-                                      whileTap={{ scale: 0.95 }}
-                                      dragConstraints={{ top: -1300, bottom: 20 }}>
+                            // drag="y"
+                            //           whileTap={{ scale: 0.95 }}
+                            //           dragConstraints={{ top: -1300, bottom: 20 }}
+                            >
 
                               <h2>"Prescription"</h2>
 

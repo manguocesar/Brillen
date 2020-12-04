@@ -23,8 +23,9 @@ const containerVariants = {
           <motion.div className="AllDone_Container"
             variants={containerVariants}
             initial="hidden" animate="visible" exit="exit"
-            drag="y"
-            dragConstraints={{ top: -1000, bottom: 10 }} >
+            // drag="y"
+            // dragConstraints={{ top: -1000, bottom: 10 }} 
+            >
 
               <h2>Service & FAQs</h2>
               <p>You need our technical staff? Please get your queue number. Our staff will come to you shortly</p>

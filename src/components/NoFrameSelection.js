@@ -22,7 +22,7 @@ import {motion} from "framer-motion";
             return (
               <motion.div 
                 className="home_container"
-                drag="y"  dragConstraints={{ top: -200, bottom: 10 }}
+                // drag="y"  dragConstraints={{ top: -200, bottom: 10 }}
                 variants={containerVariants}
                 initial="hidden" animate="visible" exit="exit">
           <div className="registrationTwo_container">

@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 import {useForm} from "react-hook-form"
 
 
+
                   const containerVariants = {
                     hidden: {  opacity: 0,   x:'100vw'   },
                     visible: { opacity:1, x: 0,
@@ -19,6 +20,8 @@ import {useForm} from "react-hook-form"
                    const buttonVariants = {   
                             hover: { scale: 1.2,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
                             transition: {   yoyo:Infinity, duration: 0.3}   } }   
+
+                            const topDisapear = { exit: {y: -1000, opacity:0,scale:0.1, transition : {duration: 0.4,ease: 'easeIn'}} }
 
 
 
@@ -39,110 +42,93 @@ import {useForm} from "react-hook-form"
                  initial="hidden" animate="visible" exit="exit"
                  drag="y"
                  whileTap={{ opacity: 0.6 }}
-                 dragConstraints={{ top: -550, bottom: 10 }}  >
+                 dragConstraints={{ top: -650, bottom: 10 }}  >
 
                 <h2 style={{width:"40%", marginLeft: "10px"}}>Your Data</h2>
  
                       <form className="Your_Data_Form"  onSubmit={handleSubmit(onSubmit)}>
-                        <div className="Your_Data_Field_One">
+                        <motion.div variants={topDisapear} className="Your_Data_Field_One">
                             <p className="Title_Field">Gender:</p>
-                              <input name="Gender" type="radio" value="Man" ref={register} />
+                              <input  name="Gender" type="radio" value="Man" ref={register} />
                             <p>Mr.</p>
-                              <input name="Gender" type="radio" value="Woman" ref={register} />
+                              <input checked name="Gender" type="radio" value="Woman" ref={register} />
                             <p>Mrs.</p>
-                        </div>
+                        </motion.div>
 
 
-                        <div className="Your_Data_Field_Two">
+                        <motion.div variants={topDisapear} className="Your_Data_Field_Two">
                           <div className="Your_Data_Field_Left_One">
                               <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Name</p>
-                                <input  name="Name" type="text" placeholder="Name" ref={register({required:true,minLength:8})} />
+                                <input maxLength='15'  name="Name" type="text"  placeholder="Name" ref={register({required:true,minLength:8})} />
                                 {errors.Name && 
-                                <motion.span variants={invalidVariants}
+                                <motion.span  variants={invalidVariants}
                                 initial="hidden" animate="visible" exit="exit">Invalid</motion.span>}
                               </div>
 
                                 <div className="Your_Data_Field_Left_Name">
                                   <p className="Title_Field">Adress</p>
-                                    <input name="Adress"  placeholder="Adress"ref={register({required:true,minLength:8})} />
+                                    <input maxLength='25' name="Adress"  placeholder="Adress"ref={register({required:true,minLength:8})} />
                                   </div>
 
                                   <div className="Your_Data_Field_Left_Name">
                                   <p className="Title_Field">ZIP Code</p>
-                                <input name="ZIPCode"  placeholder="ZIP Code"ref={register} />
+                                <inpu maxLength='12't name="ZIPCode"  placeholder="ZIP Code"ref={register} />
                                 </div>
                           </div>
 
                           <div className="Your_Data_Field_Left_Two">
                           <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Surname</p>
-                                <input name="Surname" type="text"  placeholder="Surname" ref={register({required:true,minLength:4})} />
+                                <input maxLength='15' name="Surname" type="text"  placeholder="Surname" ref={register({required:true,minLength:4})} />
                                 </div>
 
                                 <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Country</p>
-                                <input name="Country" placeholder="Country" ref={register({required:true,minLength:3})} />
+                                <input maxLength='15' name="Country" placeholder="Country" ref={register({required:true,minLength:3})} />
                                 </div>
                                  
                                 <div className="Your_Data_Field_Left_Name">
                                   <p className="Title_Field">City</p>
-                                  <input name="City"  placeholder="City"ref={register({required:true,minLength:3})} />
+                                  <input maxLength='15' name="City"  placeholder="City"ref={register({required:true,minLength:3})} />
                                   </div>
                            </div>                    
-                      </div>
+                      </motion.div>
 
 
 
-                        <div className="Your_Data_Field_Three">
+                        <motion.div variants={topDisapear} className="Your_Data_Field_Three">
                             <div>
                               <p className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Date of Birth</p>
-                              <p className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>E-Mail</p>
-                              <p className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Mobile Number</p>
+                              <p  className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>E-Mail</p>
+                              <p  className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Mobile Number</p>
 
                             </div>
 
-                            <div 
-                             className="Your_Data_Field_Three_Right"
-                           
-                            >
+                            <div   className="Your_Data_Field_Three_Right" >
                              
-                              <input  name="DateOfBirth" type="date" placeholder="" ref={register({required:true})} />
-                              <input  name="E-Mail" type="email" placeholder="E-Mail" ref={register({required:true,minLength:8})} />
-                              <input  name="Mobile" type="text" placeholder="Mobile Number" ref={register({required:true,minLength:6})} />
+                              <input max="2020-11-20"  name="DateOfBirth" type="date" placeholder="" ref={register({required:true})} />
+                              <input maxLength='15'  name="E-Mail" type="email" placeholder="E-Mail" ref={register({required:true,minLength:8})} />
+                              <input maxLength='15'  name="Mobile" type="text" placeholder="Mobile Number" ref={register({required:true,minLength:6})} />
+                              <input maxLength='15' required type="tel" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ref={register({required:true,minLength:6})} /> 
                             </div>
-                       </div>
+                       </motion.div>
 
 
 
-                      <div className="Your_Data_Field_Four">
-                        <p>Warning: Nisi aliquip nulla incididunt laborum consequat id reprehenderit cillum.</p>
-                      </div>
+                      <motion.div   className="Your_Data_Field_Four">
+                        <p>Warning ! without active phone number not all functions will be available.</p>
+                      </motion.div>
 
 
                      
                       <div className="Your_Data_Field_Five"> 
                           <p> <input name="RGPD" type="radio" value="Man" ref={register} /></p>
-                          <p>I dont want to ... Incididunt est quis enim excepteur reprehenderit ullamco ipsum.:</p>
+                          <p>"I dont have my mobile with me"</p>
                       </div>
 
-                      <div className="Your_Data_Field_Six">
-                          <p  className="Title_Field">Area Prefix</p>
-                              <p ><input  name="AreaPrefix" placeholder="Area Prefix"ref={register} /></p>
-                              <p className="Title_Field">Landline</p>
-                          <p> <input name="Landline" placeholder="Landline"ref={register} /></p>
-                      </div>
 
-                      <div  className="Your_Data_Field_Seven">
-                        <p className="Title_Field">ID card Number</p>
-                        <p style={{display:"flex", flexGrow:1, }}>
-                        <input style={{flexGrow:1,}} name="IDCard"  placeholder="IDCard" ref={register} />
-                        </p>
-                      </div>
-
-                    <input type="submit" ref={register} />
-
-                    <ul style={{display:"flex"}}>
+                      <ul style={{display:"flex"}}>
                 <Link to="/Questionaire">
                   <motion.button
                     className="home_button"
@@ -161,7 +147,53 @@ import {useForm} from "react-hook-form"
                     </motion.button>
                 </Link>
               </ul>
+
+              {/* <input type="submit" ref={register} /> */}
+
+
+                      {/* <div className="Your_Data_Field_Six">
+                          <p  className="Title_Field">Area Prefix</p>
+                              <p ><input  name="AreaPrefix" placeholder="Area Prefix"ref={register} /></p>
+                              <p className="Title_Field">Landline</p>
+                          <p> <input name="Landline" placeholder="Landline"ref={register} /></p>
+                      </div> */}
+
+                      {/* <div  className="Your_Data_Field_Seven">
+                        <p className="Title_Field">ID card Number</p>
+                        <p style={{display:"flex", flexGrow:1, }}>
+                        <input style={{flexGrow:1,}} name="IDCard"  placeholder="IDCard" ref={register} />
+                        </p>
+                      </div> */}
+
+                    
              </form>
+
+             <h2 style={{width:"40%"}}>SMS Verification</h2>
+             <div className="Your_Data_Field_Six">
+                        <p>Please enter SMS verification code below</p>
+                        <input  required type="tel" placeholder="123-45-678" /> 
+                      </div>
+                      
+                      <ul style={{display:"flex"}}>
+                      <Link to="/Questionaire">
+                  <motion.button
+                    className="home_button"
+                    variants={buttonVariants}
+                    whileHover="hover">
+                      Accept
+                  </motion.button>
+              </Link>
+
+              
+                    <motion.button
+                      className="home_button"
+                      variants={buttonVariants}
+                      whileHover="hover">
+                      Resend SMS
+                    </motion.button>
+              
+              </ul>
+
           </motion.div>
         )
       }

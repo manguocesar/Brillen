@@ -45,7 +45,7 @@ p {
 /* header */
 header {
   display: flex;
-  border-bottom: 1px solid green;
+  border-bottom: 1px solid rgb(30, 250, 30);
   margin: 0px 5px 30px 5px;
   display: flex;
   padding: 20px;
@@ -67,7 +67,7 @@ header .iconUser {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid green;
+  border: 1px solid rgb(30, 250, 30);
   font-size: 14px;
   font-weight: bold;
   padding: 10px 5px 10px 5px;
@@ -227,7 +227,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 20px;
+  margin: 20px 0px 20px 0px;
 }
 
 .Your_Data_Field_One {
@@ -311,14 +311,14 @@ input:focus {
 }
 .Your_Data_Field_Six {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-
   margin: 0px 0px 10px 0px;
   padding: 0px;
 }
-.Your_Data_Field_Six > p {
-  margin: 0px 10px 10px 0px;
+.Your_Data_Field_Six > input {
+  margin: 20px 10px 10px 0px;
+  width: 95%;
 }
 
 .Your_Data_Field_Seven {
@@ -348,6 +348,13 @@ input:focus {
 .Questionaire_Form_One > p {
   margin: 0px 20px 0px 0px;
   font-size: 1.5em;
+}
+
+.time_selection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .calendar_container > div {
@@ -515,7 +522,6 @@ input:focus {
   justify-content: space-between;
 }
 .Long_Distance_Optimisation_lens > div {
-  border: white 1px solid;
   flex-grow: 1;
   margin: 5px;
   justify-content: space-between;
@@ -526,6 +532,15 @@ input:focus {
   width: 50%;
   flex-direction: column;
   align-items: center;
+  border: white 1px solid;
+}
+.typeGlassesActive {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+  border: rgb(30, 250, 30) 2px solid;
+  box-shadow: 1px 1px 4px rgb(30, 250, 30);
 }
 
 .Tinting_Container {
@@ -714,7 +729,7 @@ input:focus {
   margin: 0px 0px 0px 10px;
 }
 .navigation_header > div {
-  border: green 1px solid;
+  border: rgb(30, 250, 30) 1px solid;
   margin: 2px;
   padding: 7px;
 }
