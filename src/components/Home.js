@@ -25,7 +25,7 @@ import Click from "../image/home/clickIcon.png"
             exit: {  x: '-100vw',  transition : {duration:0.5,ease: 'easeInOut'}}}
 
             const content =[
-              {icon:Glasses,text:"Select your new frames please"},
+              {icon:Glasses,text:"Select your new frames"},
               {icon:Arrow,text:"Register on smart mirror for a free eye test"},
               {icon:Dots,text:"The qualified personal clarifies all questions during the eye test"},
               {icon:Messages,text:"At smart mirror, you get the perfect eye consultation"},
