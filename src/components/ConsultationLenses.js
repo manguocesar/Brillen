@@ -195,7 +195,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                                     </div>
                                 </div>
                                 <div className="Tinting_Option_Bottom">
-                                  <h4>With automatic tintin</h4>
+                                  <h4>With automatic tinting</h4>
                                   <h4>XX€</h4>
                                 </div>
                             </div>

@@ -33,6 +33,7 @@ import {motion} from "framer-motion";
 
                 <Link to="/">
                 <motion.button
+                style={{borderRadius:0, width: "300%"}}
                   className="home_button"
                   variants={buttonVariants}
                   whileHover="hover">

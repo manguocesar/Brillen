@@ -12,10 +12,10 @@ import moment from 'moment'
 
               const opacityVariants = {
                 hidden: { opacity: 0, scale: 0.1, color: "black" },
-                visible: {   opacity:1,   scale: 1, color: "rgb(30, 250, 30)",
+                visible: {   opacity:1,   scale: 1.4, color: "rgb(30, 250, 30)", x: 50,
                       transition: {type : 'spring', stiffness: 10,  delay: 0.5}  },
                 exit: {opacity: 0, scale: 0.01, color: "black" },
-                hover: { scale: 1.2, x:20,   textShadow: "0px 0px 8px ",   
+                hover: { scale: 1.5, x:70,   textShadow: "1px 1px 10px ",   
                 transition: {  yoyo:Infinity,  duration: 0.4  }} }
 
             const popVariants = {
@@ -41,9 +41,9 @@ import moment from 'moment'
                   <motion.div className="home_container"
                       variants={containerVariants}
                       initial="hidden" animate="visible" exit="exit"
-                      drag="y"
-                      whileTap={{ opacity: 0.6 }}
-                      dragConstraints={{ top: -500, bottom: 10 }}
+                      // drag="y"
+                      // whileTap={{ opacity: 0.6 }}
+                      // dragConstraints={{ top: -500, bottom: 10 }}
                         >
 
                 <motion.h2 variants={topDisapear}>Questionaire </motion.h2>
@@ -63,7 +63,7 @@ import moment from 'moment'
                             <motion.p>More than 4 hours</motion.p>
                   </motion.div>
 
-              <motion.p variants={topDisapear} >Do you travel a lot by car?</motion.p>
+              {/* <motion.p variants={topDisapear} >Do you travel a lot by car?</motion.p>
                   <motion.div variants={topDisapear}   className="Questionaire_Form_One">
                               <input name="carTravelling" type="radio" value="Yes" ref={register} />
                             <p>Yes</p>
@@ -91,7 +91,7 @@ import moment from 'moment'
                             <p>No</p>
                               <input name="lightSensitive" type="radio" value="Poor" ref={register} />
                             <p>Poor</p>
-                  </div>
+                  </div> */}
 
                         
                   </div>
@@ -129,7 +129,7 @@ import moment from 'moment'
                                     className="home_button"
                                     variants={popVariants}
                                     whileHover="hover" >
-                                      Appointment not Availble
+                                      Make appointment now
                               </motion.button></Link> </>)
                       }
                 </motion.div>  )  }

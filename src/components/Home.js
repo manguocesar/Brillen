@@ -15,8 +15,8 @@ import Click from "../image/home/clickIcon.png"
         hidden : {scale:0,},
         visible:{  scale:1,
           transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
-         hover: {  scale: 1.2, textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
-          transition: { yoyo:Infinity, duration: 0.3   }}}
+         hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+          transition: { yoyo:Infinity, duration: 0.5   }}}
 
             const containerVariants = {
             hidden : { opacity:0.1},
@@ -25,7 +25,7 @@ import Click from "../image/home/clickIcon.png"
             exit: {  x: '-100vw',  transition : {duration:0.5,ease: 'easeInOut'}}}
 
             const content =[
-              {icon:Glasses,text:"Select your new frames"},
+              {icon:Glasses,text:"Select your new frames please"},
               {icon:Arrow,text:"Register on smart mirror for a free eye test"},
               {icon:Dots,text:"The qualified personal clarifies all questions during the eye test"},
               {icon:Messages,text:"At smart mirror, you get the perfect eye consultation"},
@@ -35,7 +35,7 @@ import Click from "../image/home/clickIcon.png"
                       {title: "Start registration",to: "RegistrationOne"},
                       {title:"Continue consultation process",to: "ContinueConsultation"},
                       {title:"Service and FAQs",to: "FAQs"},
-                      {title:"Pick up glasses",to: "ContinueConsultation"}]
+                      {title:"Pick up glasses",to: "/"}]
 
 
         const Home = ({setSavedData, savedData}) => {
@@ -51,9 +51,9 @@ import Click from "../image/home/clickIcon.png"
               initial="hidden"
               animate="visible"
               exit="exit"
-              drag="y"
-              whileTap={{ scale: 0.95, opacity:0.7 }}
-              dragConstraints={{ top: -550, bottom: 10 }}
+              // drag="y"
+              // whileTap={{ scale: 0.95, opacity:0.7 }}
+              // dragConstraints={{ top: -550, bottom: 10 }}
               className="home_container">
                 <motion.h2  >
                   How it works?

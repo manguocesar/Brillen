@@ -73,7 +73,7 @@ import {useForm} from "react-hook-form"
 
                                   <div className="Your_Data_Field_Left_Name">
                                   <p className="Title_Field">ZIP Code</p>
-                                <inpu maxLength='12't name="ZIPCode"  placeholder="ZIP Code"ref={register} />
+                                <input maxLength='12' name="ZIPCode"  placeholder="ZIP Code"ref={register} />
                                 </div>
                           </div>
 
@@ -109,7 +109,7 @@ import {useForm} from "react-hook-form"
                              
                               <input max="2020-11-20"  name="DateOfBirth" type="date" placeholder="" ref={register({required:true})} />
                               <input maxLength='15'  name="E-Mail" type="email" placeholder="E-Mail" ref={register({required:true,minLength:8})} />
-                              <input maxLength='15'  name="Mobile" type="text" placeholder="Mobile Number" ref={register({required:true,minLength:6})} />
+                            
                               <input maxLength='15' required type="tel" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ref={register({required:true,minLength:6})} /> 
                             </div>
                        </motion.div>
@@ -128,7 +128,7 @@ import {useForm} from "react-hook-form"
                       </div>
 
 
-                      <ul style={{display:"flex"}}>
+                      {/* <ul style={{display:"flex"}}>
                 <Link to="/Questionaire">
                   <motion.button
                     className="home_button"
@@ -146,7 +146,7 @@ import {useForm} from "react-hook-form"
                       Edit
                     </motion.button>
                 </Link>
-              </ul>
+              </ul> */}
 
               {/* <input type="submit" ref={register} /> */}
 
@@ -185,13 +185,13 @@ import {useForm} from "react-hook-form"
               </Link>
 
               
-                    <motion.button
+                    {/* <motion.button
                       className="home_button"
                       variants={buttonVariants}
                       whileHover="hover">
                       Resend SMS
                     </motion.button>
-              
+               */}
               </ul>
 
           </motion.div>

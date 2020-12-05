@@ -28,7 +28,7 @@ div {
 body {
   display: flex;
   justify-content: center;
-  background: radial-gradient(circle, #000026, #000010 250%);
+  background: radial-gradient(circle, grey, grey 250%);
   overflow: hidden;
 }
 
@@ -52,7 +52,7 @@ header {
   align-items: center;
   justify-content: space-between;
   z-index: 1;
-  background: radial-gradient(circle, #000026, #000015 250%);
+  background: radial-gradient(circle, #000006, #000000 250%);
 }
 
 header > div {
@@ -86,7 +86,7 @@ button {
   padding: 10px 10px;
   font-size: 1em;
   background: transparent;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   border: 1px solid white;
   margin: 40px auto 0;
   cursor: pointer;
@@ -343,6 +343,7 @@ input:focus {
 }
 .Questionaire_Form_One {
   display: flex;
+  flex-direction: column;
   margin: 5px 20px 20px 0px;
 }
 .Questionaire_Form_One > p {
@@ -614,8 +615,11 @@ input:focus {
 }
 
 .lenses_choice_container {
-  width: 70%;
+  width: 60%;
   overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  margin: 0px auto;
 }
 .lenses_choice_container > p {
   text-align: left;
@@ -627,7 +631,7 @@ input:focus {
   border: white 1px solid;
   flex-grow: 1;
   margin-left: 50px;
-  height: 45%;
+  height: 40%;
 }
 .lenses_choice_recap > h2 {
   padding: 20px;

@@ -40,7 +40,7 @@ import {motion} from "framer-motion";
                             className="home_button"
                               variants={buttonVariants}
                               whileHover="hover">
-                            Steiner Vision
+                           Upgrade to Steiner Vision
                             </motion.button>
                         </Link>
                         <Link to="/Summary">
@@ -51,9 +51,11 @@ import {motion} from "framer-motion";
                             Regular Vision
                             </motion.button>
                         </Link>   
-                        </motion.div>  <div className="lenses_choice_recap">
+                        </motion.div>  
+                        
+                        {/* <div className="lenses_choice_recap">
                 <h2>Prescription</h2>
-          </div >
+          </div > */}
 
             </motion.div>
           )  }
