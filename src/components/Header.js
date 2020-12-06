@@ -34,7 +34,7 @@ import GoBack from "../image/header/arrowLeft.png"
                     exit: {opacity:0, scale : 0, transition : {duration:1,ease: 'easeInOut'}}}
 
    
-      const Header = ({savedData}) => {
+      const Header = ({savedData, firstName, familyName}) => {
 
         let history = useHistory()
             const goingBack = () => { history.goBack() };
@@ -111,7 +111,7 @@ import GoBack from "../image/header/arrowLeft.png"
                             exit="exit"
                             whileHover="hover"
                             className="iconUser">
-                              <p>"User Name"</p>
+                              <p>{firstName} {familyName}</p>
                         </motion.div>  )}
                      </div>  </div>
                 </header>

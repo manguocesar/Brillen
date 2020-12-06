@@ -4,88 +4,122 @@ import {motion} from "framer-motion";
 import {useForm} from "react-hook-form"
 
 
-
                   const containerVariants = {
-                    hidden: {  opacity: 0,   x:'100vw'   },
-                    visible: { opacity:1, x: 0,
-                    transition: {type : 'spring',  stiffness: 10,}  },
-                    exit: {x: '-100vw', transition : {duration: 2, ease: 'easeInOut'}}  }
+                      hidden: {  opacity: 0,   x:'100vw'   },
+                      visible: { opacity:1, x: 0,
+                      transition: {type : 'spring',  stiffness: 10,}  },
+                      exit: {x: '-100vw', transition : {duration: 2, ease: 'easeInOut'}}  }
 
                   const invalidVariants = {
-                          hidden: { opacity: 0, scale:0.1 ,color:"black", },
-                          visible: {   opacity:1, scale:1.5,color:"red", 
-                            transition: {type : 'spring', stiffness: 10,  delay: 0.1}  },
-                          exit: {opacity: 0, scale:0.1 ,color:"black", transition : {ease: 'easeInOut'}} }
+                      hidden: { opacity: 0, scale:0.1 ,color:"black", },
+                      visible: {   opacity:1, scale:1.5,color:"red", 
+                          transition: {type : 'spring', stiffness: 10,  delay: 0.1}  },
+                      exit: {opacity: 0, scale:0.1 ,color:"black", transition : {ease: 'easeInOut'}} }
 
-                   const buttonVariants = {   
-                            hover: { scale: 1.2,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
-                            transition: {   yoyo:Infinity, duration: 0.3}   } }   
+                  const buttonVariants = {
+                      hidden : {scale:0},
+                      visible: {scale:1, transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+                      hover: {scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px", 
+                            transition: { yoyo:Infinity, duration: 0.3   }}}  
 
-                            const topDisapear = { exit: {y: -1000, opacity:0,scale:0.1, transition : {duration: 0.4,ease: 'easeIn'}} }
+                  const topDisapear = { exit: {y: -1000, opacity:0,scale:0.1, transition : {duration: 0.4,ease: 'easeIn'}} }
 
 
 
-        const YourData = ({setSavedData }) => {
+        const YourData = ({setSavedData, setFirstName, setFamilyName}) => {
 
-          useEffect(() => {
-            setSavedData(false)    }, [])
+          useEffect(() => {setSavedData(false)}, [])
 
             const {register, handleSubmit,errors} = useForm()
 
-            const onSubmit = (data) => {
-              console.log("data",data);
-            }
+            const onSubmit = (data) => {console.log("data",data)}
+
+            const [gender, setGender] = useState()
+
+// const updateFirstName = (e) => {
+//   console.log(name);
+//   setName(...name, {firstName:e.target.value})
+// }
+// const updateFamilyName = (e) => {
+//   console.log(name);
+//   setName(...name, {familyName:e.target.value})
+// }
+
+            const [noMobile, setNoMobile] = useState(false)
 
             return (
               <motion.div className="home_container"
                  variants={containerVariants}
                  initial="hidden" animate="visible" exit="exit"
                  drag="y"
-                 whileTap={{ opacity: 0.6 }}
+                 whileTap={{ opacity: 0.8 }}
                  dragConstraints={{ top: -650, bottom: 10 }}  >
 
                 <h2 style={{width:"40%", marginLeft: "10px"}}>Your Data</h2>
  
                       <form className="Your_Data_Form"  onSubmit={handleSubmit(onSubmit)}>
                         <motion.div variants={topDisapear} className="Your_Data_Field_One">
+                         
                             <p className="Title_Field">Gender:</p>
-                              <input  name="Gender" type="radio" value="Man" ref={register} />
-                            <p>Mr.</p>
-                              <input checked name="Gender" type="radio" value="Woman" ref={register} />
+                            <div  className={gender === 1 ? "Your_Data_Field_One_gender_active" : "Your_Data_Field_One_gender" }    >
+                              <input onClick={() => setGender(1)} style={{height:"40px", width:"40px"}}  name="Gender" type="radio" value="Man" ref={register} />
+                             
+                            <p>Mr.</p> </div>
+                              <div  className={gender === 2 ? "Your_Data_Field_One_gender_active" : "Your_Data_Field_One_gender" }>
+                              <input onClick={ () => setGender(2)} style={{height:"40px", width:"40px"}}  name="Gender" type="radio" value="Woman" ref={register} />
                             <p>Mrs.</p>
+                            </div>
                         </motion.div>
 
+                        <motion.div variants={topDisapear} className="Your_Data_Field_One">
+                        <p className="Title_Field">Title:</p>
+                        <select name="title" >
+                            <option value="Doctor">Doctor</option>
+                            <option value="Master">Master</option>
+                            <option value="President">President</option>
+                        </select>
+                        </motion.div>
 
                         <motion.div variants={topDisapear} className="Your_Data_Field_Two">
                           <div className="Your_Data_Field_Left_One">
                               <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Name</p>
-                                <input maxLength='15'  name="Name" type="text"  placeholder="Name" ref={register({required:true,minLength:8})} />
+                                <input onChange={(e)=> setFamilyName(e.target.value)} maxLength='15'  name="Name" type="text"  placeholder="Name" ref={register({required:true,minLength:8})} />
                                 {errors.Name && 
                                 <motion.span  variants={invalidVariants}
                                 initial="hidden" animate="visible" exit="exit">Invalid</motion.span>}
                               </div>
 
                                 <div className="Your_Data_Field_Left_Name">
-                                  <p className="Title_Field">Adress</p>
+                                    <p className="Title_Field">Adress</p>
                                     <input maxLength='25' name="Adress"  placeholder="Adress"ref={register({required:true,minLength:8})} />
                                   </div>
 
                                   <div className="Your_Data_Field_Left_Name">
                                   <p className="Title_Field">ZIP Code</p>
-                                <input maxLength='12' name="ZIPCode"  placeholder="ZIP Code"ref={register} />
+                                  <input maxLength='12' name="ZIPCode"  placeholder="ZIP Code"ref={register} />
                                 </div>
                           </div>
 
                           <div className="Your_Data_Field_Left_Two">
                           <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Surname</p>
-                                <input maxLength='15' name="Surname" type="text"  placeholder="Surname" ref={register({required:true,minLength:4})} />
+                                <input onChange={(e)=> setFirstName(e.target.value)} maxLength='15' name="Surname" type="text"  placeholder="Surname" ref={register({required:true, minLength:4})} />
                                 </div>
 
                                 <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Country</p>
-                                <input maxLength='15' name="Country" placeholder="Country" ref={register({required:true,minLength:3})} />
+                                
+                                <select name="Country" >
+                                    <option value="Germany">Germany</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Poland">Poland</option>
+                                    <option value="Netherland">Netherland</option>
+                                    <option value="France">France</option>
+                                </select>
+                                
+                                {/* <input maxLength='15' name="Country" placeholder="Country" 
+                                ref={register({required:true,minLength:3})} /> */}
                                 </div>
                                  
                                 <div className="Your_Data_Field_Left_Name">
@@ -105,11 +139,10 @@ import {useForm} from "react-hook-form"
 
                             </div>
 
-                            <div   className="Your_Data_Field_Three_Right" >
+                            <div className="Your_Data_Field_Three_Right" >
                              
-                              <input max="2020-11-20"  name="DateOfBirth" type="date" placeholder="" ref={register({required:true})} />
+                              <input defaultValue="1980-10-20" max="2017-12-20" min="1920-10-20" name="DateOfBirth" type="date" placeholder="" ref={register({required:true})} />
                               <input maxLength='15'  name="E-Mail" type="email" placeholder="E-Mail" ref={register({required:true,minLength:8})} />
-                            
                               <input maxLength='15' required type="tel" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ref={register({required:true,minLength:6})} /> 
                             </div>
                        </motion.div>
@@ -123,32 +156,71 @@ import {useForm} from "react-hook-form"
 
                      
                       <div className="Your_Data_Field_Five"> 
-                          <p> <input name="RGPD" type="radio" value="Man" ref={register} /></p>
-                          <p>"I dont have my mobile with me"</p>
+                          <p> <input  style={{height:"40px", width:"40px"}} name="RGPD" type="radio" value="noMobile" ref={register}  onClick={() => setNoMobile(!noMobile)} /></p>
+                          { noMobile ? 
+                          <>
+                          <p>"I have my mobile with me"</p> 
+                         
+                     </>     
+                          
+                          
+                          : 
+                          <><p>"I do not have my mobile with me"</p>
+                           <ul style={{display:"flex"}}>
+                          <Link to="/Questionaire">
+                      <motion.button
+                        className="home_button"
+                        variants={buttonVariants}
+                        whileHover="hover">
+                          Send SMS
+                      </motion.button>
+                  </Link>
+                  </ul></>
+                          
+                          }
                       </div>
 
+                      { noMobile ? <motion.div variants={topDisapear} className="Your_Data_Field_Three">
+                            <div>
+                              <p  className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Landline</p>
+                              <p  className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Passport / ID Card</p>
+                            </div>
 
-                      {/* <ul style={{display:"flex"}}>
-                <Link to="/Questionaire">
-                  <motion.button
-                    className="home_button"
-                    variants={buttonVariants}
-                    whileHover="hover">
-                      Accept
-                  </motion.button>
-                </Link>
+                            <div className="Your_Data_Field_Three_Right" >
+                              <input maxLength='18'  name="Landline" type="tel" placeholder="Landline" ref={register({required:true,minLength:8})} />
+                              <input maxLength='18'  type="text" placeholder="12CK-4567-8910"  ref={register({required:true,minLength:8})} /> 
+                            </div>
+                       </motion.div>
+                        : <> <h2 style={{width:"40%"}}>SMS Verification</h2>
+                        <div className="Your_Data_Field_Six">
+                                   <p>Please enter SMS verification code below</p>
+                                   <input  required type="tel" placeholder="123-45-678" /> 
+                                 </div></>
+                      }
 
-                <Link to="/Questionaire">
-                    <motion.button
-                      className="home_button"
-                      variants={buttonVariants}
-                      whileHover="hover">
-                      Edit
-                    </motion.button>
-                </Link>
-              </ul> */}
 
-              {/* <input type="submit" ref={register} /> */}
+
+                                {/* <ul style={{display:"flex"}}>
+                          <Link to="/Questionaire">
+                            <motion.button
+                              className="home_button"
+                              variants={buttonVariants}
+                              whileHover="hover">
+                                Accept
+                            </motion.button>
+                          </Link>
+
+                          <Link to="/Questionaire">
+                              <motion.button
+                                className="home_button"
+                                variants={buttonVariants}
+                                whileHover="hover">
+                                Edit
+                              </motion.button>
+                          </Link>
+                        </ul> */}
+
+                        {/* <input type="submit" ref={register} /> */}
 
 
                       {/* <div className="Your_Data_Field_Six">
@@ -164,15 +236,9 @@ import {useForm} from "react-hook-form"
                         <input style={{flexGrow:1,}} name="IDCard"  placeholder="IDCard" ref={register} />
                         </p>
                       </div> */}
+                  </form>
 
-                    
-             </form>
-
-             <h2 style={{width:"40%"}}>SMS Verification</h2>
-             <div className="Your_Data_Field_Six">
-                        <p>Please enter SMS verification code below</p>
-                        <input  required type="tel" placeholder="123-45-678" /> 
-                      </div>
+            
                       
                       <ul style={{display:"flex"}}>
                       <Link to="/Questionaire">
@@ -180,18 +246,11 @@ import {useForm} from "react-hook-form"
                     className="home_button"
                     variants={buttonVariants}
                     whileHover="hover">
-                      Accept
+                      (re)Send SMS
                   </motion.button>
               </Link>
 
               
-                    {/* <motion.button
-                      className="home_button"
-                      variants={buttonVariants}
-                      whileHover="hover">
-                      Resend SMS
-                    </motion.button>
-               */}
               </ul>
 
           </motion.div>

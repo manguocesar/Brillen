@@ -9,9 +9,12 @@ import {motion} from "framer-motion";
                       transition: {type : 'spring', stiffness: 10,  delay: 0.2}  },
                     exit: {x: '-100vw', transition : {ease: 'easeInOut',duration: 1.5}} }
 
-                    const buttonVariants = {  
-                      hover: { scale: 1.2,    textShadow: "0px 0px 8px ",   boxShadow: "0px 0px 8px",
-                      transition: {  yoyo:Infinity,  duration: 0.3  }} }
+                    const buttonVariants = {
+                      hidden : {scale:0,},
+                      visible:{  scale:1,
+                        transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+                      hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+                        transition: { yoyo:Infinity, duration: 0.5   }}}
 
                 const PrintQRCode = ({ }) => {
               return (

@@ -3,21 +3,20 @@ import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 
 
-      const containerVariants = {
-        hidden: { opacity: 0,  x:'100vw'   },
-        visible: {  opacity:1, x: 0,
-        transition : {delay : 0.1, duration:1}},
-        exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
+        const containerVariants = {
+          hidden: { opacity: 0,  x:'100vw'   },
+          visible: {  opacity:1, x: 0,
+            transition : {delay : 0.1, duration:1}},
+          exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
 
         const buttonVariants = {
-          hover: {
-            scale: 1.2, x:5, 
-            textShadow: "0px 0px 8px ",
-            boxShadow: "0px 0px 8px",transition: {
-              yoyo:Infinity,   }  }  }
+          hidden : {scale:0,},
+          visible:{  scale:1,
+            transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+          hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+            transition: { yoyo:Infinity, duration: 0.3   }}}
 
         const Registration = () => {
-
 
         return (
           <motion.div className="home_container"

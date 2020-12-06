@@ -7,14 +7,17 @@ import moment from 'moment'
 
 
           const containerVariants = {
-            hidden: { opacity: 0, x:'100vw'  },
+            hidden: { opacity: 0, x:'50vw'  },
             visible: {   opacity:1,   x: 0,
-              transition: {type : 'spring', stiffness: 10,  delay: 0.2}  },
-            exit: {x: '-100vw', transition : {ease: 'easeInOut',duration: 1.5}} }
+              transition: {type : 'spring', stiffness: 10,  delay: 0.1}  },
+            exit: {x: '-60vw',opacity: 0, scale:0.2, transition : {ease: 'easeInOut',duration: 1.5}} }
 
-          const buttonVariants = {  
-            hover: { scale: 1.2,    textShadow: "0px 0px 8px ",   boxShadow: "0px 0px 8px",
-            transition: {  yoyo:Infinity,  duration: 0.3  }} }
+            const buttonVariants = {
+              hidden : {scale:0,},
+              visible:{  scale:1,
+                transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+              hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+                transition: { yoyo:Infinity, duration: 0.5   }}}
 
         const NoAppointment = () => {
 
@@ -25,9 +28,15 @@ import moment from 'moment'
           )
 
           const [chosen, setChosen] = useState("")
-          const [date,setDate] = useState([new Date().getFullYear(), new Date().getMonth(), new Date().getDate()])
+          const [date,setDate] = useState(
+            // [new Date().getFullYear(), new Date().getMonth(), new Date().getDate()]
+
+          )
           const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date.getDate()])}
                 
+
+console.log("new Date()",new Date(), moment()._d);
+
                 const {register, handleSubmit, errors} = useForm()
                 const onSubmit = (data) => {
                   console.log("data",data);
@@ -46,10 +55,10 @@ import moment from 'moment'
                     <div className="calendar_container">
                   
                           <motion.div 
-                          y={y}
-                          drag="y"
-                            whileTap={{ scale: 0.98 }}
-                            dragConstraints={{ top: -650, bottom: 10 }} 
+                          // y={y}
+                          // drag="y"
+                          //   whileTap={{ scale: 0.98 }}
+                          //   dragConstraints={{ top: -650, bottom: 10 }} 
                             className="calandar_dates">
                             
                           <div className="calandar_dates_one">
@@ -57,9 +66,19 @@ import moment from 'moment'
                           Date:   {moment(date).format('Do MMMM')}  </div>
                           <Calendar onChange={onChange} value={date}
                             className="calend"
+                            showFixedNumberOfWeeks={true}
                             defaultView="month"
-                            activeStartDate={  moment.tomorrow}
-                            // onClickDay={(value, event) => console.log('Clicked day: ', event.target)}
+                            defaultActiveStartDate={new Date()} 
+                            minDate={new Date()}
+                            maxDate={moment().add(90, 'days')._d}
+                            minDetail="month"
+                             onClickDay={(value, event) => console.log('Clicked day: ',value, event.target)}
+                             next2Label={null}
+                             prev2Label={null}
+
+                             //below we pass all the not selectable dates
+                             tileDisabled={({activeStartDate, date, view }) => date.getDay() === 0}
+
                           />
 
                   <Link to="/PrintQRCode">
@@ -73,11 +92,16 @@ import moment from 'moment'
 
 
                             </motion.div>
+
+
+
+                            { date? 
                             <motion.div 
-                            y={y}
-                              drag="y"
-                              whileTap={{ scale: 0.98 }}
-                              dragConstraints={{ top: -650, bottom: 10 }} 
+                            variants={containerVariants}
+                            // y={y}
+                            //   drag="y"
+                            //   whileTap={{ scale: 0.98 }}
+                            //   dragConstraints={{ top: -650, bottom: 10 }} 
                               className="calendar_hours">
                             
                                 <div className="calendar_hours_one">
@@ -92,7 +116,7 @@ import moment from 'moment'
                               </span>
                             </div>
 
-
+                           
                           <div className="calendar_hours_one">
                             <p className={chosen == "08:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>08:00</p>  
                             <p className={chosen == "14:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>14:00</p>  
@@ -117,9 +141,10 @@ import moment from 'moment'
                              <p className={chosen == "13:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>13:00</p>  
                              <p className={chosen == "19:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>19:00</p>  
                               </div>
-                              
-
                             </motion.div>
+                            :""}
+
+
                             </div>
                   </motion.div>
                 )

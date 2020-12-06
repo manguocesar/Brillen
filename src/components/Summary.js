@@ -9,9 +9,12 @@ import {motion} from "framer-motion";
           exit: {x: '-100vw', transition : {duration: 2, ease: 'easeInOut'}}  }
 
 
-        const buttonVariants = {   
-          hover: { scale: 1.2, x:30,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
-          transition: {   yoyo:Infinity, duration: 0.3}   } }
+          const buttonVariants = {
+            hidden : {scale:0,},
+            visible:{  scale:1,
+              transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+            hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+              transition: { yoyo:Infinity, duration: 0.5   }}}
 
 
 
@@ -21,8 +24,8 @@ const Summary = ({  }) => {
               variants={containerVariants}
               initial="hidden" animate="visible" exit="exit"  >
 
-            <motion.div drag="y"
-              dragConstraints={{ top: -1000, bottom: 10 }}
+            <motion.div 
+            // drag="y"  dragConstraints={{ top: -600, bottom: 10 }}
               className="lenses_choice_container">
 
               <h2>Summary</h2>
@@ -41,7 +44,7 @@ const Summary = ({  }) => {
                 <div><div> <p className="summary_text_content">Close Up Optimisation</p> <p>/ No Close Up Optimisation</p></div><p>XXX€</p></div>
                 <div><div> <p className="summary_text_content">Quality Plastic </p> 
                 <p className="summary_text_content">/ Thin Version </p>
-                   <p className="summary_text_content">/ Extra THin Version </p> 
+                   <p className="summary_text_content">/ Extra Thin Version </p> 
                    <p className="summary_text_content">/ Extremly Thin Version</p></div><p>XXX€</p></div>
                 <div><div> <p className="summary_text_content">Hard Coating </p> 
                 <p className="summary_text_content">/ Reflex Coating </p> <p className="summary_text_content">/ Lotus Effect </p> 

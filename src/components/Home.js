@@ -11,32 +11,32 @@ import Messages from "../image/home/messagesIcon.png"
 import Click from "../image/home/clickIcon.png"
 
 
-      const buttonVariants = {
-        hidden : {scale:0,},
-        visible:{  scale:1,
-          transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
-         hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
-          transition: { yoyo:Infinity, duration: 0.5   }}}
+            const buttonVariants = {
+              hidden : {scale:0,},
+              visible:{  scale:1,
+                transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+              hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+                transition: { yoyo:Infinity, duration: 0.5   }}}
 
             const containerVariants = {
-            hidden : { opacity:0.1},
-            visible: {  opacity:1, 
-              transition : {delay : 0.2, duration:1.5, type: "spring", stiffness: 20}},
-            exit: {  x: '-100vw',  transition : {duration:0.5,ease: 'easeInOut'}}}
+              hidden : { opacity:0.1},
+              visible: {  opacity:1, 
+                transition : {delay : 0.2, duration:1.5, type: "spring", stiffness: 20}},
+              exit: {  x: '-100vw',  transition : {duration:0.5,ease: 'easeInOut'}}}
 
             const content =[
-              {icon:Glasses,text:"Select your new frames"},
-              {icon:Arrow,text:"Register on smart mirror for a free eye test"},
-              {icon:Dots,text:"The qualified personal clarifies all questions during the eye test"},
-              {icon:Messages,text:"At smart mirror, you get the perfect eye consultation"},
-              {icon:Click,text:"You order your new glasses at the Smart Mirror and pick them up here after a few days"},
-            ]
+                      {icon:Glasses,text:"Select your new frames"},
+                      {icon:Arrow,text:"Register on smart mirror for a free eye test"},
+                      {icon:Dots,text:"The qualified personal clarifies all questions during the eye test"},
+                      {icon:Messages,text:"At smart mirror, you get the perfect eye consultation"},
+                      {icon:Click,text:"You order your new glasses at the Smart Mirror and pick them up here after a few days"},
+                    ]
             const buttonChoiceText = [
                       {title: "Start registration",to: "RegistrationOne"},
                       {title:"Continue consultation process",to: "ContinueConsultation"},
                       {title:"Service and FAQs",to: "FAQs"},
-                      {title:"Pick up glasses",to: "/"}]
-
+                      {title:"Pick up glasses",to: "/"}
+                    ]
 
         const Home = ({setSavedData, savedData}) => {
 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {motion} from "framer-motion";
 
 //images
@@ -25,16 +25,30 @@ import Green from "../image/ConsultationLenses/Green.png"
                    transition: {type : 'spring',  stiffness: 10,}  },
                 exit: {x: '-100vw', transition : {duration: 1, ease: 'easeInOut'}}  }
 
-              const buttonVariants = {   
-                hover: { scale: 1.2, x:30,   textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
-                  transition: {   yoyo:Infinity, duration: 0.3}   } }
+                const buttonVariants = {
+                  hidden : {scale:0,},
+                  visible:{  scale:1,
+                    transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+                  hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+                    transition: { yoyo:Infinity, duration: 0.5   }}}
 
-              const ConsultationLenses = () => {
+              const ConsultationLenses = ({frames}) => {
 
                 const [tintingChosen, setTintingChosen] = useState(false)
 
+                const [absorbtion, setAbsorbtion] = useState(20)
+
                 //activated and colored green states
-                const [chosen, setChosen] = useState(Brown)
+                const [chosenColor, setChosenColor] = useState(Brown)
+                const [chosenTinting, setChosenTinting] = useState(2)
+
+const handleChosenTinting = (value)=> {
+  setChosenTinting(value)
+  console.log("chosenTinting",chosenTinting);
+}
+
+let arrayLenses = [Brown,Grey,Green,Brown]
+
                 const [longDistance, setLongDistance] = useState(false)
                 const [closeDistance, setCloseDistance] = useState(false)
                 const [glassQuality, setGlassQuality] = useState(1)
@@ -48,8 +62,8 @@ import Green from "../image/ConsultationLenses/Green.png"
 
                       <motion.div
                         drag="y"
-                        whileTap={{ scale: 0.99, opacity:0.7 }}
-                        dragConstraints={{ top: -3300, bottom: 20 }}
+                        whileTap={{ scale: 0.99, opacity:0.9 }}
+                        dragConstraints={{ top: -2000, bottom: 20 }}
                         className="lenses_choice_container">
 
                             <h2>Consultation Lenses</h2>
@@ -59,8 +73,8 @@ import Green from "../image/ConsultationLenses/Green.png"
                             
                             <div style={{marginTop:"10px"}}>
                                 <h2>Your glassess in detail</h2>
-                                <motion.img drag src={RotatingLens} alt="" 
-                                  style={{width:"350px",height:"350px", marginBottom:"10px"}}/>
+                                <motion.img  src={RotatingLens} alt="" 
+                                  style={{width:"350px",height:"200px", marginBottom:"10px",}}/>
                            </div>
 
 
@@ -71,7 +85,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                                 <div  className={longDistance ? "typeGlasses" : "typeGlassesActive"}
                                       onClick={(e) => {setLongDistance(false)}} >
                                   <h4>No design optimization of far vision area</h4>
-                                  <img src={NoOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={NoOptimisation} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
@@ -79,7 +93,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                                       onClick={(e) => {setLongDistance(true)}}
                                     >
                                   <h4>Optimized, wider far vision area</h4>
-                                  <img src={LongDistanceOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={LongDistanceOptimisation} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                               </div>
                             </div>
@@ -91,14 +105,14 @@ import Green from "../image/ConsultationLenses/Green.png"
                                 <div className={closeDistance ? "typeGlasses" : "typeGlassesActive"}
                                       onClick={(e) => {setCloseDistance(false)}}>
                                   <h4>No damage optimization of near vision area</h4>
-                                  <img src={NoOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={NoOptimisation} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
                                 <div className={closeDistance ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setCloseDistance(true)}}>
                                   <h4>Optimized, wider near vision area</h4>
-                                  <img src={CloseUpOptimisation} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={CloseUpOptimisation} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                               </div>
                             </div>
@@ -110,14 +124,14 @@ import Green from "../image/ConsultationLenses/Green.png"
                                 <div className={glassQuality === 1 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setGlassQuality(1)}}>
                                   <h4>Lightweight plastic lenses</h4>
-                                  <img src={Normal} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={Normal} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
                                 <div className={glassQuality === 2 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setGlassQuality(2)}}>
                                   <h4>Thinner design</h4>
-                                  <img src={ThinOne} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={ThinOne} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                               </div>
                             </div>
@@ -127,14 +141,14 @@ import Green from "../image/ConsultationLenses/Green.png"
                                 <div className={glassQuality === 3 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setGlassQuality(3)}}>
                                   <h4>Extra thin design</h4>
-                                  <img src={ThinTwo} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={ThinTwo} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
                                 <div className={glassQuality === 4 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setGlassQuality(4)}}>
                                   <h4>Ultra thin design</h4>
-                                  <img src={ThinThree} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={ThinThree} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                               </div>
                             </div>
@@ -146,14 +160,14 @@ import Green from "../image/ConsultationLenses/Green.png"
                                 <div className={antiReflexion === 1 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setAntiReflexion(1)}} >
                                   <h4>Hard coating</h4>
-                                  <img src={HardCoat} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={HardCoat} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
                                 <div className={antiReflexion === 2 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setAntiReflexion(2)}} >
                                   <h4>Hard coating + AR Coating</h4>
-                                  <img src={ReflexTwo} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={ReflexTwo} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                               </div>
                             </div>
@@ -165,14 +179,14 @@ import Green from "../image/ConsultationLenses/Green.png"
                                 <div className={antiReflexion === 3 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setAntiReflexion(3)}} >
                                   <h4>Hard Coating + AR Coating + Lotus effect</h4>
-                                  <img src={Lotus} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={Lotus} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                                 </div>
 
                                 <div className={antiReflexion === 4 ? "typeGlassesActive" : "typeGlasses"}
                                       onClick={(e) => {setAntiReflexion(4)}} >
                                   <h4>Hard Coating + AR Coating + Blue Cut</h4>
-                                  <img src={BlueCutTwo} alt="" style={{width:"250px",height:"250px"}}/>
+                                  <img src={BlueCutTwo} alt="" style={{width:"250px",height:"120px"}}/>
                                   <h4>XX€</h4>
                               </div>
                             </div>
@@ -184,17 +198,25 @@ import Green from "../image/ConsultationLenses/Green.png"
                           <h3>Tinting</h3>
                               <div className="Tinting_Option">
                                 <div className="Tinting_Option_Top">
-                                  <div onClick={()=> {setTintingChosen(true)}}> 
+                                  <div className={chosenTinting == 1 && "activated"}   
+                                        onClick={() => {handleChosenTinting(1); setTintingChosen(true)}}
+                                       
+                                        > 
                                    <p className="tinting_text">With tinting</p> 
                                    <p className="tinting_text">XX€</p> 
                                     </div>
                                   
-                                    <div onClick={()=> {setTintingChosen(true)}}> 
+                                    <div className={chosenTinting == 2 && "activated"} 
+                                        onClick={() => {handleChosenTinting(2)}} 
+                                    //  onClick={()=> {setTintingChosen(true)}}
+                                     > 
                                    <p className="tinting_text">Without tinting</p> 
                                    <p className="tinting_text">XX€</p> 
                                     </div>
                                 </div>
-                                <div className="Tinting_Option_Bottom">
+                                <div
+                                className={chosenTinting == 3 ? "Tinting_Option_Bottom_activated": "Tinting_Option_Bottom"} 
+                                onClick={() => {handleChosenTinting(3)}} >
                                   <h4>With automatic tinting</h4>
                                   <h4>XX€</h4>
                                 </div>
@@ -207,21 +229,21 @@ import Green from "../image/ConsultationLenses/Green.png"
                               <div className="Tinting_Color">
                                     <h3>Color</h3>  
                                       <div className="Tinting_Option_Top">
-                                        <h5 className={chosen == Brown && "activated"} 
-                                        onClick={(e) => {setChosen(Brown)}}>Brown</h5>
-                                        <h5 className={chosen == Grey && "activated"} 
-                                        onClick={(e) => {setChosen(Grey)}}>Grey</h5>
-                                        <h5 className={chosen == Green && "activated"} 
-                                        onClick={(e) => {setChosen(Green)}}>Green</h5>
+                                        <h5 className={chosenColor == Brown && "activated"} 
+                                        onClick={(e) => {setChosenColor(Brown)}}>Brown</h5>
+                                        <h5 className={chosenColor == Grey && "activated"} 
+                                        onClick={(e) => {setChosenColor(Grey)}}>Grey</h5>
+                                        <h5 className={chosenColor == Green && "activated"} 
+                                        onClick={(e) => {setChosenColor(Green)}}>Green</h5>
                                       </div>
                                         <form className="Absorbtion" >
-                                          <h3 for="vol">Absorbtion</h3>
-                                          <input step="5" style={{width:"90%"}} type="range" name="Absorbtion" min="0" max="300"></input>
+                                          <h3 for="vol">Absorbtion {absorbtion}%</h3>
+                                          <input onChange={(e) => setAbsorbtion(e.target.value)} step="20" style={{width:"90%"}} type="range" name="Absorbtion" value={absorbtion} min="0" max="100"/>
                                         </form>
                              </div>
                             <div className="Tinting_Color_lens">
                                 <h5 onClick={()=> {setTintingChosen(false)}}>Going Back</h5>
-                                   <img src={chosen} alt="" style={{width:"250px",height:"250px"}} />
+                                   <img src={chosenColor} alt="" style={{width:"250px",height:"250px"}} />
                                  </div>   </div>    </div>  ) }
                                   
                                   
@@ -246,19 +268,17 @@ import Green from "../image/ConsultationLenses/Green.png"
 
                               <h2>"Prescription"</h2>
 
-                              <div className="lenses_choice_info">
+                              
                               <div className="image_holder">
-                                <p>Frame Image <br/> PlaceHolder</p>
+                                <img alt="" src={arrayLenses[frames]}/>
                                 </div>
                             
-                              <h4>Brillen.de frame</h4>
-                              <h4>Frame Description</h4>
-                              <h4>Frame Explanation</h4>
-                              </div>
+                          
+                             
 
                       <div className="lenses_choice_calculator">
-                          <h3 style={{paddingBottom:"10px"}}>Brillen.de Price Calculator</h3>
-                          <div style={{paddingTop:"20px"}}><span>Base Price</span><span>XX€</span></div>
+                          <h3>Brillen.de Price Calculator</h3>
+                          <div ><span>Base Price</span><span>XX€</span></div>
                           <div ><span>Frame Price</span><span>XX€</span></div>
                           <div><span>No Remote Optimization</span><span>XX€</span></div>
                           <div><span>No Close-Up Optimization</span><span>XX€</span></div>

@@ -21,7 +21,7 @@ div {
   padding: 0;
   color: white;
   font-family: "Quicksand";
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   list-style-type: none;
   text-decoration: none;
 }
@@ -33,13 +33,29 @@ body {
 }
 
 p {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .box {
   display: grid;
   width: 100vh;
   /* border: 1px solid white; */
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  transform: translateX(-100px);
 }
 
 /* header */
@@ -217,6 +233,24 @@ input:focus {
   border-radius: 10%;
 }
 
+select {
+  background-color: transparent;
+  color: grey;
+  border: 1px solid white;
+  box-shadow: 1px 1px 2px;
+  box-shadow: 1px 1px 2px;
+  font-size: 1.2em;
+  text-align: center;
+  font-style: italic;
+  padding: 5px;
+  margin: 5px 10px 5px 0px;
+  width: 260px;
+}
+select:focus {
+  font-weight: bolder;
+  border-radius: 5px;
+}
+
 .Title_Field {
   text-align: left;
   font-size: 1.5em;
@@ -234,9 +268,27 @@ input:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 40vh;
   margin-bottom: 20px;
 }
+.Your_Data_Field_One_gender {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px 5px 20px;
+}
+
+.Your_Data_Field_One_gender_active {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: rgb(30, 250, 30) 1px solid;
+  padding: 5px 20px 5px 20px;
+}
+
 .Your_Data_Field_Two {
   display: flex;
   flex-direction: row;
@@ -346,9 +398,20 @@ input:focus {
   flex-direction: column;
   margin: 5px 20px 20px 0px;
 }
+.Questionaire_Form_One > div {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  margin: 5px;
+  justify-content: flex-start;
+}
 .Questionaire_Form_One > p {
   margin: 0px 20px 0px 0px;
   font-size: 1.5em;
+}
+
+.greenBorder {
+  border: green 1px solid;
 }
 
 .time_selection {
@@ -383,31 +446,32 @@ input:focus {
     scale: 1;
     box-shadow: 1px 1px 4px;
     border-radius: 0%;
-    background-color: transparent;
+    background-color: rgb(30, 250, 30);
   }
   25% {
-    scale: 1.2;
-    box-shadow: 2px 2px 8px;
-    border-radius: 10%;
-    background-color: rgb(30, 250, 30);
-  }
-  50% {
-    scale: 0.95;
+    scale: 1.01;
     box-shadow: 1px 1px 4px;
     border-radius: 0%;
-    background-color: transparent;
+    ackground-color: rgb(30, 250, 30);
+  }
+  50% {
+    scale: 0.99;
+    box-shadow: 1px 1px 4px;
+    border-radius: 2px;
+    ackground-color: rgb(30, 250, 30);
+    font-weight: bolder;
   }
   75% {
-    scale: 1.2;
-    box-shadow: 2px 2px 8px;
-    border-radius: 10%;
-    background-color: rgb(30, 250, 30);
+    scale: 1.01;
+    box-shadow: 1px 1px 4px;
+    border-radius: 0%;
+    ackground-color: rgb(30, 250, 30);
   }
   100% {
     scale: 1;
     box-shadow: 1px 1px 4px;
     border-radius: 0%;
-    background-color: transparent;
+    background-color: rgb(30, 250, 30);
   }
 }
 
@@ -483,8 +547,10 @@ input:focus {
 }
 
 .activated {
-  color: black;
   background-color: rgb(30, 250, 30);
+}
+.activated > p {
+  color: black;
 }
 
 .calendar_hours_display {
@@ -505,8 +571,29 @@ input:focus {
   align-items: center;
   justify-content: space-evenly;
 }
-.Frames_Container > div {
+.Frames_Container_div {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 25px;
+  justify-content: center;
+  align-items: center;
   border: 1px solid white;
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  font-weight: bolder;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Frames_Container_divGreen {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 25px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
   width: 300px;
   height: 300px;
   margin: 20px;
@@ -596,6 +683,14 @@ input:focus {
   justify-content: center;
   border: white 1px solid;
 }
+.Tinting_Option_Bottom_activated {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: white 1px solid;
+  background-color: rgb(30, 250, 30);
+  color: black;
+}
 
 .tinting_text {
   text-align: center;
@@ -622,7 +717,11 @@ input:focus {
   margin: 0px auto;
 }
 .lenses_choice_container > p {
-  text-align: left;
+  text-align: justify;
+}
+.lenses_choice_container > div {
+  text-align: justify;
+  margin: 10px 0px 10px;
 }
 .lenses_choice_recap {
   display: flex;
@@ -632,26 +731,22 @@ input:focus {
   flex-grow: 1;
   margin-left: 50px;
   height: 40%;
+  padding: 0px;
 }
 .lenses_choice_recap > h2 {
   padding: 20px;
   text-align: center;
 }
 
-.lenses_choice_info {
+/* .lenses_choice_info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
-  width: 90%;
-  border-bottom: white 1px solid;
-}
+} */
 .lenses_choice_calculator {
   display: flex;
-  width: 90%;
   flex-direction: column;
   align-items: flex-start;
-  margin: 12px;
 }
 
 .lenses_choice_calculator > div {
@@ -663,8 +758,8 @@ input:focus {
   text-shadow: 0px 0px 4px;
   width: 100%;
   border-bottom: white 1px solid;
-  margin: 10px 0px 10px 10px;
-  padding-bottom: 10px;
+  margin: 10px 0px 10px 0px;
+  padding-bottom: 5px;
 }
 
 .image_holder {
@@ -673,18 +768,34 @@ input:focus {
   justify-content: center;
   align-items: center;
   border: white 1px solid;
-  width: 320px;
-  height: 320px;
-  margin: 10px;
+  width: 250px;
+  height: 220px;
 }
 
 .Differences_Visualisation {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 150px;
+  padding: 50px;
   margin: 60px;
   border: 1px white solid;
+}
+.Differences_Visualisation > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  flex-grow: 1;
+  height: 280px;
+}
+
+.Differences_Visualisation > div:hover {
+  opacity: 0.8;
+  scale: 0.98;
+}
+.Differences_Visualisation > div:active {
+  border: 1px green solid;
 }
 
 .summary_text {
@@ -692,7 +803,7 @@ input:focus {
   flex-direction: column;
   align-items: flex-start;
   border: 1px white solid;
-  margin: 15px;
+  margin-top: 15px;
 }
 .summary_text > div {
   display: flex;
@@ -700,7 +811,7 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   width: 95%;
-  margin: 20px;
+  margin: 5px 20px 5px 20px;
 }
 
 .summary_text_content {

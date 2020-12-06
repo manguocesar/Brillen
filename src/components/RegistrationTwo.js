@@ -19,15 +19,15 @@ import {motion} from "framer-motion";
           transition : {delay : 0.8, duration:2.5} },
           exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
 
-        const buttonVariants = {
-          hover: {
-            scale: 1.2,  
-            textShadow: "0px 0px 8px ",
-            boxShadow: "0px 0px 8px",transition: {
-              yoyo:Infinity,}  }  }
+          const buttonVariants = {
+            hidden : {scale:0,},
+            visible:{  scale:1,
+              transition : {delay : 0.2, duration:2.5, type: "spring", stiffness: 20}},
+            hover: {  scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px",
+              transition: { yoyo:Infinity, duration: 0.3   }}}
 
-const RegistrationTwo = ({ addBase, pizza }) => {
-  const Registrations = ['Scan QR Code', 'Manual Data Input'];
+const RegistrationTwo = () => {
+  const Registrations = [{text:'Scan QR Code',to:'RegistrationThree'}, {text:'Manual Data Input',to:'YourData'}];
 
 
         return (
@@ -45,12 +45,12 @@ const RegistrationTwo = ({ addBase, pizza }) => {
           <ul style={{display:"flex"}}>
             {Registrations.map(Registration => {
               return (
-                <Link to="/YourData">
+                <Link to={Registration.to}>
                 <motion.button
                 className="home_button"
                   variants={buttonVariants}
                   whileHover="hover">
-                    {Registration}
+                    {Registration.text}
                 </motion.button>
               </Link>
                 )

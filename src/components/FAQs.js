@@ -9,9 +9,7 @@ const containerVariants = {
   transition : {delay : 0.1, duration:1}},
   exit: {x: '-100vw', transition : {ease: 'easeInOut', duration:1}}   }
 
-  const buttonVariants = {
-    hover: {  scale: 1.2, textShadow: "0px 0px 8px ", boxShadow: "0px 0px 8px",
-        transition: { yoyo:Infinity}}}
+
 
         const FAQs = () => {
 
@@ -31,14 +29,7 @@ const containerVariants = {
               <p>You need our technical staff? Please get your queue number. Our staff will come to you shortly</p>
     
     
-              <Link to="/">
-                    <motion.button
-                    className="home_button"
-                      variants={buttonVariants}
-                      whileHover="hover">
-                    Print Queue Number
-                    </motion.button>
-                </Link>
+     
 
             <div className="ListFAQ_container">
                 <p>You might also find information in our FAQs' section:</p>

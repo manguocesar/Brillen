@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import RegistrationOne from './components/RegistrationOne';
 import RegistrationTwo from './components/RegistrationTwo';
+import RegistrationThree from './components/RegistrationThree';
 import NoFrameSelection from './components/NoFrameSelection';
 import YourData from './components/YourData';
 import Questionaire from './components/Questionaire';
@@ -18,21 +19,28 @@ import Summary from './components/Summary';
 import AllDone from './components/AllDone';
 import FAQs from './components/FAQs';
 
+import IdleTimerContainer from './components/IdleTimerContainer'
+
 
 import {AnimatePresence} from 'framer-motion'
 
 function App() {
   const location = useLocation();
+  const [savedData, setSavedData] = useState(false)
+  const [firstName, setFirstName] = useState("")
+  const [familyName, setFamilyName] = useState("")
+  //const [name, setName] = useState([{firstName:""}, {familyName:""}])
 
-
-const [savedData, setSavedData] = useState(false)
+  const [frames, setFrames] = useState(1)
 
 console.log("savedData1",savedData);
 
   return (
     <div className="box">
       
-    <Header savedData={savedData} /> 
+    <Header savedData={savedData} firstName={firstName}  familyName={familyName} /> 
+    
+    {location.pathname === "/" ? <></> : <IdleTimerContainer />}
       {/* exitBeforeEnter makes sure all compoennts left before any enter */}
       {/* onExitComplete launches an action when the component exits/unmounts */}
       <AnimatePresence exitBeforeEnter  >
@@ -44,11 +52,14 @@ console.log("savedData1",savedData);
         <Route path="/RegistrationTwo">
           <RegistrationTwo  />
         </Route>
+        <Route path="/RegistrationThree">
+          <RegistrationThree  />
+        </Route>
         <Route path="/NoFrameSelection">
           <NoFrameSelection  />
         </Route>
         <Route path="/YourData">
-          <YourData setSavedData={setSavedData} savedData={savedData}  />
+          <YourData setSavedData={setSavedData} savedData={savedData} setFirstName={setFirstName} setFamilyName={setFamilyName} />
         </Route>
         <Route path="/Questionaire">
           <Questionaire savedData={savedData}  setSavedData={setSavedData}  />
@@ -67,10 +78,10 @@ console.log("savedData1",savedData);
           <ContinueConsultation   />
         </Route>
         <Route path="/ConsultationFrames">
-          <ConsultationFrames savedData={savedData}  setSavedData={setSavedData}  />
+          <ConsultationFrames savedData={savedData}  setSavedData={setSavedData} frames={frames} setFrames={setFrames} />
         </Route>
         <Route path="/ConsultationLenses">
-          <ConsultationLenses  />
+          <ConsultationLenses frames={frames} setFrames={setFrames}  />
         </Route>
         <Route path="/SteinerUpgrade">
           <SteinerUpgrade  />
