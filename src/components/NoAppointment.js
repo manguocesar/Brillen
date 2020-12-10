@@ -28,19 +28,20 @@ import moment from 'moment'
           )
 
           const [chosen, setChosen] = useState("")
+          const [selection, setSelection] = useState()
           const [date,setDate] = useState(
             // [new Date().getFullYear(), new Date().getMonth(), new Date().getDate()]
 
           )
           const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date.getDate()])}
                 
+        const onClickDay = date => {setSelection(date); console.log("select", selection);}
+        
+      
+        
 
-console.log("new Date()",new Date(), moment()._d);
-
-                const {register, handleSubmit, errors} = useForm()
-                const onSubmit = (data) => {
-                  console.log("data",data);
-                }
+               
+             
                 return (
                   <motion.div 
                       className="home_container"
@@ -55,26 +56,25 @@ console.log("new Date()",new Date(), moment()._d);
                     <div className="calendar_container">
                   
                           <motion.div 
-                          // y={y}
-                          // drag="y"
-                          //   whileTap={{ scale: 0.98 }}
-                          //   dragConstraints={{ top: -650, bottom: 10 }} 
                             className="calandar_dates">
                             
                           <div className="calandar_dates_one">
                             
                           Date:   {moment(date).format('Do MMMM')}  </div>
                           <Calendar onChange={onChange} value={date}
+                          // value={moment()._d}
                             className="calend"
+                            firstDayOfWeek="monday"
                             showFixedNumberOfWeeks={true}
                             defaultView="month"
                             defaultActiveStartDate={new Date()} 
                             minDate={new Date()}
                             maxDate={moment().add(90, 'days')._d}
                             minDetail="month"
-                             onClickDay={(value, event) => console.log('Clicked day: ',value, event.target)}
+                             onClickDay={(value, event) => () => onClickDay(value, event)}
                              next2Label={null}
                              prev2Label={null}
+                             tileClassName={(date) => date === selection ? "red" : "green"}
 
                              //below we pass all the not selectable dates
                              tileDisabled={({activeStartDate, date, view }) => date.getDay() === 0}

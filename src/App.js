@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Route, Switch, useLocation } from "react-router-dom";
+
+
+
 import Header from './components/Header';
 import Home from './components/Home';
 import RegistrationOne from './components/RegistrationOne';
@@ -24,6 +27,10 @@ import IdleTimerContainer from './components/IdleTimerContainer'
 
 import {AnimatePresence} from 'framer-motion'
 
+
+import VKeyboard from "./components/VKeyboard"
+
+
 function App() {
   const location = useLocation();
   const [savedData, setSavedData] = useState(false)
@@ -31,15 +38,39 @@ function App() {
   const [familyName, setFamilyName] = useState("")
   //const [name, setName] = useState([{firstName:""}, {familyName:""}])
 
+  const onChangeAll = (inputObj) => {
+    setInputs(inputObj)   
+    console.log("inputObj",inputs, inputObj)
+    };
+
+    const [inputName, setInputName] = useState()
+            
+            
+
+            
+              const setActiveInput = (inputName) => {
+                setInputName(inputName);
+                console.log("inputName", inputName)
+              };
+  
+
+  const [inputs, setInputs] = useState("");
+  const [openKeyboard, setOpenKeyboard] = useState(false)
+
+
   const [frames, setFrames] = useState(1)
 
 console.log("savedData1",savedData);
 
-  return (
-    <div className="box">
+    return (
+      <div className="box">
       
     <Header savedData={savedData} firstName={firstName}  familyName={familyName} /> 
-    
+
+
+    <div><VKeyboard onChangeAll={onChangeAll} setActiveInput={setActiveInput} inputName={inputName}  setOpenKeyboard={setOpenKeyboard} openKeyboard={openKeyboard}  inputs={inputs} setInputs={setInputs}  /></div>
+
+
     {location.pathname === "/" ? <></> : <IdleTimerContainer />}
       {/* exitBeforeEnter makes sure all compoennts left before any enter */}
       {/* onExitComplete launches an action when the component exits/unmounts */}
@@ -58,8 +89,11 @@ console.log("savedData1",savedData);
         <Route path="/NoFrameSelection">
           <NoFrameSelection  />
         </Route>
-        <Route path="/YourData">
-          <YourData setSavedData={setSavedData} savedData={savedData} setFirstName={setFirstName} setFamilyName={setFamilyName} />
+        <Route path="/YourData" >
+          <YourData
+          onChangeAll={onChangeAll} setActiveInput={setActiveInput}
+           setInputs={setInputs}
+          setOpenKeyboard={setOpenKeyboard} inputs={inputs}  setInputName={setInputName} setSavedData={setSavedData} savedData={savedData} setFirstName={setFirstName} setFamilyName={setFamilyName} />
         </Route>
         <Route path="/Questionaire">
           <Questionaire savedData={savedData}  setSavedData={setSavedData}  />

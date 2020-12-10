@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 
 
+
         const containerVariants = {
           hidden: { opacity: 0,  x:'100vw'   },
           visible: {  opacity:1, x: 0,
@@ -27,6 +28,13 @@ import {motion} from "framer-motion";
             <h2>Registration</h2>
             <p>Welcome at brillen.de express</p>
             <p >Have you already chosen a frame?</p>
+
+
+
+
+
+
+
             <ul style={{display:"flex"}}>
                   <li >
                   <Link to="/RegistrationTwo">

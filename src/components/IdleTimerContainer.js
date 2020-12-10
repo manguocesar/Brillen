@@ -28,7 +28,7 @@ function IdleTimerContainer() {
 
 const onIdle = () => { 
     setModalIsOpen(true);
-    sessionTimeoutRef.current = setTimeout(logOut,20 * 1000)
+    sessionTimeoutRef.current = setTimeout(logOut,60 * 1000)
                     }
 const stayActive = () => { setModalIsOpen(false); clearTimeout(sessionTimeoutRef.current)}
 const logOut = () => { setModalIsOpen(false); histoire.push("/");  clearTimeout(sessionTimeoutRef.current)}
@@ -63,7 +63,7 @@ const handleAfterCloseFunc = () => {clearTimeout(sessionTimeoutRef.current)}
         </Modal>
             <IdleTimer 
                 ref={idleTimerRef}
-                timeout={20*1000}
+                timeout={60*1000}
                 onIdle={onIdle}
 
             ></IdleTimer>

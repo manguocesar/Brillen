@@ -25,7 +25,7 @@ import Green from "../image/ConsultationLenses/Green.png"
               setSavedData(true)
               }, [])
 
-              let arrayLenses = [Brown,Grey,Green,Brown]
+              let arrayLenses = [Brown,Grey,Green]
 
               
 

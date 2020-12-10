@@ -58,6 +58,63 @@ p {
   transform: translateX(-100px);
 }
 
+.hg-row {
+  /* opacity: 0.8; */
+  width: 78vh;
+  height: 3.5vh;
+  margin: 0px auto;
+}
+
+.hg-button {
+  color: black;
+  font-size: 2vh;
+  font-weight: bolder;
+}
+
+.simple-keyboard.hg-theme-default.myTheme {
+  border: 5px solid rgba(75, 75, 75, 0.3);
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.hg-row .hg-button:not(:last-child) {
+  margin-right: 5px;
+  height: 3vh;
+  width: 3vh;
+  background-color: grey;
+}
+
+.hg-theme-default .hg-row > div:last-child {
+  margin-right: 5px;
+  height: 3vh;
+  width: 10vh;
+  background-color: grey;
+}
+
+.hg-functionBtn {
+  margin-right: 5px;
+  height: 3vh;
+  width: 10vh;
+  background-color: grey;
+}
+
+.hg-button {
+  margin-right: 5px;
+  height: 3vh;
+  width: 10vh;
+  background-color: grey;
+}
+
+.simple-keyboard {
+  position: absolute;
+  left: 20vh;
+  bottom: 10vh;
+  width: 80vh;
+  height: 20vh;
+  background-color: transparent;
+  z-index: 3;
+}
+
 /* header */
 header {
   display: flex;
@@ -578,8 +635,8 @@ select:focus {
   justify-content: center;
   align-items: center;
   border: 1px solid white;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 150px;
   margin: 20px;
   font-weight: bolder;
   font-size: 2em;
@@ -594,8 +651,8 @@ select:focus {
   justify-content: center;
   align-items: center;
   border: 1px solid green;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 150px;
   margin: 20px;
   font-weight: bolder;
   font-size: 2em;

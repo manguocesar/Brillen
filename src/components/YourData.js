@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
+import "react-simple-keyboard/build/css/index.css";
 import {useForm} from "react-hook-form"
-
 
                   const containerVariants = {
                       hidden: {  opacity: 0,   x:'100vw'   },
@@ -22,33 +22,33 @@ import {useForm} from "react-hook-form"
                       hover: {scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px", 
                             transition: { yoyo:Infinity, duration: 0.3   }}}  
 
-                  const topDisapear = { exit: {y: -1000, opacity:0,scale:0.1, transition : {duration: 0.4,ease: 'easeIn'}} }
+                  // const topDisapear = { exit: {y: -1000, opacity:0,scale:0.1, transition : {duration: 0.4,ease: 'easeIn'}} }
 
 
 
-        const YourData = ({setSavedData, setFirstName, setFamilyName}) => {
+        const YourData = ({setOpenKeyboard, setActiveInput, setSavedData,setInputName, setFirstName, inputs, onChangeAll, setInputs,setFamilyName}) => {
 
-          useEffect(() => {setSavedData(false)}, [])
-
-            const {register, handleSubmit,errors} = useForm()
+            useEffect(() => {setSavedData(false)}, [])
 
             const onSubmit = (data) => {console.log("data",data)}
 
             const [gender, setGender] = useState()
-
-// const updateFirstName = (e) => {
-//   console.log(name);
-//   setName(...name, {firstName:e.target.value})
-// }
-// const updateFamilyName = (e) => {
-//   console.log(name);
-//   setName(...name, {familyName:e.target.value})
-// }
-
             const [noMobile, setNoMobile] = useState(false)
 
+           const handleKeyboard = (arg)=> {
+            setActiveInput(arg);
+             setOpenKeyboard(true)
+           }
+
+           
+  const {register, handleSubmit,errors} = useForm()
+
             return (
+
+              
+
               <motion.div className="home_container"
+            
                  variants={containerVariants}
                  initial="hidden" animate="visible" exit="exit"
                  drag="y"
@@ -56,9 +56,14 @@ import {useForm} from "react-hook-form"
                  dragConstraints={{ top: -650, bottom: 10 }}  >
 
                 <h2 style={{width:"40%", marginLeft: "10px"}}>Your Data</h2>
+
+         
+
  
-                      <form className="Your_Data_Form"  onSubmit={handleSubmit(onSubmit)}>
-                        <motion.div variants={topDisapear} className="Your_Data_Field_One">
+
+
+                      <form className="Your_Data_Form"  onSubmit={handleSubmit(onSubmit)} >
+                        <motion.div  className="Your_Data_Field_One">
                          
                             <p className="Title_Field">Gender:</p>
                             <div  className={gender === 1 ? "Your_Data_Field_One_gender_active" : "Your_Data_Field_One_gender" }    >
@@ -71,7 +76,7 @@ import {useForm} from "react-hook-form"
                             </div>
                         </motion.div>
 
-                        <motion.div variants={topDisapear} className="Your_Data_Field_One">
+                        <motion.div  className="Your_Data_Field_One">
                         <p className="Title_Field">Title:</p>
                         <select name="title" >
                             <option value="Doctor">Doctor</option>
@@ -80,31 +85,51 @@ import {useForm} from "react-hook-form"
                         </select>
                         </motion.div>
 
-                        <motion.div variants={topDisapear} className="Your_Data_Field_Two">
+                        <motion.div  className="Your_Data_Field_Two">
                           <div className="Your_Data_Field_Left_One">
                               <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Name</p>
-                                <input onChange={(e)=> setFamilyName(e.target.value)} maxLength='15'  name="Name" type="text"  placeholder="Name" ref={register({required:true,minLength:8})} />
-                                {errors.Name && 
+
+
+                   
+
+
+                                <input onFocus={() => handleKeyboard("Name")  } 
+                                value={inputs["Name"] || ""}
+                                 onChange={(e)=> setFamilyName(e.target.value)}
+                                 maxLength='15'  name="Name" type="text"  placeholder="Name"
+                                  ref={register({minLength:8})} /> 
+
+                                {/* {errors.Name && 
                                 <motion.span  variants={invalidVariants}
-                                initial="hidden" animate="visible" exit="exit">Invalid</motion.span>}
+                                initial="hidden" animate="visible" exit="exit">Invalid</motion.span>} */}
                               </div>
 
                                 <div className="Your_Data_Field_Left_Name">
                                     <p className="Title_Field">Adress</p>
-                                    <input maxLength='25' name="Adress"  placeholder="Adress"ref={register({required:true,minLength:8})} />
+                                    <input  type="text" onFocus={() => handleKeyboard("Adress")  } 
+                                value={inputs["Adress"] || ""}
+                                 onChange={(e)=> setFamilyName(e.target.value)}
+                                    maxLength='25' name="Adress"  placeholder="Adress" ref={register({minLength:8})} />
                                   </div>
 
                                   <div className="Your_Data_Field_Left_Name">
                                   <p className="Title_Field">ZIP Code</p>
-                                  <input maxLength='12' name="ZIPCode"  placeholder="ZIP Code"ref={register} />
+
+                                 
+                                
+
+
+                                  <input value={inputs["ZIPCode"] || ""} onFocus={() => handleKeyboard("ZIPCode")  }  maxLength='12'  type="text" name="ZIPCode"  placeholder="ZIP Code" ref={register} />
                                 </div>
                           </div>
 
                           <div className="Your_Data_Field_Left_Two">
                           <div className="Your_Data_Field_Left_Name">
                                 <p className="Title_Field">Surname</p>
-                                <input onChange={(e)=> setFirstName(e.target.value)} maxLength='15' name="Surname" type="text"  placeholder="Surname" ref={register({required:true, minLength:4})} />
+                                <input onChange={(e)=> setFirstName(e.target.value)} value={inputs["Surname"] || ""} onFocus={() => handleKeyboard("Surname")  }
+                                 maxLength='15' name="Surname" type="text" 
+                                  placeholder="Surname" ref={register({minLength:4})} />
                                 </div>
 
                                 <div className="Your_Data_Field_Left_Name">
@@ -124,14 +149,15 @@ import {useForm} from "react-hook-form"
                                  
                                 <div className="Your_Data_Field_Left_Name">
                                   <p className="Title_Field">City</p>
-                                  <input maxLength='15' name="City"  placeholder="City"ref={register({required:true,minLength:3})} />
+                                  <input maxLength='15' name="City"  placeholder="City" ref={register({minLength:3})} value={inputs["City"] || ""} onFocus={() => handleKeyboard("City")  }
+                                   />
                                   </div>
                            </div>                    
                       </motion.div>
 
 
 
-                        <motion.div variants={topDisapear} className="Your_Data_Field_Three">
+                        <motion.div  className="Your_Data_Field_Three">
                             <div>
                               <p className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Date of Birth</p>
                               <p  className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>E-Mail</p>
@@ -141,9 +167,9 @@ import {useForm} from "react-hook-form"
 
                             <div className="Your_Data_Field_Three_Right" >
                              
-                              <input defaultValue="1980-10-20" max="2017-12-20" min="1920-10-20" name="DateOfBirth" type="date" placeholder="" ref={register({required:true})} />
-                              <input maxLength='15'  name="E-Mail" type="email" placeholder="E-Mail" ref={register({required:true,minLength:8})} />
-                              <input maxLength='15' required type="tel" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ref={register({required:true,minLength:6})} /> 
+                              <input  defaultValue="1980-10-20" max="2017-12-20" min="1920-10-20" name="DateOfBirth" type="date" placeholder="" ref={register} />
+                              <input value={inputs["E-Mail"] || ""} onFocus={() => handleKeyboard("E-Mail")} maxLength='15'  name="E-Mail" type="email" placeholder="E-Mail" ref={register({minLength:8})} />
+                              <input value={inputs["Mobile"] || ""} onFocus={() => handleKeyboard("Mobile")} maxLength='15' name="Mobile"  type="tel" placeholder="123-45-678"  ref={register({minLength:6})} /> 
                             </div>
                        </motion.div>
 
@@ -180,7 +206,7 @@ import {useForm} from "react-hook-form"
                           }
                       </div>
 
-                      { noMobile ? <motion.div variants={topDisapear} className="Your_Data_Field_Three">
+                      { noMobile ? <motion.div  className="Your_Data_Field_Three">
                             <div>
                               <p  className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Landline</p>
                               <p  className="Title_Field" style={{flexGrow:1, textAlign:"left"}}>Passport / ID Card</p>
@@ -194,7 +220,7 @@ import {useForm} from "react-hook-form"
                         : <> <h2 style={{width:"40%"}}>SMS Verification</h2>
                         <div className="Your_Data_Field_Six">
                                    <p>Please enter SMS verification code below</p>
-                                   <input  required type="tel" placeholder="123-45-678" /> 
+                                   <input value={inputs["SMScode"] || ""} onFocus={() => handleKeyboard("SMScode")} ref={register} type="tel" name="SMScode" placeholder="123-45-678" /> 
                                  </div></>
                       }
 
@@ -220,7 +246,7 @@ import {useForm} from "react-hook-form"
                           </Link>
                         </ul> */}
 
-                        {/* <input type="submit" ref={register} /> */}
+                        <input type="submit" name="submitfield" ref={register} />
 
 
                       {/* <div className="Your_Data_Field_Six">
