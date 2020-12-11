@@ -27,10 +27,6 @@ import Green from "../image/ConsultationLenses/Green.png"
 
               let arrayLenses = [Brown,Grey,Green]
 
-              
-
-             
-
               return (
                 <motion.div className="home_container"
                   variants={containerVariants}
@@ -45,7 +41,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                     <p className="QRCode_Text">Please choose one you would like to order</p>
                     <div className="Frames_Container">
                       {arrayLenses.map((item,index)=> {
-                       return <div className={ frames === index+1 ? "Frames_Container_divGreen": "Frames_Container_div"} onClick={() => setFrames(index+1)} ><img alt="" src={item} />Frame {index+1}</div>
+                       return <div className={ frames === index+1 ? "Frames_Container_divGreen": "Frames_Container_div"} onClick={() => setFrames(index+1)} ><img alt="" src={item} /><p>Frame {index+1}</p></div>
                       })}
                       
                   </div>

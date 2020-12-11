@@ -16,7 +16,7 @@ import moment from 'moment'
                 visible: {   opacity:1,   scale: 1.4, color: "rgb(30, 250, 30)", x: 50,
                       transition: {type : 'spring', stiffness: 10,  delay: 0.5}  },
                 exit: {opacity: 0, scale: 0.01, color: "black" },
-                hover: { scale: 1.5, x:70,   textShadow: "1px 1px 10px ",   
+                hover: { scale: 1.5, x:70,   textShadow: "0.2vh 0.2vh 0.8vh ",   
                 transition: {  yoyo:Infinity,  duration: 0.4  }} }
 
             const popVariants = {
@@ -88,11 +88,11 @@ console.log("nextPage",nextPage);
           How much time do you spend in front of your computer, table and/or smartphone?
               </motion.p>
                   <motion.div variants={topDisapear}  className="Questionaire_Form_One">
-                    <div  className={ computerTime === 1 ? "Frames_Container_divGreen": "Frames_Container_div"} >  <motion.input style={{height:"40px", width:"40px"}} onClick={() => setComputerTime(1)} name="computerTime" type="radio" value="<1H" ref={register} />
+                    <div  className={ computerTime === 1 ? "Frames_Container_divGreen": "Frames_Container_div"} >  <motion.input style={{height:"3vh", width:"3vh"}} onClick={() => setComputerTime(1)} name="computerTime" type="radio" value="<1H" ref={register} />
                             <motion.p>Less than an hour</motion.p></div>
-                   <div  className={ computerTime === 2 ? "Frames_Container_divGreen": "Frames_Container_div"}>     <motion.input style={{height:"40px", width:"40px"}} onClick={() => setComputerTime(2)} name="computerTime" type="radio" value="<4H" ref={register} />
+                   <div  className={ computerTime === 2 ? "Frames_Container_divGreen": "Frames_Container_div"}>     <motion.input style={{height:"3vh", width:"3vh"}} onClick={() => setComputerTime(2)} name="computerTime" type="radio" value="<4H" ref={register} />
                             <motion.p>Up to 4 hours</motion.p></div>
-                  <div className={ computerTime === 3 ? "Frames_Container_divGreen": "Frames_Container_div"}>   <motion.input style={{height:"40px", width:"40px"}} onClick={() => setComputerTime(3)}  name="computerTime" type="radio" value=">4H" ref={register} />
+                  <div className={ computerTime === 3 ? "Frames_Container_divGreen": "Frames_Container_div"}>   <motion.input style={{height:"3vh", width:"3vh"}} onClick={() => setComputerTime(3)}  name="computerTime" type="radio" value=">4H" ref={register} />
                             <motion.p>More than 4 hours</motion.p></div>
                   </motion.div></> : ""}
 
@@ -102,10 +102,10 @@ console.log("nextPage",nextPage);
                   {   step === 2 ? <><motion.p variants={topDisapear} >Do you travel a lot by car?</motion.p>
                   <motion.div variants={topDisapear}   className="Questionaire_Form_One">
                   <div  className={ carTravel === 1 ? "Frames_Container_divGreen": "Frames_Container_div"} > 
-                              <input style={{height:"40px", width:"40px"}}  onClick={() => setCarTravel(1)} name="carTravelling" type="radio" value="Yes" ref={register} />
+                              <input style={{height:"3vh", width:"3vh"}}  onClick={() => setCarTravel(1)} name="carTravelling" type="radio" value="Yes" ref={register} />
                             <p>Yes</p></div>
                  <div  className={ carTravel === 2 ? "Frames_Container_divGreen": "Frames_Container_div"} >   
-                 <input style={{height:"40px", width:"40px"}} onClick={() => setCarTravel(2)} name="carTravelling" type="radio" value="No" ref={register} />
+                 <input style={{height:"3vh", width:"3vh"}} onClick={() => setCarTravel(2)} name="carTravelling" type="radio" value="No" ref={register} />
                             <p>No</p></div>
                   </motion.div></> : ""}
 
@@ -113,13 +113,13 @@ console.log("nextPage",nextPage);
                   {   step === 3 ? <> <p>How important is a clear image in the peripheral areas of the glasses to you?</p>
                   <div className="Questionaire_Form_One">
                   <div  className={ clarityImportant === 1 ? "Frames_Container_divGreen": "Frames_Container_div"} > 
-                              <input style={{height:"40px", width:"40px"}} onClick={() => setClarityImportant(1)} name="clearPeripheral" type="radio" value="Important" ref={register} />
+                              <input style={{height:"3vh", width:"3vh"}} onClick={() => setClarityImportant(1)} name="clearPeripheral" type="radio" value="Important" ref={register} />
                             <p>Important</p></div>
                             <div  className={ clarityImportant === 2 ? "Frames_Container_divGreen": "Frames_Container_div"} >    
-                             <input style={{height:"40px", width:"40px"}} onClick={() => setClarityImportant(2)} name="clearPeripheral" type="radio" value="Neutral" ref={register} />
+                             <input style={{height:"3vh", width:"3vh"}} onClick={() => setClarityImportant(2)} name="clearPeripheral" type="radio" value="Neutral" ref={register} />
                             <p>Neutral</p></div>
                             <div  className={ clarityImportant === 3 ? "Frames_Container_divGreen": "Frames_Container_div"} >    
-                            <input style={{height:"40px", width:"40px"}} onClick={() => setClarityImportant(3)} name="clearPeripheral" type="radio" value="NotImportant" ref={register} />
+                            <input style={{height:"3vh", width:"3vh"}} onClick={() => setClarityImportant(3)} name="clearPeripheral" type="radio" value="NotImportant" ref={register} />
                             <p>Not important</p></div>
                             
                   </div> </> : ""}
@@ -127,13 +127,13 @@ console.log("nextPage",nextPage);
                   {   step === 4 ? <> <p>Are your eyes light sensitive?</p>
                   <div className="Questionaire_Form_One">
                   <div  className={ eyeSensitive === 1 ? "Frames_Container_divGreen": "Frames_Container_div"} > 
-                              <input style={{height:"40px", width:"40px"}} onClick={() => setEyeSensitive(1)} name="lightSensitive" type="radio" value="Yes" ref={register} />
+                              <input style={{height:"3vh", width:"3vh"}} onClick={() => setEyeSensitive(1)} name="lightSensitive" type="radio" value="Yes" ref={register} />
                             <p>Yes</p>   </div>
                   <div  className={ eyeSensitive === 2 ? "Frames_Container_divGreen": "Frames_Container_div"} > 
-                              <input style={{height:"40px", width:"40px"}} onClick={() => setEyeSensitive(2)} name="lightSensitive" type="radio" value="No" ref={register} />
+                              <input style={{height:"3vh", width:"3vh"}} onClick={() => setEyeSensitive(2)} name="lightSensitive" type="radio" value="No" ref={register} />
                             <p>No</p>   </div>
                   <div  className={ eyeSensitive === 3 ? "Frames_Container_divGreen": "Frames_Container_div"} > 
-                              <input style={{height:"40px", width:"40px"}} onClick={() => setEyeSensitive(3)} name="lightSensitive" type="radio" value="Poor" ref={register} />
+                              <input style={{height:"3vh", width:"3vh"}} onClick={() => setEyeSensitive(3)} name="lightSensitive" type="radio" value="Poor" ref={register} />
                             <p>Poor</p>   </div>
                   </div> </> : ""}
 
@@ -168,7 +168,6 @@ console.log("nextPage",nextPage);
                                     whileHover="hover" >
                                       Make appointment now
                               </motion.button></Link>
-                              
                                </> : <></> }
 
                   

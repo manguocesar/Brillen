@@ -60,7 +60,7 @@ const Summary = ({  }) => {
 
               </div>
 
-        <div>Conditions genraral ... Aliqua labore cupidatat cupidatat elit duis laborum duis deserunt. Ea labore adipisicing esse culpa et labore in fugiat exercitation aliqua est do velit eiusmod. Fugiat nostrud duis quis incididunt sunt laborum sunt ullamco elit id do do. Nostrud ad quis est duis pariatur.
+        <div>Conditions genraral ... Aliqua labore cupidatat cupidatat elit duis laborum duis deserunt. 
         </div>
            <Link to="/ConsultationLenses">
                       <motion.button

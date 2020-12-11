@@ -41,11 +41,11 @@ import GoBack from "../image/header/arrowLeft.png"
         return ( 
           <header >
             <motion.div
-                className="logo"
-                drag 
-                whileTap={{ scale: 0.95 }}
-                dragConstraints={{ left:-150, top:-50, right:800, bottom:1200}}
-                dragElastic={0.9}  
+               
+                // drag 
+                // whileTap={{ scale: 0.95 }}
+                // dragConstraints={{ left:-150, top:-50, right:800, bottom:1200}}
+                // dragElastic={0.9}  
                         >
               <motion.img  variants={svgVariants}
                 initial="hidden"
@@ -64,8 +64,8 @@ import GoBack from "../image/header/arrowLeft.png"
                     whileHover="hover"
                     className="iconUser">
               
-                      <img src={SupportIcon} alt="" style={{width: "40px",height: "40px"}} />
-                      <p>To authentify, click on the icon </p>
+                      <img src={SupportIcon} alt="" style={{width: "3vh",height: "3vh"}} />
+                      <p>If you need help, click here</p>
                    </motion.div>
 
                     {history.location.pathname == "/" ? (""
@@ -78,11 +78,11 @@ import GoBack from "../image/header/arrowLeft.png"
                             className="navigation_header">
                                 <motion.div variants={containerVariants} whileHover="hover"> 
                                   <Link to="/" >
-                                    <img src={Home} style={{width: "42px",height: "42px"}} alt=""/>
+                                    <img src={Home} style={{width: "4vh",height: "4vh"}} alt=""/>
                                   </Link> 
                                 </motion.div>
                             <motion.div variants={containerVariants} whileHover="hover" onClick={()=> {goingBack()}}> 
-                            <img src={GoBack} style={{width: "42px",height: "42px"}} alt=""/>
+                            <img src={GoBack} style={{width: "4vh",height: "4vh"}} alt=""/>
                           </motion.div>
                   </motion.div>
                   )}

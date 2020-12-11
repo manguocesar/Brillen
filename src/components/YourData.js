@@ -55,23 +55,18 @@ import {useForm} from "react-hook-form"
                  whileTap={{ opacity: 0.8 }}
                  dragConstraints={{ top: -650, bottom: 10 }}  >
 
-                <h2 style={{width:"40%", marginLeft: "10px"}}>Your Data</h2>
-
-         
-
- 
-
+                <h2 style={{width:"40%", marginLeft: "0.8vh"}}>Your Data</h2>
 
                       <form className="Your_Data_Form"  onSubmit={handleSubmit(onSubmit)} >
                         <motion.div  className="Your_Data_Field_One">
                          
                             <p className="Title_Field">Gender:</p>
                             <div  className={gender === 1 ? "Your_Data_Field_One_gender_active" : "Your_Data_Field_One_gender" }    >
-                              <input onClick={() => setGender(1)} style={{height:"40px", width:"40px"}}  name="Gender" type="radio" value="Man" ref={register} />
+                              <input onClick={() => setGender(1)} style={{height:"3vh", width:"3vh"}}  name="Gender" type="radio" value="Man" ref={register} />
                              
                             <p>Mr.</p> </div>
                               <div  className={gender === 2 ? "Your_Data_Field_One_gender_active" : "Your_Data_Field_One_gender" }>
-                              <input onClick={ () => setGender(2)} style={{height:"40px", width:"40px"}}  name="Gender" type="radio" value="Woman" ref={register} />
+                              <input onClick={ () => setGender(2)} style={{height:"3vh", width:"3vh"}}  name="Gender" type="radio" value="Woman" ref={register} />
                             <p>Mrs.</p>
                             </div>
                         </motion.div>
@@ -182,7 +177,7 @@ import {useForm} from "react-hook-form"
 
                      
                       <div className="Your_Data_Field_Five"> 
-                          <p> <input  style={{height:"40px", width:"40px"}} name="RGPD" type="radio" value="noMobile" ref={register}  onClick={() => setNoMobile(!noMobile)} /></p>
+                          <p> <input  style={{height:"3vh", width:"3vh"}} name="RGPD" type="radio" value="noMobile" ref={register}  onClick={() => setNoMobile(!noMobile)} /></p>
                           { noMobile ? 
                           <>
                           <p>"I have my mobile with me"</p> 

@@ -30,8 +30,6 @@ import {motion} from "framer-motion";
                     <motion.div className="home_container"
                   variants={containerVariants}
                   initial="hidden" animate="visible" exit="exit"
-                  // drag="y"  dragConstraints={{ top: -300, bottom: 10 }} 
-                            // whileTap={{ scale: 0.98 }}
                              >
 
                       <h2>Continue Consultation Process</h2>
@@ -49,7 +47,6 @@ import {motion} from "framer-motion";
                       
                               <p className="QRCode_Text">To scan your QR code, get it closer to the mirror</p>
                               <p className="QRCode_Text">QR code scanner is located on the left of the display</p>
-                              <motion.img variants={nextVariants} initial="hidden" animate="visible" exit="exit" style={{marginTop:"20px"}} src={QrCode} alt=""/>
-              </motion.div>  )    }
+                              <motion.img variants={nextVariants} initial="hidden" animate="visible" exit="exit" style={{marginTop:"1vh",  height:"40vh", width:"20vh", marginLeft:"20vh" }} src={QrCode} alt=""/></motion.div>)}
 
           export default ContinueConsultation;

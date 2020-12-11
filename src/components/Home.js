@@ -46,6 +46,7 @@ import Click from "../image/home/clickIcon.png"
             }, [])
 
           return (
+            <div className="Grid_Container">
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -81,7 +82,7 @@ import Click from "../image/home/clickIcon.png"
                     </motion.button>
                 </Link>))}
             </div>
-          </motion.div>
+          </motion.div></div>
         )
       }
 

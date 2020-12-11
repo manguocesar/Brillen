@@ -35,11 +35,11 @@ import Green from "../image/ConsultationLenses/Green.png"
                     className="lenses_choice_container">
 
                       <h2>Steiner Upgrade</h2>
-                      <p>"Steiner Upgrade Description: Duis incididunt ad veniam nulla enim officia do officia qui id adipisicing nostrud officia consequat. Nulla in esse minim proident deserunt incididunt sit proident ad exercitation labore. Excepteur nulla in commodo Lorem do laboris.</p>
+                      <p>"Steiner Upgrade Description: Duis incididunt ad veniam nulla enim officia do officia qui id adipisicing nostrud officia consequat.</p>
                       
                     <div className="Differences_Visualisation">
-               <div><img style={{height:"170px", width:"300px"}} alt="" src={Grey}/></div>
-               <div><img style={{height:"170px", width:"300px"}} alt="" src={Green}/></div>
+               <div><img style={{height:"10vh", width:"22vh"}} alt="" src={Grey}/></div>
+               <div><img style={{height:"10vh", width:"22vh"}} alt="" src={Green}/></div>
 
                     </div>
                     <Link to="/Summary">
