@@ -21,14 +21,14 @@ function VKeyboard({inputName, onChangeAll, setInputs, openKeyboard, setOpenKeyb
       
 
       const handleShift = () => {
-        const newLayoutName = layoutName === "default" ? "shift" : "shift";
+        const newLayoutName = layoutName === "default" ? "shift" : "default";
         setLayoutName(newLayoutName);
       };
 
       const onKeyPress = button => {
-        console.log("Button pressed", button);
-        if (button === "shift" || button === "{lock}") handleShift();
-        if (button === "CloseKeyoard") {setOpenKeyboard(false)};
+        console.log("Button pressed",button);
+        if (button === "{shift}" ) handleShift();
+        if (button === "{CloseKeyoard}") {setOpenKeyboard(false)};
       };
 
   return (
@@ -43,13 +43,18 @@ function VKeyboard({inputName, onChangeAll, setInputs, openKeyboard, setOpenKeyb
           onKeyPress={onKeyPress}
           theme={"hg-theme-default hg-layout-default myTheme"}
           keyboardAppearance='dark'
+          display={{
+            '{bksp}': 'delete',
+            '{CloseKeyoard}': 'closeKeyoard',
+            '{shift}': 'shift',
+          }}
           layout={{
         'default': [
-          '1 2 3 4 5 6 7 8 9 0',
-          'q w e r t y u i o p {.com}',
+          '1 2 3 4 5 6 7 8 9 0 {bksp}',
+          'q w e r t y u i o p .com',
           'a s d f g h j k l @',
-          'z x c v b n m {shift}',
-          'CloseKeyoard'
+          'z x c v b n m . {shift}',
+          '{CloseKeyoard}'
         ],
         'shift': [
           'CloseKeyoard',

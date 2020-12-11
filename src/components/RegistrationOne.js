@@ -41,6 +41,7 @@ import {motion} from "framer-motion";
                   <motion.button
                   className="home_button"
                     variants={buttonVariants}
+                    style={{width:"15vh"}}
                     whileHover="hover">
                       YES
                   </motion.button>
@@ -49,7 +50,7 @@ import {motion} from "framer-motion";
                   <Link to="/NoFrameSelection">
                   <motion.button
                   className="home_button"
-                    variants={buttonVariants}
+                    variants={buttonVariants}  style={{width:"15vh"}}
                     whileHover="hover">
                      NO
                   </motion.button>

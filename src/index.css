@@ -61,8 +61,7 @@ p {
 .hg-row {
   /* opacity: 0.8; */
   width: 78vh;
-  height: 3.5vh;
-  margin: 0px auto;
+  height: 2.5vh;
 }
 
 .hg-button {
@@ -72,42 +71,28 @@ p {
 }
 
 .simple-keyboard.hg-theme-default.myTheme {
-  border: 5px solid rgba(75, 75, 75, 0.3);
-  border-radius: 10px;
+  border: 0.5vh solid rgba(75, 75, 75, 0.6);
+  border-radius: 1vh;
   background-color: transparent;
 }
 
 .hg-row .hg-button:not(:last-child) {
-  margin-right: 5px;
-  height: 3vh;
-  width: 3vh;
+  height: 2.8vh;
   background-color: grey;
 }
 
 .hg-theme-default .hg-row > div:last-child {
-  margin-right: 5px;
-  height: 3vh;
-  width: 10vh;
-  background-color: grey;
-}
-
-.hg-functionBtn {
-  margin-right: 5px;
-  height: 3vh;
-  width: 10vh;
-  background-color: grey;
+  height: 2.8vh;
+  background-color: lightgray;
 }
 
 .hg-button {
-  margin-right: 5px;
-  height: 3vh;
-  width: 10vh;
   background-color: grey;
 }
 
 .simple-keyboard {
   position: absolute;
-  left: 20vh;
+  left: 15vh;
   bottom: 10vh;
   width: 80vh;
   height: 20vh;
