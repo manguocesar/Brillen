@@ -26,7 +26,7 @@ div {
 body {
   display: flex;
   justify-content: center;
-  background: radial-gradient(circle, #000006, black 250%);
+  background: radial-gradient(circle, #000006, #000000 250%);
   overflow: hidden;
 }
 
