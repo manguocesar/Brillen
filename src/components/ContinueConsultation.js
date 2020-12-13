@@ -41,12 +41,13 @@ import {motion} from "framer-motion";
                             className="home_button"
                               variants={buttonVariants}
                               whileHover="hover">
-                            Scan QR Code
+                            QR Code Scanned
                             </motion.button>
                         </Link>
                       
                               <p className="QRCode_Text">To scan your QR code, get it closer to the mirror</p>
                               <p className="QRCode_Text">QR code scanner is located on the left of the display</p>
-                              <motion.img variants={nextVariants} initial="hidden" animate="visible" exit="exit" style={{marginTop:"1vh",  height:"40vh", width:"20vh", marginLeft:"20vh" }} src={QrCode} alt=""/></motion.div>)}
+                              <p className="QRCode_Text">If you have no QR code, please go back to the HomePage and click on "Start Registration"</p>
+                              <motion.img variants={nextVariants} initial="hidden" animate="visible" exit="exit" style={{marginTop:"1vh",  height:"30vh", width:"20vh", marginLeft:"20vh" }} src={QrCode} alt=""/></motion.div>)}
 
           export default ContinueConsultation;

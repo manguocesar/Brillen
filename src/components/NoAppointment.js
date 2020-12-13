@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {motion,useMotionValue, useTransform,} from "framer-motion";
-import {useForm} from "react-hook-form"
 import Calendar from 'react-calendar';
 import moment from 'moment'
-
+import axios from "axios";
 
           const containerVariants = {
             hidden: { opacity: 0, x:'50vw'  },
@@ -20,27 +19,43 @@ import moment from 'moment'
                 transition: { yoyo:Infinity, duration: 0.5   }}}
 
         const NoAppointment = () => {
-
           const y = useMotionValue(0)
-          const opacity = useTransform(
-            y,  [0, -100],
-            [1, 0]
-          )
+          const opacity = useTransform(y,[0, -100],[1, 0])
 
           const [chosen, setChosen] = useState("")
           const [selection, setSelection] = useState()
-          const [date,setDate] = useState(
-            // [new Date().getFullYear(), new Date().getMonth(), new Date().getDate()]
+          const [date,setDate] = useState()
+          const [availabilities,setAvailabilities] = useState("")
 
-          )
-          const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date.getDate()])}
-                
-        const onClickDay = date => {setSelection(date); console.log("select", selection);}
-        
-      
-        
 
-               
+            async function fetchData() {
+              const url = "https://booking.bizec.net/api_v1/store/available_booking_date/122?days_required=15";
+              let req = new Request(url
+                ,{method: 'GET',
+                headers: {'X-Country-Code': 'at',
+                "Content-Type": "application/json"},} )
+               try {
+                fetch(req)
+                .then(response => response.json())
+                .then(data => setAvailabilities([
+                  data.data.map((items) => (items.current_date)),
+                  data.data.map((item2) => (item2.calendar[0]))
+                ]))
+                              } catch (error) {
+                     console.log("error", error)}}
+
+        useEffect(() => {fetchData()}, [])
+
+                    
+        // const handleMyclick = () => {
+        //   console.log("availabilities", availabilities[0])
+        //   console.log("availabilities2",availabilities[1][[availabilities[0].indexOf(selection)]].time_list)
+        //   console.log("availabilities2", availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("09:00") // returns true
+        //   )
+        // }
+        
+        const onChange = date => { setDate([ date.getFullYear(),  date.getMonth(),  date.getDate()])}        
+        const onClickDay = (date) => {setSelection(date.toISOString().slice(0,-16) + date.getDate())}
              
                 return (
                   <motion.div 
@@ -49,18 +64,15 @@ import moment from 'moment'
                       initial="hidden" animate="visible" exit="exit"  >
                         <motion.div style={{ opacity }}>
                     <h2>No Appointment Available</h2>
+                 {/* { availabilities &&  <p onClick={() => handleMyclick()}>test api calls</p>} */}
                           <p>Sorry but I cannot offer an appointment within the next hour</p>
                           <p>Please choose a suitable date from the calandar below</p>
                           </motion.div>
                 
                     <div className="calendar_container">
-                  
-                          <motion.div 
-                            className="calandar_dates">
+                          <motion.div    className="calandar_dates">
                             
-                          <div className="calandar_dates_one">
-                            
-                          Date:   {moment(date).format('Do MMMM')}  </div>
+                         
                           <Calendar onChange={onChange} value={date}
                           // value={moment()._d}
                             className="calend"
@@ -69,39 +81,33 @@ import moment from 'moment'
                             defaultView="month"
                             defaultActiveStartDate={new Date()} 
                             minDate={new Date()}
-                            maxDate={moment().add(90, 'days')._d}
+                            maxDate={moment().add(60, 'days')._d}
                             minDetail="month"
-                             onClickDay={(value, event) => () => onClickDay(value, event)}
+                             onClickDay={(event, date) => onClickDay(event, date)}
                              next2Label={null}
                              prev2Label={null}
-                             tileClassName={(date) => date === selection ? "red" : "green"}
+                             tileClassName={({date}) => availabilities.includes(date.toISOString().slice(0,-14)) ? 'red' : 'blue'}
+                            //  tileActive={moment().add(2, 'days')._d}
+                             //below we pass all the not selectable dates //launches the fct for all dates
+                            tileDisabled={({date}) =>  availabilities && !availabilities[0].includes(date.toISOString().slice(0,-14)),  
+                          console.log(date)         }    />
 
-                             //below we pass all the not selectable dates
-                             tileDisabled={({activeStartDate, date, view }) => date.getDay() === 0}
 
-                          />
 
-                  <Link to="/PrintQRCode">
+                 { chosen && <Link to="/PrintQRCode">
                           <motion.button
                           className="home_button"
                             variants={buttonVariants}
                             whileHover="hover">
                           Confirm Date
                           </motion.button>
-                      </Link>
+                      </Link>}
 
 
                             </motion.div>
-
-
-
                             { date? 
                             <motion.div 
                             variants={containerVariants}
-                            // y={y}
-                            //   drag="y"
-                            //   whileTap={{ scale: 0.98 }}
-                            //   dragConstraints={{ top: -650, bottom: 10 }} 
                               className="calendar_hours">
                             
                                 <div className="calendar_hours_one">
@@ -116,30 +122,31 @@ import moment from 'moment'
                               </span>
                             </div>
 
-                           
+
+
                           <div className="calendar_hours_one">
-                            <p className={chosen == "08:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>08:00</p>  
-                            <p className={chosen == "14:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>14:00</p>  
+                            <p className={ availabilities &&   !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("08:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>08:00</p>  
+                            <p className={ availabilities &&   !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("14:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>14:00</p>  
                           </div>
                           <div className="calendar_hours_one">
-                            <p className={chosen == "09:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>09:00</p>  
-                            <p className={chosen == "15:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>15:00</p>  
+                            <p className={  availabilities &&  !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("09:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>09:00</p>  
+                            <p className={  availabilities &&  !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("15:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>15:00</p>  
                             </div>
                           <div className="calendar_hours_one">
-                             <p className={chosen == "10:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>10:00</p>  
-                             <p className={chosen == "16:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>16:00</p>  
+                             <p className={   availabilities && !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("10:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>10:00</p>  
+                             <p className={  availabilities &&  !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("16:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>16:00</p>  
                               </div>
                           <div className="calendar_hours_one">
-                             <p className={chosen == "11:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>11:00</p>  
-                             <p className={chosen == "17:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>17:00</p>  
+                             <p className={  availabilities &&  !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("11:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>11:00</p>  
+                             <p className={ availabilities &&   !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("17:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>17:00</p>  
                               </div>
                           <div className="calendar_hours_one">
-                             <p className={chosen == "12:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>12:00</p>  
-                             <p className={chosen == "18:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>18:00</p>  
+                             <p className={ availabilities &&   !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("12:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>12:00</p>  
+                             <p className={  availabilities &&  !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("18:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>18:00</p>  
                               </div>
                           <div className="calendar_hours_one">
-                             <p className={chosen == "13:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>13:00</p>  
-                             <p className={chosen == "19:00" && "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>19:00</p>  
+                             <p className={ availabilities &&   !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("13:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>13:00</p>  
+                             <p className={  availabilities &&  !availabilities[1][[availabilities[0].indexOf(selection)]].time_list.includes("19:00")  ? "noAvailability" : "activated"} onClick={(e) => {setChosen(e.target.textContent)}}>19:00</p>  
                               </div>
                             </motion.div>
                             :""}

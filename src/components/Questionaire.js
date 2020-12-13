@@ -34,8 +34,7 @@ import moment from 'moment'
 
             const onSubmit = (data) => {console.log("data",data)}
 
-          const nextPage = useHistory()
-console.log("nextPage",nextPage);
+        
             
             const {register, handleSubmit,errors} = useForm()
 
@@ -46,13 +45,9 @@ console.log("nextPage",nextPage);
 
 
                 if (step === 4 ) 
-              {
-                // nextPage.push('/NoAppointment');
-                setStep(0)
-                }
+              {   setStep(0)  }
                 else 
-              {setStep(step + 1)}
-            }
+              {setStep(step + 1)} }
 
 
             const [step, setStep] = useState(1)

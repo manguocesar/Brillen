@@ -21,19 +21,14 @@ import Green from "../image/ConsultationLenses/Green.png"
 
           const ConsultationFrames = ({setSavedData,frames, setFrames}) => {
 
-            useEffect(() => {
-              setSavedData(true)
-              }, [])
+            useEffect(() => {setSavedData(true)}, [])
 
-              let arrayLenses = [Brown,Grey,Green]
+              let arrayLenses = [Brown,Grey,Green,Grey]
 
               return (
                 <motion.div className="home_container"
                   variants={containerVariants}
                   initial="hidden" animate="visible" exit="exit"
-                  // drag="y"
-                  // whileTap={{ scale: 0.98 }}
-                  // dragConstraints={{ top: -250, bottom: 10 }} 
                   >
 
                   <h2>Consultation Frames</h2>
@@ -45,7 +40,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                       })}
                       
                   </div>
-                        <Link to={`/ConsultationLenses${arrayLenses[frames]}`}  >
+                        <Link to={`/ConsultationLenses`}  >
                           <motion.button
                             className="home_button"
                             variants={buttonVariants}

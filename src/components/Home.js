@@ -42,7 +42,6 @@ import Click from "../image/home/clickIcon.png"
 
           useEffect((savedData) => {
             setSavedData(false)
-            console.log("savedData",savedData);
             }, [])
 
           return (
@@ -60,7 +59,7 @@ import Click from "../image/home/clickIcon.png"
                   How it works?
                 </motion.h2>
                 <div className="home_main">
-                  {content.map((item, index)=>(
+                  {content.map((item, index) =>(
                     <ul key={index}>
                       <li className="list_flat">
                        <div> <img src={item.icon} alt="" style={{height:"8vh", width:"8vh"}} /></div>
@@ -71,9 +70,9 @@ import Click from "../image/home/clickIcon.png"
                   ))}
               </div>
 
-         <div class="home_footer_container">
-                {buttonChoiceText.map(item => (
-                <Link to={item.to}>
+         <div className="home_footer_container">
+                {buttonChoiceText.map((item, index) => (
+                <Link key={index} to={item.to}>
                     <motion.button
                       className="home_button"
                       variants={buttonVariants}

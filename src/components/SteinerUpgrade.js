@@ -23,24 +23,21 @@ import Green from "../image/ConsultationLenses/Green.png"
 
         const SteinerUpgrade = () => {
 
+            const [selected, setSelected] = useState(1)
 
           return (
             <motion.div className="base_container"
           variants={containerVariants}
           initial="hidden" animate="visible" exit="exit"  >
-
                   <motion.div 
-                  // drag="y"
-                    // dragConstraints={{ top: -500, bottom: 10 }}
                     className="lenses_choice_container">
 
                       <h2>Steiner Upgrade</h2>
                       <p>"Steiner Upgrade Description: Duis incididunt ad veniam nulla enim officia do officia qui id adipisicing nostrud officia consequat.</p>
                       
                     <div className="Differences_Visualisation">
-               <div><img style={{height:"10vh", width:"22vh"}} alt="" src={Grey}/></div>
-               <div><img style={{height:"10vh", width:"22vh"}} alt="" src={Green}/></div>
-
+               <div className={ selected === 1 ? "greenBorder" : "whiteBorder"} onClick={(e) => setSelected(1)}><img style={{height:"10vh", width:"22vh"}} alt="" src={Grey} /></div>
+               <div className={ selected === 2 ? "greenBorder" : "whiteBorder"} onClick={(e) => setSelected(2)}><img style={{height:"10vh", width:"22vh"}} alt="" src={Green}/></div>
                     </div>
                     <Link to="/Summary">
                             <motion.button
@@ -60,9 +57,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                         </Link>
                         </motion.div>  
                         
-                        {/* <div className="lenses_choice_recap">
-                <h2>Prescription</h2>
-          </div > */}
+                  
 
             </motion.div>
           )  }

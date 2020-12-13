@@ -27,7 +27,9 @@ import {motion} from "framer-motion";
               transition: { yoyo:Infinity, duration: 0.3   }}}
 
 const RegistrationTwo = () => {
-  const Registrations = [{text:'Scan QR Code',to:'RegistrationThree'}, {text:'Manual Data Input',to:'YourData'}];
+  const Registrations = [
+    // {text:'Scan QR Code',to:'RegistrationThree'},
+   {text:'Manual Data Input',to:'YourData'}];
 
 
         return (

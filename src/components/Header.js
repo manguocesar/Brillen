@@ -65,7 +65,7 @@ import GoBack from "../image/header/arrowLeft.png"
                     className="iconUser">
               
                       <img src={SupportIcon} alt="" style={{width: "3vh",height: "3vh"}} />
-                      <p>If you need help, click here</p>
+                      <p onClick={()=> console.log("call with assistant is being initiated")}>If you need help, click here</p>
                    </motion.div>
 
                     {history.location.pathname == "/" ? (""
@@ -99,7 +99,7 @@ import GoBack from "../image/header/arrowLeft.png"
                       exit="exit"
                       whileHover="hover"
                       className="iconUser">
-                        <p >Save process and log out </p>
+                      <Link to="/"> <p onClick={()=> console.log("data saved and session ended")} >Save process and log out </p></Link> 
                   </motion.div>)}
 
                  { (savedData === false ) ? ("" ):(

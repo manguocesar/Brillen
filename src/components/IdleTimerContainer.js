@@ -1,5 +1,5 @@
 
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef,useEffect} from 'react'
 import IdleTimer from 'react-idle-timer'
 import Modal from "react-modal"
 import { useHistory } from 'react-router-dom';
@@ -17,22 +17,37 @@ import {motion} from "framer-motion";
         hover: {scale: 1.05, textShadow: "0px 0px 4px ", boxShadow: "0px 0px 4px", 
               transition: { yoyo:Infinity, duration: 0.3   }}}  
 
-Modal.setAppElement('#root')
+        Modal.setAppElement('#root')
 
-function IdleTimerContainer() {
-    const [modalIsOpen,setModalIsOpen] = useState(false)
-    const idleTimerRef = useRef(null)
-    const sessionTimeoutRef = useRef(null)
-    
-    let histoire = useHistory()
+        function IdleTimerContainer({setOpenKeyboard}) {
+            const [modalIsOpen, setModalIsOpen] = useState(false)
+            const idleTimerRef = useRef(null)
+            const sessionTimeoutRef = useRef(null)
+            let histoire = useHistory()
 
-const onIdle = () => { 
-    setModalIsOpen(true);
-    sessionTimeoutRef.current = setTimeout(logOut,60 * 1000)
-                    }
-const stayActive = () => { setModalIsOpen(false); clearTimeout(sessionTimeoutRef.current)}
-const logOut = () => { setModalIsOpen(false); histoire.push("/");  clearTimeout(sessionTimeoutRef.current)}
-const handleAfterCloseFunc = () => {clearTimeout(sessionTimeoutRef.current)}
+            const[countDown, setCountDown] = useState()
+
+            const onIdle = () => { 
+                setModalIsOpen(true);
+                setCountDown(60); 
+                setOpenKeyboard(0)
+                        }
+
+            useEffect(() => {
+                console.log("here")
+               const timer =  countDown > 0 && setInterval(() => setCountDown(countDown - 1), 1000);
+               countDown === 0 && histoire.push("/"); countDown === 0 && setOpenKeyboard(0); 
+                return () => {clearInterval(timer); }
+              }, [onIdle]);
+
+           
+
+        
+        const stayActive = () => { setModalIsOpen(false); clearTimeout(sessionTimeoutRef.current);setCountDown(60)}
+        const logOut = () => { setModalIsOpen(false);   histoire.push("/");  clearTimeout(sessionTimeoutRef.current)}
+        const handleAfterCloseFunc = () => {
+            clearTimeout(sessionTimeoutRef.current);
+        }
 
     return (
         <motion.div variants={containerVariants}>
@@ -48,10 +63,10 @@ const handleAfterCloseFunc = () => {clearTimeout(sessionTimeoutRef.current)}
                 overlay: {backgroundColor:'black', zIndex: 2, padding:"800px", borderRadius:"20px"},
                 content: {backgroundColor:'rgb(180, 180, 180)', width:"60%", height:"70vh", margin:"0px auto", color: 'red', display:"flex",flexDirection:"column",justifyContent:"center", alignItems:"center", textAlign:"center"}
                 
-            }}
-             >
-            <p style={{color:"black", fontSize:"2.2em", padding:"20px", fontWeight:"bolder"}}>You've been idle for a while!</p>
-            <p style={{color:"black", fontSize:"2.2em", padding:"20px", fontWeight:"bolder"}}>You will be logged out</p>
+            }}>
+               <p style={{color:"black", fontSize:"4vh", padding:"20px", fontWeight:"bolder"}}>{countDown}</p> 
+            <p style={{color:"black", fontSize:"3vh", padding:"20px", fontWeight:"bolder"}}>You've been idle for a while!</p>
+            <p style={{color:"black", fontSize:"3vh", padding:"20px", fontWeight:"bolder"}}>You will be logged out</p>
         <motion.div variants={containerVariants}>
             <motion.button variants={buttonVariants} className="home_button" style={{color:"black", fontSize:"2.2em", padding:"20px", fontWeight:"bolder", border:"2px solid black"}} 
             onClick={logOut}>Log me out</motion.button>
@@ -63,7 +78,7 @@ const handleAfterCloseFunc = () => {clearTimeout(sessionTimeoutRef.current)}
         </Modal>
             <IdleTimer 
                 ref={idleTimerRef}
-                timeout={60*1000}
+                timeout={60 * 1000}
                 onIdle={onIdle}
 
             ></IdleTimer>

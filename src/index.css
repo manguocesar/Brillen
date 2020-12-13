@@ -3,7 +3,7 @@
   font-family: "Quicksand";
   src: url("/Quicksand-Light.woff2") format("woff2"),
     url("/Quicksand-Light.woff") format("woff");
-  font-weight: 300;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -28,7 +28,7 @@ div {
 body {
   display: flex;
   justify-content: center;
-  background: radial-gradient(circle, #000006, #000000 250%);
+  background: radial-gradient(circle, #000006, black 250%);
   overflow: hidden;
 }
 
@@ -70,7 +70,7 @@ p {
   font-weight: bolder;
 }
 
-.simple-keyboard.hg-theme-default.myTheme {
+.hg-theme-default.myTheme {
   border: 0.5vh solid rgba(75, 75, 75, 0.6);
   border-radius: 1vh;
   background-color: transparent;
@@ -90,21 +90,32 @@ p {
   background-color: grey;
 }
 
-.simple-keyboard {
+.simple-keyboardgood {
   position: absolute;
-  left: 15vh;
-  bottom: 10vh;
+  left: 50vh;
+  top: 70vh;
   width: 80vh;
   height: 20vh;
   background-color: transparent;
   z-index: 3;
+  /* border: red 1px solid; */
+}
+.NOsimple_keyboard {
+  position: absolute;
+  left: 15vh;
+  top: -100vh;
+  width: 80vh;
+  height: 20vh;
+  background-color: transparent;
+  z-index: -1;
+  opacity: 0;
 }
 
 /* header */
 header {
   display: flex;
   border-bottom: 1px solid rgb(30, 250, 30);
-  margin: 0px 0.5vh 2vh 0.5vh;
+  margin: 0px 0.5vh 0.5vh 0.5vh;
   display: flex;
   padding: 1vh;
   align-items: center;
@@ -146,7 +157,7 @@ button {
   background: transparent;
   /* border-radius: 50px; */
   border: 1px solid white;
-  margin: 40px auto 0;
+  margin: 20px auto 0;
   cursor: pointer;
   opacity: 0.7;
 }
@@ -163,7 +174,7 @@ h2 {
   text-align: left;
   font-size: 3vh;
   width: 80%;
-  margin: 0px 0px 2vh 0px;
+  margin: 0px 0px 0.5vh 0px;
   border-bottom: white solid 1px;
 }
 h3 {
@@ -261,13 +272,12 @@ li span.active::before {
 input {
   background-color: transparent;
   color: white;
-  border: 1px solid white;
-  box-shadow: 1px 1px 2px;
-  box-shadow: 1px 1px 2px;
+  border: 0.1vh solid white;
+  box-shadow: 0.1vh 0.1vh 0.1vh;
   font-size: 1.5vh;
   text-align: center;
   font-style: italic;
-  padding: 0.3vh;
+  padding: 0.1vh;
   margin: 0.3vh 0.8vh 0.3vh 0.2vh;
 }
 input:focus {
@@ -281,7 +291,7 @@ select {
   border: 1px solid white;
   box-shadow: 1px 1px 2px;
   box-shadow: 1px 1px 2px;
-  font-size: 1vh;
+  font-size: 1.5vh;
   text-align: center;
   font-style: italic;
   padding: 0.4vh;
@@ -312,7 +322,7 @@ select:focus {
   justify-content: space-between;
   align-items: center;
   width: 40vh;
-  margin-bottom: 1.4vh;
+  margin-bottom: 0.4vh;
 }
 .Your_Data_Field_One_gender {
   display: flex;
@@ -396,8 +406,6 @@ select:focus {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin: 0.8vh 0.8vh 0.8vh 0px;
-  padding: 0.8vh;
 }
 
 .Your_Data_Field_Five > p {
@@ -453,7 +461,11 @@ select:focus {
 }
 
 .greenBorder {
-  border: green 1px solid;
+  border: rgb(30, 250, 30) 1px solid;
+  box-shadow: 1px 1px 4px rgb(30, 250, 30);
+}
+.whiteBorder {
+  border: white 1px solid;
 }
 
 .time_selection {
@@ -464,7 +476,7 @@ select:focus {
 }
 
 .calendar_container > div {
-  margin: 3vh 4vh 3vh 0px;
+  margin: 0.5vh 4vh 3vh 0px;
 }
 
 .calendar_container {
@@ -494,20 +506,20 @@ select:focus {
     scale: 1.01;
     box-shadow: 1px 1px 4px;
     border-radius: 0%;
-    ackground-color: rgb(30, 250, 30);
+    background-color: rgb(30, 250, 30);
   }
   50% {
     scale: 0.99;
     box-shadow: 1px 1px 4px;
     border-radius: 2px;
-    ackground-color: rgb(30, 250, 30);
+    background-color: rgb(30, 250, 30);
     font-weight: bolder;
   }
   75% {
     scale: 1.01;
     box-shadow: 1px 1px 4px;
     border-radius: 0px;
-    ackground-color: rgb(30, 250, 30);
+    background-color: rgb(30, 250, 30);
   }
   100% {
     scale: 1;
@@ -532,14 +544,38 @@ select:focus {
   border-radius: 0;
 }
 
-.react-calendar__tile,
 .react-calendar__month-view__days__day {
   font-size: 3vh;
+  /* background-color: yellow; */
 }
 
+.react-calendar__tile {
+  background-color: blue;
+  color: black;
+}
 .react-calendar__tile:focus {
   background-color: rgb(30, 250, 30);
   color: black;
+}
+.react-calendar__tile:active {
+  background-color: rgb(30, 250, 30);
+  color: black;
+}
+
+.react-calendar__tile:disabled {
+  background-color: red;
+  color: black;
+  opacity: 0.5;
+  scale: 0.9;
+}
+.red {
+  background-color: hotpink;
+  color: black;
+}
+.blue {
+  background-color: cyan;
+  color: black;
+  border: 1px solid black;
 }
 
 .react-calendar__tile:hover {
@@ -554,7 +590,6 @@ select:focus {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 0.8vh;
 }
 .calandar_dates_one {
   display: flex;
@@ -572,13 +607,13 @@ select:focus {
   font-size: 2vh;
   font-weight: bolder;
   font-family: "Quicksand";
-  margin-bottom: 2vh;
+  margin: 3vh 2vh 2vh 2vh;
 }
 
 .calendar_hours_one > p {
-  border: white 1px solid;
+  border: black 1px solid;
   padding: 1vh;
-  margin: 1vh;
+  margin: 0vh 1vh 0vh 1vh;
   font-size: 1.6vh;
   flex-grow: 1;
   cursor: pointer;
@@ -591,7 +626,13 @@ select:focus {
 .activated {
   background-color: rgb(30, 250, 30);
 }
-.activated > p {
+
+.noAvailability {
+  background-color: red;
+  opacity: 0.5;
+  scale: 0.9;
+}
+.noAvailability > p {
   color: black;
 }
 
@@ -634,7 +675,7 @@ select:focus {
   padding: 0.5vh 1vh;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid green;
+  border: 1px solid rgb(30, 250, 30);
   width: 30vh;
   height: 10vh;
   margin: 2vh;
@@ -772,7 +813,7 @@ select:focus {
   padding: 0px;
 }
 .lenses_choice_recap > h2 {
-  padding: 1.8vh;
+  padding: 1.4vh;
   text-align: center;
 }
 
@@ -833,7 +874,7 @@ select:focus {
   scale: 0.98;
 }
 .Differences_Visualisation > div:active {
-  border: 1px green solid;
+  border: 1px rgb(30, 250, 30) solid;
 }
 
 .summary_text {

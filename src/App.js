@@ -36,42 +36,29 @@ function App() {
   const [savedData, setSavedData] = useState(false)
   const [firstName, setFirstName] = useState("")
   const [familyName, setFamilyName] = useState("")
-  //const [name, setName] = useState([{firstName:""}, {familyName:""}])
 
-  const onChangeAll = (inputObj) => {
-    setInputs(inputObj)   
-    console.log("inputObj",inputs, inputObj)
-    };
 
-    const [inputName, setInputName] = useState()
+const handleName = (e) => {
+  console.log("here",e)
+}
+
+
+  const onChangeAll = (inputObj) => {setInputs(inputObj)};
+  const [inputName, setInputName] = useState()
             
-            
-
-            
-              const setActiveInput = (inputName) => {
-                setInputName(inputName);
-                console.log("inputName", inputName)
-              };
-  
-
+  const setActiveInput = (inputName) => {setInputName(inputName)};
   const [inputs, setInputs] = useState("");
-  const [openKeyboard, setOpenKeyboard] = useState(false)
-
+  const [openKeyboard, setOpenKeyboard] = useState(0)
 
   const [frames, setFrames] = useState(1)
 
-console.log("savedData1",savedData);
-
     return (
       <div className="box">
-      
-    <Header savedData={savedData} firstName={firstName}  familyName={familyName} /> 
+        <Header savedData={savedData} firstName={firstName}  familyName={familyName} /> 
+        {location.pathname === "/YourData" ? <VKeyboard onChangeAll={onChangeAll} setActiveInput={setActiveInput} inputName={inputName}  setOpenKeyboard={setOpenKeyboard} openKeyboard={openKeyboard}  inputs={inputs} setInputs={setInputs}/> : <></> }
 
 
-    <div><VKeyboard onChangeAll={onChangeAll} setActiveInput={setActiveInput} inputName={inputName}  setOpenKeyboard={setOpenKeyboard} openKeyboard={openKeyboard}  inputs={inputs} setInputs={setInputs}  /></div>
-
-
-    {location.pathname === "/" ? <></> : <IdleTimerContainer />}
+      {location.pathname === "/" ? <></> : <IdleTimerContainer setOpenKeyboard={setOpenKeyboard} />}
       {/* exitBeforeEnter makes sure all compoennts left before any enter */}
       {/* onExitComplete launches an action when the component exits/unmounts */}
       <AnimatePresence exitBeforeEnter  >
@@ -93,7 +80,7 @@ console.log("savedData1",savedData);
           <YourData
           onChangeAll={onChangeAll} setActiveInput={setActiveInput}
            setInputs={setInputs}
-          setOpenKeyboard={setOpenKeyboard} inputs={inputs}  setInputName={setInputName} setSavedData={setSavedData} savedData={savedData} setFirstName={setFirstName} setFamilyName={setFamilyName} />
+          setOpenKeyboard={setOpenKeyboard} inputs={inputs}  setInputName={setInputName} setSavedData={setSavedData} savedData={savedData} setFirstName={setFirstName} handleName={handleName} />
         </Route>
         <Route path="/Questionaire">
           <Questionaire savedData={savedData}  setSavedData={setSavedData}  />

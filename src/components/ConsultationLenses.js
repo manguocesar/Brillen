@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {motion} from "framer-motion";
 
 //images
@@ -42,10 +42,7 @@ import Green from "../image/ConsultationLenses/Green.png"
                 const [chosenColor, setChosenColor] = useState(Brown)
                 const [chosenTinting, setChosenTinting] = useState(2)
 
-const handleChosenTinting = (value)=> {
-  setChosenTinting(value)
-  console.log("chosenTinting",chosenTinting);
-}
+const handleChosenTinting = (value)=> { setChosenTinting(value)}
 
 let arrayLenses = [Brown,Grey,Green,Brown]
 
@@ -63,7 +60,7 @@ let arrayLenses = [Brown,Grey,Green,Brown]
                       <motion.div
                         drag="y"
                         whileTap={{ scale: 0.99, opacity:0.9 }}
-                        dragConstraints={{ top: -1500, bottom: 20 }}
+                        dragConstraints={{ top: -1100, bottom: 20 }}
                         className="lenses_choice_container">
 
                             <h2>Consultation Lenses</h2>
@@ -243,11 +240,9 @@ let arrayLenses = [Brown,Grey,Green,Brown]
                              </div>
                             <div className="Tinting_Color_lens">
                                 <h5 onClick={()=> {setTintingChosen(false)}}>Going Back</h5>
-                                   <img src={chosenColor} alt="" style={{width:"20vh",height:"20vh"}} />
+                                   <img src={chosenColor} alt="" style={{width:"25vh",height:"11vh"}} />
                                  </div>   </div>    </div>  ) }
-                                  
-                                  
-                                  
+                                    
                               <Link to="/SteinerUpgrade">
                                   <motion.button
                                     className="home_button"
@@ -258,23 +253,13 @@ let arrayLenses = [Brown,Grey,Green,Brown]
                               </Link>
                            </motion.div>
 
-
                         <motion.div 
-                            className="lenses_choice_recap"
-                            // drag="y"
-                            //           whileTap={{ scale: 0.95 }}
-                            //           dragConstraints={{ top: -1300, bottom: 20 }}
-                            >
-
+                            className="lenses_choice_recap">
                               <h2>"Prescription"</h2>
-
-                              
-                              <div className="image_holder">
+                           <div className="image_holder">
                                 <img alt="" src={arrayLenses[frames]}/>
                                 </div>
                             
-                          
-                             
 
                       <div className="lenses_choice_calculator">
                           <h3>Brillen.de Price Calculator</h3>
